@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  mycbr:
+    ports:
+      - "8080:8080"
+    build:
+      args:
+        PRJ_FILE: "/init_files/trees.prj"
+  elasticsearch:
+    image: "elasticsearch:8.7.1"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+  mysql:
+    image: "mysql:8.0-debian"
+    ports:
+      - "3306:3306"
+    # build:
+    volumes:
+      - ./init_files/mysql_dump:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: selfback_users_dev
+
+    

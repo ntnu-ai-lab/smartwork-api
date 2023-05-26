@@ -1,0 +1,6 @@
+[submodule "mycbr-rest"]
+	path = mycbr-rest
+	url = https://github.com/ntnu-ai-lab/mycbr-rest
+[submodule "mycbr-sdk"]
+	path = mycbr-sdk
+	url = https://github.com/ntnu-ai-lab/mycbr-sdk.git
