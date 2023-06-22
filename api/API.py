@@ -4,13 +4,16 @@ from fastapi import FastAPI
 from services.oauth import router as oauth_router
 from services.patient import router as patient_router
 from services.data import router as data_router
+from services.admin import router as admin_router
+from services.plan import router as plan_router
 app = FastAPI()
 
 
 app.include_router(oauth_router)
 app.include_router(patient_router)
 app.include_router(data_router)
-
+app.include_router(admin_router)
+app.include_router(plan_router)
 
 
 @app.get("/")

@@ -12,12 +12,12 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from elasticsearch import Elasticsearch
+from services.constants import PORT,PASSWORD,USERNAME
 
 
 
+es = Elasticsearch("https://localhost:"+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
-es = Elasticsearch("https://localhost:9400",basic_auth=("elastic","UhJ=sDusoDu=8a*JJ-H6"),verify_certs=False)
-es.indices.get_alias(index="*")
 
 
 router = APIRouter()

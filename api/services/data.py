@@ -2,19 +2,32 @@ from fastapi import APIRouter,Depends
 from elasticsearch import Elasticsearch
 from services.oauth import get_current_active_user,User
 from typing import Annotated
-es = Elasticsearch("https://localhost:9400",basic_auth=("elastic","UhJ=sDusoDu=8a*JJ-H6"),verify_certs=False)
-es.indices.get_alias(index="*")
+from services.constants import PORT,PASSWORD,USERNAME
+
+
+es = Elasticsearch("https://localhost:"+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
 router = APIRouter(prefix="/data")
 
 
 @router.get("/education/list")
 async def root(
-    current_user: Annotated[User, Depends(get_current_active_user)]
-):
-    print(current_user.country)
-    res = es.search(index="data_description", body={"query":{'match' : {"_type":"education_"+"en"}}},size=900)
-    if not res["hits"]:
-        return []
+    current_user: Annotated[User, Depends(get_current_active_user)],
 
-    return res
+):
+    res = es.index(index='account', id="stuartgo", 
+            document={
+                'userid': 'stuartgo',
+                'password': '$2b$12$phrVybcm8uyeTl9D/cdYoeZxiOHsjddjitMoYWv8lMVu9bMuY1L2a',
+                'country': 'nl',
+                'clinician': 'NTNU',
+                'rights': 'ROLE_USER',
+                'isaccountnonexpired': True,
+                'isaccountnonlocked': True,
+                'iscredentialsnonexpired': True,
+                'isenabled': True}
+    )
+
+    print(es.indices.refresh(index='account'))
+    res = es.search(index="data_description",query={"exists": {"field": "educationid"}},size=900)
+    return res["hits"]["hits"]

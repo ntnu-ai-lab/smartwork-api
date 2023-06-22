@@ -1,0 +1,3 @@
+PORT=9400
+PASSWORD="W9rzEW9hwqXYWs4q9sU+"
+USERNAME="elastic"
