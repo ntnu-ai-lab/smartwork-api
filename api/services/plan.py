@@ -36,7 +36,7 @@ async def next(
     #create exercise plan
     #create education plan
     #create step goal
-    if previous_plan==[]:
+    # if previous_plan==[]:
 
 
     #if has no previous plan
