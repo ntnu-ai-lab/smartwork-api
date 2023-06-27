@@ -73,7 +73,9 @@ def verify_password(plain_password, hashed_password):
 
 
 def get_user(username):
+    print(username)
     res = es.search(index="account", query={'match' : {"_id":username}})
+    print(res.body["hits"]["hits"][0]["_source"])
     if not res["hits"]["hits"]:
         return False
     print(res.body["hits"]["hits"][0]["_source"])
@@ -132,6 +134,7 @@ async def get_current_active_user(
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
 ):
+    print(form_data.username)
     user = authenticate_user(form_data.username, form_data.password)
     if not user:
         raise HTTPException(
