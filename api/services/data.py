@@ -25,3 +25,21 @@ async def root(
 ):
     res = es.search(index="exercise",query={"match_all":{}},size=900)
     return res["hits"]["hits"]
+
+
+@router.get("/achievement/list")
+async def root(
+    current_user: Annotated[User, Depends(get_current_active_user)],
+
+):
+    res = es.search(index="achievement",query={"match_all":{}},size=900)
+    return res["hits"]["hits"]
+
+@router.get("/achievement/types")
+async def root(
+    current_user: Annotated[User, Depends(get_current_active_user)],
+
+):
+    res = es.search(index="achievement",query={"match_all":{}},size=900)
+    
+    return set(map(lambda x: x["_source"]["type"] ,res["hits"]["hits"]))

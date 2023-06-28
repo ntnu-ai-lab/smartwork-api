@@ -23,6 +23,13 @@ def load_static(es):
             exercise=exercise[exercise.ExerciseID!="Missing value"]
             exercise=exercise.to_dict(orient="records")
             helpers.bulk(es,exercise,index="exercise")
+        if not es.indices.exists(index="achievement"):
+            es.indices.create(index = 'achievement')
+            for country in ["da","en","nb","nl"]:
+                achievememnts=pd.read_json(f"./init_scripts/achievements_{country}.json")
+                achievememnts.fillna("No value",inplace=True)
+                helpers.bulk(es,achievememnts.to_dict(orient="records"),index="achievement")
+
     except:
         raise HTTPException(status_code=500,detail="Could not create static indices.")
 
