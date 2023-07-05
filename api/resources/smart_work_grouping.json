@@ -1,0 +1,63 @@
+{
+  "contentType": "application/vnd.gorules.decision",
+  "edges": [
+    {
+      "id": "4fec8c46-bf65-4057-9450-c42a3c47e97f",
+      "sourceId": "21f14d70-caec-4043-a2d8-795b47c0eb6f",
+      "type": "edge",
+      "targetId": "87b6d6a8-7e73-4747-bf74-5de8faa84bf0"
+    },
+    {
+      "id": "f7f877d5-df98-4a95-b884-ba76f3909a8a",
+      "sourceId": "7465ef4a-16e5-4209-9392-5bc7c0d526c0",
+      "type": "edge",
+      "targetId": "21f14d70-caec-4043-a2d8-795b47c0eb6f"
+    },
+    {
+      "id": "937714ef-8754-4d11-ac2a-8b31adb38af6",
+      "sourceId": "434c48f2-3bf2-42ef-897a-e7014bb2ffd3",
+      "type": "edge",
+      "targetId": "7465ef4a-16e5-4209-9392-5bc7c0d526c0"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "434c48f2-3bf2-42ef-897a-e7014bb2ffd3",
+      "type": "inputNode",
+      "position": {
+        "x": 80,
+        "y": 380
+      },
+      "name": "Request"
+    },
+    {
+      "id": "7465ef4a-16e5-4209-9392-5bc7c0d526c0",
+      "type": "functionNode",
+      "position": {
+        "x": 450,
+        "y": 420
+      },
+      "name": "grouping",
+      "content": "/**\n* @param {import('gorules').Input} input\n* @param {{\n*  moment: import('dayjs')\n*  env: Record<string, any>\n* }} helpers\n*/\ngroups={'Cause of LBP_1': 0, 'Cause of LBP_2': 0, 'Cause of LBP_3': 0, 'Cause of LBP_4': 0, 'Cause of LBP_5': 0, 'Cause of LBP_6': 0, 'Guideline LBP_1': 1, 'Guideline LBP_2': 1, 'Guideline LBP_3': 1, 'Imaging_1': 2, 'Imaging_2': 2, 'Pain rating_1': 3, 'Reassurance_1': 4, 'Reassurance_2': 4, 'Reassurance_3': 4, 'Reassurance_4': 4, 'Reassurance_5': 4, 'Reassurance_6': 4, 'Reassurance_7': 4, 'Reassurance_8': 4, 'Reassurance_9': 4, 'Reassurance_10': 4, 'Stay active_1': 5, 'Stay active_2': 5, 'Stay active_3': 5, 'Stay active_4': 5, 'Stay active_5': 5, 'Stay active_6': 5, 'Stay active_7': 5, 'Stay active_8': 5, 'Stay active_9': 5, 'Stay active_10': 5, 'Stay active_11': 5, 'Stay active_12': 5, 'Stay active_13': 5, 'Stay active_14': 5, 'Start exercise_1': 6, 'Start exercise_2': 6, 'Start exercise_3': 6, 'Start exercise_4': 6, 'Start exercise_5': 6, 'Start exercise_6': 6, 'Start exercise_7': 6, 'Start exercise_8': 6, 'Start exercise_9': 6, 'Start exercise_10': 6, 'Structure of back_1': 7, 'Structure of back_2': 7, 'Structure of back_3': 7, 'Structure of back_4': 7, 'Mind-body connection_1': 8, 'Mind-body connection_2': 8, 'Mind-body connection_3': 8, 'Mind-body connection_4': 8, 'Mind-body connection_5': 8, 'Mind-body connection_6': 8, 'Mind-body connection_7': 8, 'Mind-body connection_8': 8, 'Mind-body connection_9': 8, 'Mind-body connection_10': 8, 'Encouragement to SM_1': 9, 'Encouragement to SM_2': 9, 'Encouragement to SM_4': 9, 'Encouragement to SM_5': 9, 'Encouragement to SM_6': 9, 'Encouragement to SM_7': 9, 'Encouragement to SM_8': 9, 'Accepting pain_1': 10, 'Accepting pain_2': 10, 'Accepting pain_3': 10, 'Anxious_1': 11, 'Anxious_2': 11, 'Anxious_3': 11, 'Attitude_1': 12, 'Attitude_2': 12, 'Attitude_3': 12, 'Attitude_4': 12, 'Attitude_5': 12, 'Attitude_6': 12, 'Changing negative thoughts_1': 13, 'Changing negative thoughts_2': 13, 'Changing negative thoughts_3': 13, 'Changing negative thoughts_4': 13, 'Changing negative thoughts_5': 13, 'Changing negative thoughts_6': 13, 'Changing negative thoughts_7': 13, 'Changing negative thoughts_9': 13, 'Changing negative thoughts_10': 13, 'Distraction_1': 14, 'Distraction_2': 14, 'Distraction_3': 14, 'Distraction_4': 14, 'Distraction_5': 14, 'Distraction_6': 14, 'Distress_1': 15, 'Fear-avoidance_1': 16, 'Fear-avoidance_2': 16, 'Fear-avoidance_3': 16, 'Fear-avoidance_4': 16, 'Fear-avoidance_5': 16, 'Fear-avoidance_6': 16, 'Stress_1': 17, 'Stress_2': 17, 'Stress_3': 17, 'Thoughts_1': 18, 'Thoughts_2': 18, 'Thoughts_3': 18, 'Thoughts_4': 18, 'Thoughts_5': 18, 'Thoughts_6': 18, 'Thoughts_7': 18, 'Daily activity_1': 19, 'Daily activity_2': 19, 'Daily activity_3': 19, 'Daily activity_4': 19, 'Daily activity_5': 19, 'Me time_1': 20, 'Me time_2': 20, 'FA Reassurance_2': 21, 'FA Reassurance_3': 21, 'FA Reassurance_4': 21, 'FA Reassurance_5': 21, 'FA Stay active_1': 22, 'FA Stay active_2': 22, 'FA Stay active_3': 22, 'FA Stay active_4': 22, 'FA Stay active_5': 22, 'FA Stay active_6': 22, 'FA Stay active_7': 22, 'Depression_1': 23, 'Anxiety_1': 24, 'Sleep disorders_1': 25, 'MSK pain_1': 26, 'Goal setting_1': 27, 'Goal setting_2': 27, 'Goal setting_3': 27, 'Goal setting_4': 27, 'Goal setting_5': 27, 'Action planning_1': 28, 'Action planning_2': 28, 'Action planning_3': 28, 'Pacing_1': 29, 'Pacing_2': 29, 'Pacing_3': 29, 'Pacing_4': 29, 'Pacing_5': 29, 'Pacing_6': 29, 'Problem solving_1': 30, 'Problem solving_2': 30, 'Problem solving_3': 30, 'Problem solving_4': 30, 'Relaxation_1': 31, 'Relaxation_2': 31, 'Relaxation_3': 31, 'Relaxation_4': 31, 'Relaxation_5': 31, 'Sleep_1': 32, 'Sleep_2': 32, 'Sleep_3': 32, 'Sleep_4': 32, 'Work_1': 33, 'Work_2': 33, 'Work_3': 33, 'Work_4': 33, 'Work_5': 33, 'Family and friends_1': 34, 'Family and friends_2': 34, 'Family and friends_3': 34, 'Family and friends_4': 34, 'Family and friends_5': 34, 'Family and friends_6': 34, 'Barrier time_1': 35, 'Barrier time_2': 35, 'Barrier tiredness_1': 36, 'Barrier tiredness_2': 36, 'Barrier support_1': 37, 'Barrier family work_1': 38, 'Barrier family work_2': 38, 'Barrier weather_1': 39, 'Barrier weather_2': 39, 'Barrier facilities_1': 40, 'Barrier facilities_2': 40, 'Barrier facilities_3': 40}\nconst handler = (input, { moment, env }) => {\n  items_w_groups=[]\n  console.log(input.priority_queue)\n  for (let i = 0; i < input.priority_queue.length; i++) {\n    change_item=Object.assign({}, input.priority_queue[i])\n    change_item[\"group\"]=groups[change_item[\"id\"]]\n    items_w_groups.push(change_item)\n  } \n  console.log(items_w_groups)\n  return items_w_groups;\n}"
+    },
+    {
+      "id": "21f14d70-caec-4043-a2d8-795b47c0eb6f",
+      "type": "functionNode",
+      "position": {
+        "x": 890,
+        "y": 420
+      },
+      "name": "select_items",
+      "content": "/**\n* @param {import('gorules').Input} input\n* @param {{\n*  moment: import('dayjs')\n*  env: Record<string, any>\n* }} helpers\n*/\nconst handler = (input, { moment, env }) => {\n  \n  // make array with each group\n  grouped = [];\n  input.forEach(function (a) {\n      this[a.group] || grouped.push(this[a.group] = []);\n      this[a.group].push(a);\n  }, Object.create(null));\n  // somewhat uncertain if this functions the same way as the previous rules, implicitly uses excluded feature\n  //in the ordering of the items\n  //avoid is already removed in previous function\n  \n  //not same priority as the value stored in ES, this is based on ordering of items written in rdl file\n  function prioirity(a){\n    if(a.thisweek && !a.used){\n      return 5\n    }\n    else if(!a.thisweek && !a.used){\n      return 4\n    }\n    else if(a.thisweek && a.used && a.canbequiz){\n      return 3\n    }\n    else if(a.thisweek && a.used && !a.canbequiz){\n      return 2\n    }\n    else if(!a.thisweek && a.used && !a.canbequiz){\n      return 1\n    }\n    else{\n      console.log(\"this should not happen\")\n    }\n  }\n  for (let i = 0; i < grouped.length; i++) {\n    grouped[i].sort(\n    function(a, b) {       \n      if (prioirity(a)==prioirity(b)){\n        return a.saliency > b.saliency ? 1:-1;\n      }\n      else if (prioirity(a)> prioirity(b)){\n        return 1\n      }\n      else{\n        return -1\n      }\n    });\n    grouped[i].reverse()\n  } \n  \n  return grouped.map(x => x[0]);;\n}"
+    },
+    {
+      "id": "87b6d6a8-7e73-4747-bf74-5de8faa84bf0",
+      "type": "outputNode",
+      "position": {
+        "x": 1160,
+        "y": 420
+      },
+      "name": "Response"
+    }
+  ]
+}

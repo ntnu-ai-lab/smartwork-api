@@ -18,6 +18,6 @@ COPY --from=build /home/sdk/target/myCBR-3.3-SNAPSHOT.jar /home/sdk/mycbr_sdk.ja
 COPY --from=build /home/rest/target/mycbr-rest-2.0.jar /home/rest/mycbr-rest-2.0.jar
 EXPOSE 8080
 # RUN ["touch","/home/MyCBR.prj"]
-COPY mycbr-rest/pom.xml $PRJ_PATH ./
+COPY selfBACK.prj ./
 
-ENTRYPOINT java -DMYCBR.PROJECT.FILE=$PRJ_PATH -jar /home/rest/mycbr-rest-2.0.jar
+ENTRYPOINT java -DMYCBR.PROJECT.FILE=./selfBACK.prj -jar /home/rest/mycbr-rest-2.0.jar
