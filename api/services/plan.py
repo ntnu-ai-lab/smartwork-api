@@ -7,7 +7,7 @@ from typing import Annotated
 from typing import Optional
 from datetime import datetime,timedelta
 import zen
-
+import requests
 es = Elasticsearch("https://localhost:"+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
 
@@ -68,7 +68,9 @@ def add_items_priority_queue(priority_queue,additional_items):
     for cbr_item in additional_items:
         added=False
         for item in priority_queue:
+            # print(cbr_item,item["id"])
             if cbr_item==item["id"]:
+                print("yes")
                 item["priority"]+=1
                 added=True
                 break
@@ -90,25 +92,26 @@ def add_items_priority_queue(priority_queue,additional_items):
             )
     return priority_queue
 
-def generate_plan_education(current_user,plan_info):
+def generate_plan_education(current_user,questionnaire):
     if not es.indices.exists(index="education_queue"):
         es.indices.create(index = 'education_queue')
+
     res=es.search(index="education_queue", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
+    if res==[]:
+        priority_queue=[]
+    else:
+        priority_queue=res[0]["_source"]["educational_items"].copy()
     #TODO: fetch most similar cases from CBR based on baseline questionnaire
     cbr_education_items=["Changing negative thoughts_7","Changing negative thoughts_6"]
-    # response=requests.post("http://localhost:8080/concepts/Case/casebases/sbcases/amalgamationFunctions/AllAtts/retrievalByMultipleAttributes",
-    #                   json={
-    #                       "Dem_gender":"female",
-    #                       "k":-1
-    #                   }
-                       
-    # )
-    # response.json()
-    rule_education_items=list(map(lambda x: x["item"],decision_education.evaluate(plan_info.questionnaire)["result"]))
-    priority_queue=res[0]["_source"]["educational_items"].copy()
+    response=requests.post("http://localhost:8080/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Education/retrievalByMultipleAttributes",
+                      json=questionnaire,
+                      params={"k":-1}
+    )
+    cbr_education_items=response.json()[0]["SelfManagement_Education"].split(";")
+    rule_education_items=list(map(lambda x: x["item"],decision_education.evaluate(questionnaire)["result"]))
+    
     #increase priority of items fetched from cbr system
     priority_queue=add_items_priority_queue(priority_queue,cbr_education_items)
-
     #increase priority of items fetched from rule system
     priority_queue=add_items_priority_queue(priority_queue,rule_education_items)
     #TODO: missing canbequiz argument
@@ -117,7 +120,6 @@ def generate_plan_education(current_user,plan_info):
 
     #if there are not enough items in plan add generic items
     if len(result)<7:
-        print(result)
         groups=set(map(lambda x: x["group"],result))
         generic_items_w_groups=decision_grouping.evaluate({"priority_queue":list(map(lambda x: {"id":x},generic_education_items))})["result"]
         for generic_item in generic_items_w_groups:
@@ -139,8 +141,8 @@ def generate_plan_education(current_user,plan_info):
                 groups.add(generic_item["group"])
             if len(result)>=7:
                 break
-            
-    return result
+    #TODO: store updated priority queue in elasticsearch   
+    return result[:7]
 
 
 @router.post("/next")
@@ -148,25 +150,51 @@ async def next(
     current_user: Annotated[User, Depends(get_current_user)],
     plan_info: Plan_info
 ):
-    
-    # if not es.indices.exists(index="plan"):
-    #     es.indices.create(index = 'plan')
-    
-    # #check if user has questionnaire
-    # questionnaire=res = es.search(index="baseline", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
-    # #check if user has a previous plan
-    # previous_plan=res = es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=100)["hits"]["hits"] #TODO: change to most recent rather than top 100
-    # if questionnaire==[]:
-    #     raise HTTPException(status_code=400,detail="Missing questionannaire")
-    # print(previous_plan)
+    #TODO: check if current plan has expired before creating a new plan
+
+    #check if user has questionnaire
+    questionnaire=res = es.search(index="baseline", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
+    #check if user has a previous plan
+    previous_plan=res = es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=100)["hits"]["hits"] #TODO: change to most recent rather than top 100
+    if questionnaire==[]:
+        raise HTTPException(status_code=500,detail="Missing baseline questionannaire")
+    else:
+        #merges baseline questionnaire with new info
+        complete_questionnaire=questionnaire[0]["_source"]["questionnaire"] | plan_info.questionnaire
+        #TODO: should this only merge with the previous plan and not all previous exercises?
 
     #create exercise plan
     #create education plan
     #create step goal
     # if previous_plan==[]:
-
+    complete_plan={"education":generate_plan_education(current_user,complete_questionnaire)
+                   }
 
     #if has no previous plan
     #elif no cases in database
     #else
-    return generate_plan_education(current_user,plan_info)
+    #TODO: check if plan is valid, then store it in ES for the priority queue. Add exercises in plan to exercises used 
+    #should exercises also be added to the Exercise ES index?
+    return complete_plan
+
+
+class Exercise(BaseModel):
+    exerciseid:str
+    performed:int
+    sets:int
+    setduration:int
+    reps:int
+    repsperformed1:int
+    repsperformed2:int
+    repsperformed3:int
+
+class Exercises(BaseModel):
+    exercises:list[Exercise]
+
+@router.post("/exercise")
+async def exercise(
+    current_user: Annotated[User, Depends(get_current_user)],
+    exercises: Exercises
+):
+    res=es.search(index="exercise", query={'match' : {"_id":current_user.userid}},size=1)["hits"]["hits"]
+    print(exercises)

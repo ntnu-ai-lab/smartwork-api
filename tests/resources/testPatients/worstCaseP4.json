@@ -1,0 +1,62 @@
+[
+	{
+		"_index": "questionnaire",
+		"_type": "worstCaseP",
+		"_id": "10",
+		"_source": {
+			"date": "offsetWeeks(-1)",
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "BT_pain_average",
+					"answer": "3"
+				},
+				{
+					"questionid": "T_cpg_function",
+					"answer": "2"
+				},
+				{
+					"questionid": "T_barriers",
+					"answer": "5"
+				},
+				{
+					"questionid": "BT_pss_2",
+					"answer": "2"
+				},
+				{
+					"questionid": "BT_pss_4",
+					"answer": "2"
+				},
+				{
+					"questionid": "BT_pss_5",
+					"answer": "2"
+				},
+				{
+					"questionid": "BT_pss_10",
+					"answer": "2"
+				}
+			]
+		}
+	},
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "11",
+		"_source": {
+			"created": "offsetWeeks(-1)",
+			"start": "offsetWeeks(-1)",
+			"plan": {
+				"date": "offsetWeeks(-1)",
+				"activity": {
+					"goal": 10000
+				}
+			},
+			"done": {
+				"date": "offsetWeeks(0)",
+				"activity": {
+					"goal": 5000
+				}
+			}
+		}
+	}
+]

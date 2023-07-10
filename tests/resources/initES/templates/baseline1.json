@@ -1,0 +1,42 @@
+{
+	"_index": "questionnaire",
+	"_id": "baselineId",
+	"_source": {
+		"date": "offsetWeeks(-1)",
+		"type": "baseline",
+		"questions": [
+			{
+				"questionid": "Dem_age",
+				"answer": "45"
+			},
+			{
+				"questionid": "Dem_gender",
+				"answer": "female"
+			},
+			{
+				"questionid": "FABQ",
+				"answer": "6"
+			},
+			{
+				"questionid": "PSFS",
+				"answer": "bla;_unknown_;4;"
+			},
+			{
+				"questionid": "BT_PHQ_2item",
+				"answer": "5"
+			},
+			{
+				"questionid": "MSKHQ",
+				"answer": "10"
+			},
+			{
+				"questionid": "NDI",
+				"answer": "5"
+			},
+			{
+				"questionid": "Primary_pain_site",
+				"answer": "LBP_NP"
+			}
+		]
+	}
+}

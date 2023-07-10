@@ -1,0 +1,101 @@
+{
+	"_index": "plan",
+	"_source": {
+		"created": 1504691833500,
+		"start": 1504691833500,
+		"end": 1505296633500,
+		"exercises_duration": 15,
+		"history": [
+			{
+				"date": 1504691833511,
+				"exercises": [
+					{
+						"exerciseid": "back_01_01",
+						"sets": 3,
+						"reps": 10,
+						"set_duration_s": 60
+					},
+					{
+						"exerciseid": "ab_03_01",
+						"sets": 3,
+						"reps": 10,
+						"set_duration_s": 60
+					}
+				],
+				"educations": [
+					{
+						"educationid": "Anxiety_1"
+					},
+					{
+						"educationid": "Goal setting_4"
+					}
+				],
+				"activity": {
+					"goal": 10000,
+					"recommended_min": 9000,
+					"recommended_max": 11000
+				}
+			}
+		],
+		"plan": {
+			"date": 1504691833511,
+			"exercises": [
+				{
+					"exerciseid": "back_01_01",
+					"sets": 3,
+					"reps": 10,
+					"set_duration_s": 60
+				},
+				{
+					"exerciseid": "ab_03_01",
+					"sets": 3,
+					"reps": 10,
+					"set_duration_s": 60
+				}
+			],
+			"educations": [
+				{
+					"educationid": "Anxiety_1"
+				},
+				{
+					"educationid": "Goal setting_4"
+				}
+			],
+			"activity": {
+				"goal": 10000,
+				"recommended_min": 9000,
+				"recommended_max": 11000
+			}
+		},
+		"done": {
+			"date": 1505296633511,
+			"exercises": [
+				{
+					"exerciseid": "back_01_01",
+					"sets": 0,
+					"reps": 0,
+					"set_duration_s": 60
+				},
+				{
+					"exerciseid": "ab_03_01",
+					"sets": 0,
+					"reps": 0,
+					"set_duration_s": 60
+				}
+			],
+			"educations": [
+				{
+					"educationid": "Anxiety_1"
+				},
+				{
+					"educationid": "Goal setting_5"
+				}
+			],
+			"activity": {
+				"goal": 10000,
+				"recommended_min": 9000,
+				"recommended_max": 10000
+			}
+		}
+	}
+}

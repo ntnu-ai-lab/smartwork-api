@@ -1,0 +1,25 @@
+[
+	{
+		"_index": "questionnaire",
+		"_type": "edu1",
+		"_id": "1",
+		"_source": {
+			"date": "offsetWeeks(1)",
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "BT_pain_average",
+					"answer": "8"
+				},
+				{
+					"questionid": "T_barriers",
+					"answer": "lack_of_time"
+				},
+				{
+					"questionid": "T_sleep",
+					"answer": "Sometimes"
+				}
+			]
+		}
+	}
+]

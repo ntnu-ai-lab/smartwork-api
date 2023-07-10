@@ -1,0 +1,190 @@
+{
+	"_index": "questionnaire",
+	"_id": "baselineId",
+	"_source": {
+		"date": "offsetWeeks(-1)",
+		"type": "baseline",
+		"questions": [
+			{
+				"questionid" : "Dem_age",
+				"answer" : "29"
+			},
+			{
+				"questionid" : "Dem_gender",
+				"answer" : "male"
+			},
+			{
+				"questionid" : "Dem_height",
+				"answer" : "190"
+			},
+			{
+				"questionid" : "Dem_weight",
+				"answer" : "90"
+			},
+			{
+				"questionid" : "Education",
+				"answer" : "Above13"
+			},
+			{
+				"questionid" : "Employment",
+				"answer" : "Full-time"
+			},
+			{
+				"questionid" : "Work_characteristics",
+				"answer" : "Walking"
+			},
+			{
+				"questionid" : "BT_pain_average",
+				"answer" : "3"
+			},
+			{
+				"questionid" : "Pain_worst",
+				"answer" : "3"
+			},
+			{
+				"questionid" : "Pain_1year",
+				"answer" : "Above30days"
+			},
+			{
+				"questionid" : "Pain_medication",
+				"answer" : "Never-seldom"
+			},
+			{
+				"questionid" : "FABQ_lbp_cause",
+				"answer" : "4"
+			},
+			{
+				"questionid" : "BIPQ_life",
+				"answer" : "3"
+			},
+			{
+				"questionid" : "BIPQ_pain_continuation",
+				"answer" : "3"
+			},
+			{
+				"questionid" : "BIPQ_control",
+				"answer" : "7"
+			},
+			{
+				"questionid" : "BIPQ_selfmanagement",
+				"answer" : "7"
+			},
+			{
+				"questionid" : "BIPQ_symptoms",
+				"answer" : "3"
+			},
+			{
+				"questionid" : "BIPQ_concern",
+				"answer" : "2"
+			},
+			{
+				"questionid" : "BIPQ_understanding",
+				"answer" : "8"
+			},
+			{
+				"questionid" : "BIPQ_emotion",
+				"answer" : "3"
+			},
+			{
+				"questionid" : "EQ5D_mobility",
+				"answer" : "no_problem"
+			},
+			{
+				"questionid" : "EQ5D_selfcare",
+				"answer" : "no_problem"
+			},
+			{
+				"questionid" : "EQ5D_activity",
+				"answer" : "no_problem"
+			},
+			{
+				"questionid" : "EQ5D_pain",
+				"answer" : "slight_pain"
+			},
+			{
+				"questionid" : "EQ5D_anxiety",
+				"answer" : "slightly_anxious"
+			},
+			{
+				"questionid" : "EQ5D",
+				"answer" : "85"
+			},
+			{
+				"questionid" : "Sleep_difficulty",
+				"answer" : "Seldom-never"
+			},
+			{
+				"questionid" : "Sleep_wakeup",
+				"answer" : "Sometimes"
+			},
+			{
+				"questionid" : "Sleep_end",
+				"answer" : "Sometimes"
+			},
+			{
+				"questionid" : "Sleep_day",
+				"answer" : "Several times a week"
+			},
+			{
+				"questionid" : "Family",
+				"answer" : "spouse;"
+			},
+			{
+				"questionid" : "RMDQ",
+				"answer" : "5"
+			},
+			{
+				"questionid" : "FABQ",
+				"answer" : "10"
+			},
+			{
+				"questionid" : "Pain_self_efficacy",
+				"answer" : "50"
+			},
+			{
+				"questionid" : "PSFS",
+				"answer" : "Some activity;_unknown_;4;"
+			},
+			{
+				"questionid" : "Pain_sites",
+				"answer" : "Low Back;"
+			},
+			{
+				"questionid" : "Comorbidities",
+				"answer" : "Other;"
+			},
+			{
+				"questionid" : "PSS",
+				"answer" : "17"
+			},
+			{
+				"questionid" : "Dem_bmi",
+				"answer" : "25.0"
+			},
+			{
+				"questionid" : "BT_PSEQ_2item",
+				"answer" : "9"
+			},
+			{
+				"questionid" : "BT_PSS",
+				"answer" : "5"
+			},
+			{
+				"questionid" : "BT_PHQ_2item",
+				"answer" : "1"
+			},
+			{
+				"questionid": "MSKHQ",
+				"answer": "10"
+			},
+			{
+				"questionid": "NDI",
+				"answer": "5"
+			},
+			{
+				"questionid": "Primary_pain_site",
+				"answer": "LBP_NP"
+			}
+		]
+	}
+}

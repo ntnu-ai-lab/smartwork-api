@@ -1,0 +1,47 @@
+[
+	{
+		"_type": "edu1",
+		"_extends": "/initES/templates/baseline2.json",
+		"_source": {
+			"date": "offsetWeeks(0)",
+			"questions": [
+				{
+					"questionid": "Dem_gender",
+					"answer": "male"
+				},
+				{
+					"questionid": "Sleep_difficulty",
+					"answer": "Several times a week"
+				},
+				{
+					"questionid": "Sleep_wakeup",
+					"answer": "Several times a week"
+				},
+				{
+					"questionid": "Pain_self_efficacy",
+					"answer": "10"
+				},
+				{
+					"questionid": "PSS",
+					"answer": "14"
+				},
+				{
+					"questionid": "BT_PHQ_2item",
+					"answer": "2"
+				},
+				{
+					"questionid": "BT_wai",
+					"answer": "9"
+				},
+				{
+					"questionid": "Employment",
+					"answer": "military"
+				},
+				{
+					"questionid": "SaltinGrimby",
+					"answer": "Level_2"
+				}
+			]
+		}
+	}
+]

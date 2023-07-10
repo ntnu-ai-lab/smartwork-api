@@ -1,0 +1,206 @@
+[
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/baseline1.json",
+		"_source": {
+			"date": "offsetWeeks(-8)",
+			"questions": [
+				{
+					"questionid": "Dem_gender",
+					"answer": "male"
+				},
+				{
+					"questionid": "Sleep_difficulty",
+					"answer": "Several times a week"
+				},
+				{
+					"questionid": "Sleep_wakeup",
+					"answer": "Several times a week"
+				},
+				{
+					"questionid": "Pain_self_efficacy",
+					"answer": "10"
+				},
+				{
+					"questionid": "PSS",
+					"answer": "14"
+				},
+				{
+					"questionid": "BT_PHQ_2item",
+					"answer": "5"
+				},
+				{
+					"questionid": "BT_wai",
+					"answer": "5"
+				},
+				{
+					"questionid": "Employment",
+					"answer": "military"
+				},
+				{
+					"questionid": "SaltinGrimby",
+					"answer": "Level_2"
+				}
+			]
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "worstCaseP",
+		"_id": "1",
+		"_source": {
+			"date": "offsetWeeks(-7)",
+			"type": "tailoring",
+			"questions": []
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "worstCaseP",
+		"_id": "2",
+		"_source": {
+			"date": "offsetWeeks(-6)",
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "T_cpg_function",
+					"answer": "7"
+				}
+			]
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "worstCaseP",
+		"_id": "3",
+		"_source": {
+			"date": "offsetWeeks(-5)",
+			"type": "tailoring",
+			"questions": []
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "worstCaseP",
+		"_id": "4",
+		"_source": {
+			"date": "offsetWeeks(-4)",
+			"type": "tailoring",
+			"questions": []
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "worstCaseP",
+		"_id": "5",
+		"_source": {
+			"date": "offsetWeeks(-3)",
+			"type": "tailoring",
+			"questions": []
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "worstCaseP",
+		"_id": "6",
+		"_source": {
+			"date": "offsetWeeks(-2)",
+			"type": "tailoring",
+			"questions": []
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "worstCaseP",
+		"_id": "7",
+		"_source": {
+			"date": "offsetWeeks(-1)",
+			"type": "tailoring",
+			"questions": []
+		}
+	},
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "1",
+		"_source": {
+			"created": "offsetWeeks(-8)",
+			"start": "offsetWeeks(-8)"
+		}
+	},
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "2",
+		"_source": {
+			"created": "offsetWeeks(-7)",
+			"start": "offsetWeeks(-7)"
+		}
+	},
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "3",
+		"_source": {
+			"created": "offsetWeeks(-6)",
+			"start": "offsetWeeks(-6)"
+		}
+	},
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "4",
+		"_source": {
+			"created": "offsetWeeks(-5)",
+			"start": "offsetWeeks(-5)"
+		}
+	},
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "5",
+		"_source": {
+			"created": "offsetWeeks(-4)",
+			"start": "offsetWeeks(-4)"
+		}
+	},
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "6",
+		"_source": {
+			"created": "offsetWeeks(-3)",
+			"start": "offsetWeeks(-3)"
+		}
+	},
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "7",
+		"_source": {
+			"created": "offsetWeeks(-2)",
+			"start": "offsetWeeks(-2)"
+		}
+	},
+	{
+		"_type": "worstCaseP",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "8",
+		"_source": {
+			"created": "offsetWeeks(-1)",
+			"start": "offsetWeeks(-1)",
+			"plan": {
+				"date": "offsetWeeks(-1)",
+				"activity": {
+					"goal": 10000
+				}
+			},
+			"done": {
+				"date": "offsetWeeks(0)",
+				"activity": {
+					"goal": 5000
+				}
+			}
+		}
+	}
+]

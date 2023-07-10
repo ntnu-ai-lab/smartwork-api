@@ -1,0 +1,17 @@
+[
+	{
+		"_index": "questionnaire",
+		"_type": "edu1",
+		"_id": "2",
+		"_source": {
+			"date": "offsetWeeks(2)",
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "BT_pain_average",
+					"answer": "2"
+				}
+			]
+		}
+	}
+]

@@ -1,0 +1,88 @@
+[
+	{
+		"_type": "edu1",
+		"_extends": "/initES/templates/baseline2.json",
+		"_source": {
+			"date": "offsetWeeks(0)",
+			"type": "baseline",
+			"questions": [
+				{
+					"questionid": "Dem_gender",
+					"answer": "male"
+				},
+				{
+					"questionid": "Sleep_difficulty",
+					"answer": "Several times a week"
+				},
+				{
+					"questionid": "Sleep_wakeup",
+					"answer": "Several times a week"
+				},
+				{
+					"questionid": "Pain_self_efficacy",
+					"answer": "10"
+				},
+				{
+					"questionid": "PSS",
+					"answer": "14"
+				},
+				{
+					"questionid": "BT_PHQ_2item",
+					"answer": "5"
+				},
+				{
+					"questionid": "BT_wai",
+					"answer": "5"
+				},
+				{
+					"questionid": "Employment",
+					"answer": "military"
+				},
+				{
+					"questionid": "SaltinGrimby",
+					"answer": "Level_2"
+				}
+			]
+		}
+	},
+	{
+		"_type": "edu1",
+		"_extends": "/initES/templates/planA.json",
+		"_id": "1",
+		"_source": {
+			"created": "offsetWeeks(0)",
+			"start": "offsetWeeks(0)"
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "edu1",
+		"_id": "1",
+		"_source": {
+			"date": "offsetWeeks(0)",
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "BT_pain_average",
+					"answer": "9"
+				},
+				{
+					"questionid": "T_cpg_function",
+					"answer": "5"
+				},
+				{
+					"questionid": "T_tampa_fear",
+					"answer": "6"
+				},
+				{
+					"questionid": "T_barriers",
+					"answer": "too_tired"
+				},
+				{
+					"questionid": "T_sleep",
+					"answer": "Sometimes"
+				}
+			]
+		}
+	}
+]

@@ -15,7 +15,7 @@ async def root(
     current_user: Annotated[User, Depends(get_current_active_user)],
 
 ):
-    res = es.search(index="education",query={"match_all":{}},size=900)
+    res = es.search(index="data_description",query={"match":{"description_type":"education"}},size=900)
     return res["hits"]["hits"]
 
 @router.get("/exercise/list")
@@ -23,7 +23,7 @@ async def root(
     current_user: Annotated[User, Depends(get_current_active_user)],
 
 ):
-    res = es.search(index="exercise",query={"match_all":{}},size=900)
+    res = es.search(index="data_description",query={"match":{"description_type":"exercise"}},size=900)
     return res["hits"]["hits"]
 
 
@@ -32,7 +32,7 @@ async def root(
     current_user: Annotated[User, Depends(get_current_active_user)],
 
 ):
-    res = es.search(index="achievement",query={"match_all":{}},size=900)
+    res = es.search(index="data_description",query={"match":{"description_type":"achievement"}},size=900)
     return res["hits"]["hits"]
 
 @router.get("/achievement/types")
@@ -40,6 +40,6 @@ async def root(
     current_user: Annotated[User, Depends(get_current_active_user)],
 
 ):
-    res = es.search(index="achievement",query={"match_all":{}},size=900)
+    res = es.search(index="data_description",query={"match":{"description_type":"achievement"}},size=900)
     
     return set(map(lambda x: x["_source"]["type"] ,res["hits"]["hits"]))
