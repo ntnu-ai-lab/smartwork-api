@@ -2,11 +2,11 @@ from fastapi import APIRouter,Depends
 from elasticsearch import Elasticsearch
 from services.oauth import get_current_active_user,User
 from typing import Annotated
-from services.constants import PORT,PASSWORD,USERNAME
+from services.constants import PORT,PASSWORD,USERNAME,HOST
 
 
-es = Elasticsearch("https://localhost:"+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
+es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 router = APIRouter(prefix="/data")
 
 

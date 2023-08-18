@@ -1,7 +1,11 @@
 #
 # Build stage
 #
+
+
 FROM maven:3.9.1-ibmjava-8 AS build
+RUN git clone https://github.com/ntnu-ai-lab/mycbr-sdk.git
+RUN git clone https://github.com/ntnu-ai-lab/mycbr-rest.git
 COPY mycbr-sdk/src /home/sdk/src
 COPY mycbr-sdk/pom.xml /home/sdk
 COPY mycbr-rest/src /home/rest/src

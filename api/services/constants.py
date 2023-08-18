@@ -1,3 +1,8 @@
 PORT=9400
-PASSWORD="6EyF411gLeZnfcvbdT0q"
+PASSWORD="secret"
 USERNAME="elastic"
+HOST="http://localhost:"
+
+
+STEP_GOAL_MIN=3000
+STEP_GOAL_MAX=10000

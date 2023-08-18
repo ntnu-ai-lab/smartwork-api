@@ -1,14 +1,16 @@
 from fastapi import APIRouter,Depends,HTTPException
 from pydantic import BaseModel
 from elasticsearch import Elasticsearch
-from services.constants import PORT,PASSWORD,USERNAME
+from services.constants import PORT,PASSWORD,USERNAME,STEP_GOAL_MIN,STEP_GOAL_MAX,HOST
 from services.oauth import User,get_current_user
+
 from typing import Annotated
 from typing import Optional
-from datetime import datetime,timedelta
 import zen
+import datetime
 import requests
-es = Elasticsearch("https://localhost:"+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+import math
+es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
 
 router = APIRouter(prefix="/patient/plan")
@@ -43,11 +45,16 @@ with open("./api/resources/smart_work_education.json", "r") as f:
 
 with open("./api/resources/smart_work_grouping.json", "r") as f:
   content2 = f.read()
+
+with open("./api/resources/smart_work_exercise.json", "r") as f:
+  content3 = f.read()
 engine = zen.ZenEngine()
 
 decision_education = engine.create_decision(content1)
 
 decision_grouping = engine.create_decision(content2)
+
+decision_exercise = engine.create_decision(content3)
 
 
 class Plan_info(BaseModel):
@@ -70,17 +77,16 @@ def add_items_priority_queue(priority_queue,additional_items):
         for item in priority_queue:
             # print(cbr_item,item["id"])
             if cbr_item==item["id"]:
-                print("yes")
                 item["priority"]+=1
                 added=True
                 break
         if not added:
-            today=datetime.now() + timedelta(days=1)
+            today=datetime.datetime.now() + datetime.timedelta(days=1)
             priority_queue.append(
                 {
                     "id":cbr_item,
                     "priority":1,
-                    "expiredate":int(today.timestamp()),
+                    "expiredate":float(today.timestamp()),
                     "thisweek":False,
                     "avoid":False,
                     "excluded":False,
@@ -101,13 +107,12 @@ def generate_plan_education(current_user,questionnaire):
         priority_queue=[]
     else:
         priority_queue=res[0]["_source"]["educational_items"].copy()
-    #TODO: fetch most similar cases from CBR based on baseline questionnaire
-    cbr_education_items=["Changing negative thoughts_7","Changing negative thoughts_6"]
+    # cbr_education_items=["Changing negative thoughts_7","Changing negative thoughts_6"]
     response=requests.post("http://localhost:8080/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Education/retrievalByMultipleAttributes",
                       json=questionnaire,
                       params={"k":-1}
     )
-    cbr_education_items=response.json()[0]["SelfManagement_Education"].split(";")
+    cbr_education_items=set("".join(list(map(lambda x: x["SelfManagement_Education"],response.json()))).split(";"))
     rule_education_items=list(map(lambda x: x["item"],decision_education.evaluate(questionnaire)["result"]))
     
     #increase priority of items fetched from cbr system
@@ -117,6 +122,7 @@ def generate_plan_education(current_user,questionnaire):
     #TODO: missing canbequiz argument
     result=decision_grouping.evaluate({"priority_queue":priority_queue})["result"]
     result.sort(key=lambda x: x["priority"],reverse=True)
+    
 
     #if there are not enough items in plan add generic items
     if len(result)<7:
@@ -124,11 +130,11 @@ def generate_plan_education(current_user,questionnaire):
         generic_items_w_groups=decision_grouping.evaluate({"priority_queue":list(map(lambda x: {"id":x},generic_education_items))})["result"]
         for generic_item in generic_items_w_groups:
             if generic_item["group"] not in groups:
-                today=datetime.now() + timedelta(days=1)
+                today=datetime.datetime.now() + datetime.timedelta(days=1)
                 result.append({
                     "id":generic_item["id"],
                     "priority":1,
-                    "expiredate":int(today.timestamp()),
+                    "expiredate":float(today.timestamp()),
                     "thisweek":False,
                     "group":generic_item["group"],
                     "avoid":False,
@@ -144,18 +150,106 @@ def generate_plan_education(current_user,questionnaire):
     #TODO: store updated priority queue in elasticsearch   
     return result[:7]
 
+def generate_plan_exercise(current_user,questionnaire):
+    #fetch exercises from cbr 
+    response=requests.post("http://localhost:8080/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Education/retrievalByMultipleAttributes",
+                      json=questionnaire,
+                      params={"k":-1}
+    )
+    cbr_exercise_items=set("".join(list(map(lambda x: x["SelfManagement_Exercise"],response.json()))).split(";"))
+
+
+
+    #fetch exercises from rulebase
+    res = es.search(index="data_description", query={'match' : {"description_type":"exercise"}},size=10000)
+    temp_quest={
+        "bt_pain_average":5,
+        "bt_pain_average":3,
+        "duration":35,
+        "condition":"LBP",
+        "exercises":[
+            {
+            "condition":"LBP"
+            }
+        ]
+        }
+
+    # rule_exercise_items=list(map(lambda x: x["item"],decision_exercise.evaluate(temp_quest)["result"]))
+    print(decision_exercise.evaluate(temp_quest))
+    return 2
+
+def min_max_activity(goal):
+    if goal<6000:
+        recommended_min=round(goal*0.9*0.01)*100
+        recommended_max=round(goal*1.1*0.01)*100
+    elif goal<8000:
+        recommended_min=round(goal*0.85*0.01)*100
+        recommended_max=round(goal*1.15*0.01)*100
+    else:
+        recommended_min=round(goal*0.8*0.01)*100
+        recommended_max=round(goal*1.2*0.01)*100
+    if recommended_min < STEP_GOAL_MIN:
+        recommended_min=STEP_GOAL_MIN
+    if recommended_max> STEP_GOAL_MAX:
+        recommended_max=STEP_GOAL_MAX
+    if recommended_max<STEP_GOAL_MIN:
+        recommended_max=STEP_GOAL_MAX
+    if recommended_min>STEP_GOAL_MAX:
+        recommended_min=STEP_GOAL_MIN
+    return recommended_min,recommended_max
+
+
+def generate_activity_goal(current_user):
+    #get latest completed plan
+    res=es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
+    print(res)
+    #no previous plan
+    if res==[]:
+        return {
+        "goal":STEP_GOAL_MIN,
+        "recommended_min":STEP_GOAL_MIN,
+        "recommended_max":STEP_GOAL_MAX
+        }
+    #fetch done part of that plan
+    #where is this even stored?
+    prev_steps=res[0]["_source"]["done"]["steps"]
+    
+    if prev_steps>STEP_GOAL_MAX:
+        prev_steps=STEP_GOAL_MAX
+    elif prev_steps<STEP_GOAL_MIN:
+        prev_steps=STEP_GOAL_MIN
+    
+    # average between last week goal and steps done
+    #TODO: assumes latest plan is latest in history
+    previous_goal=res[0]["_source"]["history"][-1]["activity"]["goal"]
+    new_goal= (prev_steps +previous_goal)/2
+    # round to hundreds
+    new_goal=int(math.ceil(new_goal / 100.0)) * 100
+    
+    #calc nex min max
+    recommended_min,recommended_max=min_max_activity(new_goal)
+    return {"goal":new_goal,
+    "recommended_min":recommended_min,
+    "recommended_max":recommended_max
+    }
 
 @router.post("/next")
 async def next(
     current_user: Annotated[User, Depends(get_current_user)],
     plan_info: Plan_info
 ):
-    #TODO: check if current plan has expired before creating a new plan
+    if not es.indices.exists(index="plan"):
+        es.indices.create(index = 'plan')
+    #TODO: check if current plan has expired before creating a new plan, if not error
 
     #check if user has questionnaire
     questionnaire=res = es.search(index="baseline", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
     #check if user has a previous plan
     previous_plan=res = es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=100)["hits"]["hits"] #TODO: change to most recent rather than top 100
+    if previous_plan!=[]:
+        history=previous_plan[0]["_source"]["history"]
+    else:
+        history=[]
     if questionnaire==[]:
         raise HTTPException(status_code=500,detail="Missing baseline questionannaire")
     else:
@@ -163,17 +257,31 @@ async def next(
         complete_questionnaire=questionnaire[0]["_source"]["questionnaire"] | plan_info.questionnaire
         #TODO: should this only merge with the previous plan and not all previous exercises?
 
-    #create exercise plan
+    #create exercise plane
     #create education plan
     #create step goal
     # if previous_plan==[]:
-    complete_plan={"education":generate_plan_education(current_user,complete_questionnaire)
+    curr_dt = datetime.datetime.now()
+    complete_plan={
+                    "userid":current_user.userid,
+                    "date":curr_dt.timestamp(),
+                    "start":int(datetime.datetime.combine(curr_dt, datetime.time.min).timestamp()),
+                    "end":int(datetime.datetime.combine(curr_dt+datetime.timedelta(days=7), datetime.time.max).timestamp()),
+                    "exercise_duration":plan_info.exercise_duration,
+                    "history":history,
+                    "plan":{
+                        "date":curr_dt.timestamp(),
+                        "educations":generate_plan_education(current_user,complete_questionnaire),
+                        "exercises":generate_plan_exercise(current_user,complete_questionnaire),
+                        "activity":generate_activity_goal(current_user)
+                    },
+                    "done":{"steps":0} #TODO: what is this supposed to be? Woulfnt it just be 0?
                    }
+    
+    #TODO: need to check if plan is valid first
+    es.index(index='plan', body=complete_plan)
 
-    #if has no previous plan
-    #elif no cases in database
-    #else
-    #TODO: check if plan is valid, then store it in ES for the priority queue. Add exercises in plan to exercises used 
+
     #should exercises also be added to the Exercise ES index?
     return complete_plan
 
@@ -198,3 +306,89 @@ async def exercise(
 ):
     res=es.search(index="exercise", query={'match' : {"_id":current_user.userid}},size=1)["hits"]["hits"]
     print(exercises)
+
+
+@router.get("/latest")
+async def latest(
+    current_user: Annotated[User, Depends(get_current_user)],
+):
+    res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=1)["hits"]["hits"]
+    history=res[0]["_source"]["history"]
+    if history==[]:
+        return []
+    return history[-1]
+
+
+class Goal(BaseModel):
+    goal:int
+
+@router.put("/activity_goal")
+async def latest(
+    current_user: Annotated[User, Depends(get_current_user)],
+    goal: Goal
+):
+    res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=1)["hits"]["hits"]
+    plan=res[0]["_source"]
+    plan["plan"]["activity"]["goal"]=goal.goal
+    es.update(index='plan',id=res[0]["_id"],body={"doc":plan})
+
+class Day(BaseModel):
+    day:str
+
+@router.get("/on")
+async def latest(
+    current_user: Annotated[User, Depends(get_current_user)],
+    day: Day
+):
+    query_date=datetime.datetime.strptime(day.day, "%d-%m-%Y")
+    query_date=query_date.timestamp()
+    res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=1)["hits"]["hits"]
+    plans=res[0]["_source"]["history"]
+    current_plan=res[0]["_source"]
+    current_plan.pop("history")
+    plans.append(current_plan) #add current plan list with history
+    for plan in plans:
+        if query_date>=plan["start"] and query_date<=plan["end"]:
+            return plan
+    return {}
+
+
+class Education_item(BaseModel):
+    educationid:str
+    is_quiz:bool
+    is_correct:bool
+
+@router.post("/education/completed")
+async def latest(
+    current_user: Annotated[User, Depends(get_current_user)],
+    education_item:Education_item
+):
+    if not es.indices.exists(index="education"):
+        es.indices.create(index = 'education')
+    education=dict(education_item)
+    education["userid"]=current_user.userid
+    es.index(index="education",document=education)
+
+class Exercise_item(BaseModel):
+     exerciseid:str
+     performed:int
+     sets:int
+     setduration:int
+     reps:int
+     repsperformed1:int
+     repsperformed2:int
+     repsperformed3:int
+     status:str
+     
+
+
+@router.post("/exercise/completed")
+async def latest(
+    current_user: Annotated[User, Depends(get_current_user)],
+    exercise_item:Exercise_item
+):
+    if not es.indices.exists(index="exercise"):
+        es.indices.create(index = 'exercise')
+    exercise=dict(exercise_item)
+    exercise["userid"]=current_user.userid
+    es.index(index="exercise",document=exercise)

@@ -5,9 +5,9 @@ from typing import Annotated
 from pydantic import BaseModel
 from jose import JWTError, jwt
 from services.oauth import pwd_context
-from services.constants import PORT,PASSWORD,USERNAME
+from services.constants import PORT,PASSWORD,USERNAME,HOST
 import time
-es = Elasticsearch("https://localhost:"+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
 
 router = APIRouter(prefix="/admin")

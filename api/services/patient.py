@@ -2,11 +2,11 @@ from fastapi import APIRouter,Depends
 from services.oauth import get_current_active_user,User
 from typing import Annotated
 from elasticsearch import Elasticsearch
-from services.constants import PORT,PASSWORD,USERNAME
+from services.constants import PORT,PASSWORD,USERNAME,HOST
 from pydantic import BaseModel
 
 
-es = Elasticsearch("https://localhost:"+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
 router = APIRouter(prefix="/patient")
 
@@ -93,3 +93,18 @@ async def activity(
             document=prev_acitvities
     )
     return {"activites":prev_acitvities}
+
+@router.get("/toolbox/educations")
+async def educations(
+    current_user: Annotated[User, Depends(get_current_active_user)]
+):
+    res = es.search(index="education", query={'match' : {"userid":current_user.userid}},size=10000)
+    return {"educations":list(map(lambda x: x["_source"]["educationid"],res["hits"]["hits"]))}
+
+@router.get("/toolbox/exercises")
+async def educations(
+    current_user: Annotated[User, Depends(get_current_active_user)]
+):
+    res = es.search(index="exercise", query={'match' : {"userid":current_user.userid}},size=10000)
+    return {"exercises":list(map(lambda x: x["_source"]["exerciseid"],res["hits"]["hits"]))}
+    

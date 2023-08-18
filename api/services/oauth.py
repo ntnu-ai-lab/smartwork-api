@@ -12,11 +12,11 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from elasticsearch import Elasticsearch
-from services.constants import PORT,PASSWORD,USERNAME
+from services.constants import PORT,PASSWORD,USERNAME,HOST
 
 
 
-es = Elasticsearch("https://localhost:"+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
 
 
@@ -29,15 +29,6 @@ ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 
-fake_users_db = {
-    "johndoe": {
-        "username": "johndoe",
-        "full_name": "John Doe",
-        "email": "johndoe@example.com",
-        "hashed_password": "$2b$12$phrVybcm8uyeTl9D/cdYoeZxiOHsjddjitMoYWv8lMVu9bMuY1L2a",
-        "disabled": False,
-    }
-}
 
 
 class Token(BaseModel):
