@@ -12,16 +12,15 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from elasticsearch import Elasticsearch
-from services.constants import PORT,PASSWORD,USERNAME,HOST
-
-
-
+# from api.resources.constants import PORT,PASSWORD,USERNAME,HOST
+from api.resources.constants import PORT,PASSWORD,USERNAME,HOST
+from api.resources.custom_router import LoggingRoute
 es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
 
 
-router = APIRouter()
-
+router = APIRouter(prefix="/oauth",route_class=LoggingRoute,tags=["Oauth"])
+# router.route_class=LoggingRoute
 # to get a string like this run:
 # openssl rand -hex 32
 SECRET_KEY = "d1ae20565dd342009f3bad85b91ec0ad6e868bea11f69a990d498091855e71f3"
@@ -57,19 +56,17 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
 def verify_password(plain_password, hashed_password):
-    print(plain_password,hashed_password)
     return pwd_context.verify(plain_password, hashed_password)
 
 
 
 
 def get_user(username):
-    print(username)
+    if not es.indices.exists(index="account"):
+        es.indices.create(index = 'account')
     res = es.search(index="account", query={'match' : {"_id":username}})
-    print(res.body["hits"]["hits"][0]["_source"])
     if not res["hits"]["hits"]:
         return False
-    print(res.body["hits"]["hits"][0]["_source"])
     return UserInDB(**res.body["hits"]["hits"][0]["_source"])
 
 
@@ -87,7 +84,7 @@ def create_access_token(data: dict, expires_delta: Union[timedelta, None] = None
     if expires_delta:
         expire = datetime.utcnow() + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(minutes=15)
+        expire = datetime.utcnow() + timedelta(days=30)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
@@ -125,7 +122,6 @@ async def get_current_active_user(
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
 ):
-    print(form_data.username)
     user = authenticate_user(form_data.username, form_data.password)
     if not user:
         raise HTTPException(

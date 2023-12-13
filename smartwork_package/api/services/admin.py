@@ -1,16 +1,16 @@
 from fastapi import APIRouter,Depends,HTTPException
 from elasticsearch import Elasticsearch
-from services.oauth import get_current_active_user,User
+from api.services.oauth import get_current_active_user,User
 from typing import Annotated
 from pydantic import BaseModel
 from jose import JWTError, jwt
-from services.oauth import pwd_context
-from services.constants import PORT,PASSWORD,USERNAME,HOST
+from api.services.oauth import pwd_context
+from api.resources.constants import PORT,PASSWORD,USERNAME,HOST
 import time
 es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+from api.resources.custom_router import LoggingRoute
 
-
-router = APIRouter(prefix="/admin")
+router = APIRouter(prefix="/admin",route_class=LoggingRoute,tags=["Admin"])
 
 
 class FullUser(BaseModel):

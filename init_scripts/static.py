@@ -11,33 +11,35 @@ def load_static(es):
             es.indices.create(index = 'data_description')
 
             #populate with education items
-            education=pd.read_excel("./init_scripts/Education-ES-plain-nb.xlsx")
+            education=pd.read_excel("./init_scripts/NP_&_LBP_Educational_selfBACK_NO.xlsx")
             education.fillna("Missing value", inplace=True)
             education=education.to_dict(orient="records")
             education=list(map(lambda x: x|{"description_type":"education"},education))
+            education=list(map(lambda x: dict((k.lower(), v) for k, v in x.items()) ,education))
             helpers.bulk(es,education,index="data_description")
 
             #populate with exercise items
-            exercise=pd.read_excel("./init_scripts/Exercises-ES-plain-nb.xlsx")
+            exercise=pd.read_excel("./init_scripts/NP_&_LBP_Exercises-selfBACK_NO.xlsx")
             print(exercise)
             exercise.fillna("Missing value", inplace=True)
-            exercise.drop(columns="Type",inplace=True)
+            # exercise.drop(columns="Type",inplace=True)
             exercise=exercise[exercise.ExerciseID!="Missing value"]
             exercise=exercise.to_dict(orient="records")
             exercise=list(map(lambda x: x|{"description_type":"exercise"},exercise))
+            exercise=list(map(lambda x: dict((k.lower(), v) for k, v in x.items()) ,exercise))
             helpers.bulk(es,exercise,index="data_description")
-            for country in ["da","en","nb","nl"]:
-                achievements=pd.read_json(f"./init_scripts/achievements_{country}.json")
-                achievements.fillna("No value",inplace=True)
-                achievements=achievements.to_dict(orient="records")
-                achievements==list(map(lambda x: x|{"description_type":"achievements"},education))
-                helpers.bulk(es,achievements,index="achievement")
+            # for country in ["da","en","nb","nl"]:
+            achievements=pd.read_json(f"./init_scripts/achievements_nb.json")
+            achievements.fillna("No value",inplace=True)
+            achievements=achievements.to_dict(orient="records")
+            achievements=list(map(lambda x: x|{"description_type":"achievement"},achievements))
+            helpers.bulk(es,achievements,index="data_description")
     except:
         raise HTTPException(status_code=500,detail="Could not create static indices.")
 load_static(es)
 
-exercise=pd.read_excel("./init_scripts/Exercises-ES-plain-nb.xlsx")
-print(exercise["Type"])
+# exercise=pd.read_excel("./init_scripts/Exercises-ES-plain-nb.xlsx")
+
 
 # import pandas as pd
 # from elasticsearch import helpers
