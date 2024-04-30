@@ -1,0 +1,898 @@
+[
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_pain_average",
+		"_source": {
+			"questionid": "BT_pain_average",
+			"question": "Angi hvor mye smerter du har hatt i gjennomsnitt den siste uken",
+			"title": "Smerter",
+			"type": "single",
+			"structure": "horizontal",
+			"language": "nb",
+			"options": [
+				{
+					"option": "ingen smerter",
+					"value": "0",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "1",
+					"value": "1",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "2",
+					"value": "2",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "3",
+					"value": "3",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "4",
+					"value": "4",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				},
+				{
+					"option": "5",
+					"value": "5",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 6
+				},
+				{
+					"option": "6",
+					"value": "6",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 7
+				},
+				{
+					"option": "7",
+					"value": "7",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 8
+				},
+				{
+					"option": "8",
+					"value": "8",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 9
+				},
+				{
+					"option": "9",
+					"value": "9",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 10
+				},
+				{
+					"option": "verst tenkelige smerter",
+					"value": "10",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 11
+				}
+			],
+			"explanation": "Ditt svar om smerteintensitet hjelper oss med å velge informasjon som er relevant for deg og gi deg de riktige anbefalingene om treningsmengde og antall daglige skritt."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "T_cpg_function",
+		"_source": {
+			"questionid": "T_cpg_function",
+			"question": "I løpet av den siste uken, hvor mye har smertene dine påvirket dine daglige aktiviteter?",
+			"title": "Funksjon",
+			"type": "single",
+			"structure": "horizontal",
+			"language": "nb",
+			"options": [
+				{
+					"option": "ingen påvirkning",
+					"value": "0",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "1",
+					"value": "1",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "2",
+					"value": "2",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "3",
+					"value": "3",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "4",
+					"value": "4",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				},
+				{
+					"option": "5",
+					"value": "5",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 6
+				},
+				{
+					"option": "6",
+					"value": "6",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 7
+				},
+				{
+					"option": "7",
+					"value": "7",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 8
+				},
+				{
+					"option": "8",
+					"value": "8",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 9
+				},
+				{
+					"option": "9",
+					"value": "9",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 10
+				},
+				{
+					"option": "ikke i stand til å utføre noen aktiviteter",
+					"value": "10",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 11
+				}
+			],
+			"explanation": "Dette spørsmålet gir oss informasjon om hvor mye smertene påvirker din funksjonsevne. Ditt svar hjelper oss med å velge riktig innhold i kunnskapsmodulen for for deg ."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "T_tampa_fear",
+		"_source": {
+			"questionid": "T_tampa_fear",
+			"question": "Hvor engstelig er du for at smertene forverres med fysisk aktivitet eller bevegelse?",
+			"title": "TAMPA",
+			"type": "single",
+			"structure": "horizontal",
+			"language": "nb",
+			"options": [
+				{
+					"option": "ikke engstelig",
+					"value": "0",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "1",
+					"value": "1",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "2",
+					"value": "2",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "3",
+					"value": "3",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "4",
+					"value": "4",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				},
+				{
+					"option": "5",
+					"value": "5",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 6
+				},
+				{
+					"option": "6",
+					"value": "6",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 7
+				},
+				{
+					"option": "7",
+					"value": "7",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 8
+				},
+				{
+					"option": "8",
+					"value": "8",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 9
+				},
+				{
+					"option": "9",
+					"value": "9",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 10
+				},
+				{
+					"option": "veldig engstelig",
+					"value": "10",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 11
+				}
+			],
+			"explanation": "I begynnelsen av studien eller i en nylig oppfølging har du svart at du kan oppleve litt engstelse i forbindelse med fysisk aktivitet. Basert på svaret ditt vil vi i kunnskapsmodulen gi deg informasjon som kan hjelpe deg med å håndtere denne engstelsen."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_wai",
+		"_source": {
+			"questionid": "BT_wai",
+			"question": "Hvordan er din nåværende arbeidsevne sammenlignet med når den var på sitt beste?",
+			"title": "Work Ability Index - Single item (WAI)",
+			"type": "single",
+			"structure": "horizontal",
+			"language": "nb",
+			"options": [
+				{
+					"option": "helt uten evne til å arbeide",
+					"value": "0",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "1",
+					"value": "1",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "2",
+					"value": "2",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "3",
+					"value": "3",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "4",
+					"value": "4",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				},
+				{
+					"option": "5",
+					"value": "5",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 6
+				},
+				{
+					"option": "6",
+					"value": "6",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 7
+				},
+				{
+					"option": "7",
+					"value": "7",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 8
+				},
+				{
+					"option": "8",
+					"value": "8",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 9
+				},
+				{
+					"option": "9",
+					"value": "9",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 10
+				},
+				{
+					"option": "arbeidsevnen er på sitt beste",
+					"value": "10",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 11
+				}
+			],
+			"explanation": "I begynnelsen av studien eller i en nylig oppfølging har du angitt ditt funksjonsnivå på arbeid. Basert på svaret ditt på dette spørsmålet kan vi gi deg informasjon som er spesielt rettet mot å hjelpe deg å forbedre funksjon og arbeidsevne."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "T_sleep",
+		"_source": {
+			"questionid": "T_sleep",
+			"question": "Har du problemer med å sovne om kvelden eller våkner om natten og ikke får sove igjen?",
+			"title": "Self-reported søvn",
+			"type": "single",
+			"structure": "vertical",
+			"language": "nb",
+			"options": [
+				{
+					"option": "Sjelden eller aldri",
+					"value": "Seldom-never",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "Av og til",
+					"value": "Sometimes",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "Flere ganger i uka",
+					"value": "Several times a week",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				}
+			],
+			"explanation": "Du har tidligere svart at du kan ha problemer med søvnen. Svaret ditt på dette spørsmålet vil hjelpe oss med å finne ut om dette fortsatt er et problem og gi oss muligheten til å hjelpe deg med riktig informasjon."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_pseq_5",
+		"_source": {
+			"questionid": "BT_pseq_5",
+			"question": "Jeg kan gjøre noen former for arbeid, til tross for smertene. (\u201carbeid\u201d inkluderer husarbeid og lønnet/ulønnet arbeid).",
+			"title": "Pain-related Self Efficacy Questionnaire (PSEQ)",
+			"type": "single",
+			"structure": "horizontal",
+			"language": "nb",
+			"options": [
+				{
+					"option": "ikke sikker i det hele tatt",
+					"value": "0",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "1",
+					"value": "1",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "2",
+					"value": "2",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "3",
+					"value": "3",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "4",
+					"value": "4",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				},
+				{
+					"option": "5",
+					"value": "5",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 6
+				},
+				{
+					"option": "helt sikker",
+					"value": "6",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 7
+				}
+			],
+			"explanation": "Dette spørsmålet gir oss informasjon om hvordan du opplever at smertene påvirker dine daglige aktiviteter. Basert på svaret ditt vil vi gi deg en plan for egenmestring av smertene som er tilpasset dine behov."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_pseq_9",
+		"_source": {
+			"questionid": "BT_pseq_9",
+			"question": "Jeg kan leve et normalt liv til tross for smertene.",
+			"title": "Pain-related Self Efficacy Questionnaire (PSEQ)",
+			"type": "single",
+			"structure": "horizontal",
+			"language": "nb",
+			"options": [
+				{
+					"option": "ikke sikker i det hele tatt",
+					"value": "0",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "1",
+					"value": "1",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "2",
+					"value": "2",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "3",
+					"value": "3",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "4",
+					"value": "4",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				},
+				{
+					"option": "5",
+					"value": "5",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 6
+				},
+				{
+					"option": "helt sikker",
+					"value": "6",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 7
+				}
+			],
+			"explanation": "Dette spørsmålet gir oss informasjon om hvordan du opplever at smertene påvirker dine daglige aktiviteter. Basert på svaret ditt vil vi gi deg en plan for egenmestring av smertene som er tilpasset dine behov."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_pss_2",
+		"_source": {
+			"questionid": "BT_pss_2",
+			"question": "1. Hvor ofte i løpet av den siste måneden har du følt at du ikke har vært i stand til å kontrollere de betydningsfulle tingene i livet ditt?",
+			"title": "Perceived Stress Scale (PSS)",
+			"type": "single",
+			"structure": "vertical",
+			"language": "nb",
+			"options": [
+				{
+					"option": "Aldri",
+					"value": "Never",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "Nesten aldri",
+					"value": "Almost never",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "Noen ganger",
+					"value": "Sometimes",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "Ganske ofte",
+					"value": "Fairly often",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "Svært ofte",
+					"value": "Very often",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				}
+			],
+			"explanation": "Dette spørsmålet gir oss informasjon om ditt opplevde stressnivå. Basert på svaret ditt kan vi anbefale verktøy eller gi deg informasjon som vil hjelpe deg med å håndtere stress som er relatert til smertene dine."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_pss_4",
+		"_source": {
+			"questionid": "BT_pss_4",
+			"question": "2. Hvor ofte i løpet av den siste måneden har du følt deg trygg på dine evner til å mestre dine personlige problemer?",
+			"title": "Perceived Stress Scale (PSS)",
+			"type": "single",
+			"structure": "vertical",
+			"language": "nb",
+			"options": [
+				{
+					"option": "Aldri",
+					"value": "Never",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "Nesten aldri",
+					"value": "Almost never",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "Noen ganger",
+					"value": "Sometimes",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "Ganske ofte",
+					"value": "Fairly often",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "Svært ofte",
+					"value": "Very often",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				}
+			],
+			"explanation": "Dette spørsmålet gir oss informasjon om ditt opplevde stressnivå. Basert på svaret ditt kan vi anbefale verktøy eller gi deg informasjon som vil hjelpe deg med å håndtere stress som er relatert til smertene dine."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_pss_5",
+		"_source": {
+			"questionid": "BT_pss_5",
+			"question": "3. Hvor ofte i løpet av den siste måneden har du følt at ting gikk slik som du ønsket det?",
+			"title": "Perceived Stress Scale (PSS)",
+			"type": "single",
+			"structure": "vertical",
+			"language": "nb",
+			"options": [
+				{
+					"option": "Aldri",
+					"value": "Never",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "Nesten aldri",
+					"value": "Almost never",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "Noen ganger",
+					"value": "Sometimes",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "Ganske ofte",
+					"value": "Fairly often",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "Svært ofte",
+					"value": "Very often",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				}
+			],
+			"explanation": "Dette spørsmålet gir oss informasjon om ditt opplevde stressnivå. Basert på svaret ditt kan vi anbefale verktøy eller gi deg informasjon som vil hjelpe deg med å håndtere stress som er relatert til smertene dine."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_pss_10",
+		"_source": {
+			"questionid": "BT_pss_10",
+			"question": "4. Hvor ofte i løpet av den siste måneden har du følt at vanskeligheter har hopet seg opp slik at du ikke har vært i stand til å håndtere de?",
+			"title": "Perceived Stress Scale (PSS)",
+			"type": "single",
+			"structure": "vertical",
+			"language": "nb",
+			"options": [
+				{
+					"option": "Aldri",
+					"value": "Never",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "Nesten aldri",
+					"value": "Almost never",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "Noen ganger",
+					"value": "Sometimes",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "Ganske ofte",
+					"value": "Fairly often",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "Svært ofte",
+					"value": "Very often",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 5
+				}
+			],
+			"explanation": "Dette spørsmålet gir oss informasjon om ditt opplevde stressnivå. Basert på svaret ditt kan vi anbefale verktøy eller gi deg informasjon som vil hjelpe deg med å håndtere stress som er relatert til smertene dine."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_phq_1",
+		"_source": {
+			"questionid": "BT_phq_1",
+			"question": "I løpet av de siste to ukene, hvor ofte har du vært plaget med noen av følgende problemer?\n 1. Liten interesse eller glede av å gjøre ting.",
+			"title": "Patient Health Questionnaire (PHQ)",
+			"type": "single",
+			"structure": "vertical",
+			"language": "nb",
+			"options": [
+				{
+					"option": "Ikke i det hele tatt",
+					"value": "Not at all",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "Flere dager",
+					"value": "Several days",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "Mer enn halvparten av dagene",
+					"value": "More than half the days",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "Nesten hver dag",
+					"value": "Nearly every day",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				}
+			],
+			"explanation": "Dette informerer oss om hvordan du opplever helsen din. Ved å svare på disse spørsmålene hjelper du oss med å gi målrettede råd og riktige anbefalinger for trening og antall daglige skritt, slik at du kan  håndtere smertene på en best mulig måte."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "BT_phq_2",
+		"_source": {
+			"questionid": "BT_phq_2",
+			"question": "I løpet av de siste to ukene, hvor ofte har du vært plaget med noen av følgende problemer?\n 2. Nedstemthet, depresjon eller følelse av håpløshet.",
+			"title": "Patient Health Questionnaire (PHQ)",
+			"type": "single",
+			"structure": "vertical",
+			"language": "nb",
+			"options": [
+				{
+					"option": "Ikke i det hele tatt",
+					"value": "Not at all",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "Flere dager",
+					"value": "Several days",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "Mer enn halvparten av dagene",
+					"value": "More than half the days",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "Nesten hver dag",
+					"value": "Nearly every day",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 4
+				}
+			],
+			"explanation": "Dette informerer oss om hvordan du opplever helsen din. Ved å svare på disse spørsmålene hjelper du oss med å gi målrettede råd og riktige anbefalinger for trening og antall daglige skritt, slik at du kan  håndtere smertene på en best mulig måte."
+		}
+	},
+	{
+		"_index": "data_description",
+		"_type": "tailoring_nb",
+		"_id": "T_barriers",
+		"_source": {
+			"questionid": "T_barriers",
+			"question": "I løpet av den siste uken, har noen av forholdene nedenfor hindret deg i å gjennomføre din planlagte fysiske aktivitet? \nVelg ett eller flere av alternativene som gjelder for deg.",
+			"title": "Barriers",
+			"type": "multiple",
+			"structure": "vertical",
+			"language": "nb",
+			"options": [
+				{
+					"option": "Mangel på tid",
+					"value": "lack_of_time",
+					"optiontype": "checkbox",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "For sliten",
+					"value": "too_tired",
+					"optiontype": "checkbox",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "Mangel på støtte fra andre",
+					"value": "lack_of_support",
+					"optiontype": "checkbox",
+					"inputtype": "select",
+					"position": 3
+				},
+				{
+					"option": "Forpliktelser til familie eller arbeid",
+					"value": "family_work",
+					"optiontype": "checkbox",
+					"inputtype": "select",
+					"position": 4
+				},
+				{
+					"option": "Værforholdene",
+					"value": "weather",
+					"optiontype": "checkbox",
+					"inputtype": "select",
+					"position": 5
+				},
+				{
+					"option": "Mangel på fasiliteter/fasilitetene er for dyre",
+					"value": "facilities",
+					"optiontype": "checkbox",
+					"inputtype": "select",
+					"position": 6
+				},
+				{
+					"option": "Andre forhold enn de nevnt ovenfor",
+					"value": "none",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 7
+				}
+			],
+			"explanation": "Dette spørsmålet kartlegger forhold som kan redusere muligheten for å håndtere smerter. Basert på svaret ditt vil vi gi deg en plan for håndtering av smertene som er tilpasset dine behov og utfordringer."
+		}
+	}
+]

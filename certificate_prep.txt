@@ -1,0 +1,7 @@
+Use selfback_idi_ntnu_no.jks, turn it into p12 with this
+
+keytool -importkeystore -srckeystore selfback_idi_ntnu_no.jks -destkeystore smartwork_cert.p12 -deststoretype pkcs12 -srcstoretype jks  -storepass pswd -srcstorepass pswd
+then use this to get key and certs separately
+
+openssl pkcs12 -in smartwork_cert.p12 -nocerts -out smartwork_cert.key
+openssl pkcs12 -in smartwork_cert.p12 -nokeys -out smartwork_cert.pem

@@ -25,7 +25,7 @@ router = APIRouter(prefix="/oauth",route_class=LoggingRoute,tags=["Oauth"])
 # openssl rand -hex 32
 SECRET_KEY = "d1ae20565dd342009f3bad85b91ec0ad6e868bea11f69a990d498091855e71f3"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 30
+ACCESS_TOKEN_EXPIRE_MINUTES = 3000
 
 
 

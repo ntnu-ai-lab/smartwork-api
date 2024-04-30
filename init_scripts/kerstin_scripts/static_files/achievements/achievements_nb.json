@@ -746,5 +746,45 @@
 		"language": "nb",
 		"goal": 100,
 		"goaltext": "Fullført"
+	},
+	{
+		"achievementid": "EducationalQuizAnswers",
+		"type": "stats",
+		"title": "Kunnskapsquiz besvart",
+		"description": "",
+		"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-quiz-answers.png",
+		"language": "nb",
+		"goal": -1,
+		"goaltext": "Kunnskapsquiz besvart"
+	},
+	{
+		"achievementid": "TotalDistanceKm",
+		"type": "stats",
+		"title": "Antall kilometer gått med selfBACK",
+		"description": "Antall kilometer du har gått fra du startet med selfBACK.",
+		"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-distance-km.png",
+		"language": "nb",
+		"goal": -1,
+		"goaltext": "Kilometer gått"
+	},
+	{
+		"achievementid": "EducationalRead",
+		"type": "stats",
+		"title": "Antall kunnskapsmeldinger lest",
+		"description": "Totalt antall kunnskapsmeldinger lest",
+		"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read.png",
+		"language": "nb",
+		"goal": -1,
+		"goaltext": "Kunnskapsmeldinger lest"
+	},
+	{
+		"achievementid": "ExercisesCompleted",
+		"type": "stats",
+		"title": "Antall fullførte øvelser",
+		"description": "Totalt antall fullførte øvelser.",
+		"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercises-done.png",
+		"language": "nb",
+		"goal": -1,
+		"goaltext": "Fullførte øvelser"
 	}
 ]

@@ -24,7 +24,7 @@ async def language(
 async def language(
     current_user: Annotated[User, Depends(get_current_active_user)],
 ):
-    print(es.search(index="baseline", query={'match' : {"userid":current_user.userid}}))
+    # print(es.search(index="baseline", query={'match' : {"userid":current_user.userid}}))
     demographics={}
     res=es.search(index="baseline", query={'match' : {"userid":current_user.userid}})["hits"]["hits"][0]["_source"]["questionnaire"]
     demographics["age"]=res["Dem_age"]
@@ -91,6 +91,13 @@ async def educations(
     return achievements_start
 
 
+def steps2distance(step_count,gender,height):
+    #https://www.walkingwithattitude.com/articles/features/how-to-measure-stride-or-step-length-for-your-pedometer
+    if gender=="female":
+        return 0.413*int(height)*step_count*0.00001
+    return 0.415*int(height)*step_count*0.00001
+
+
 @router.get("/totals")
 async def educations(
     current_user: Annotated[User, Depends(get_current_active_user)]
@@ -99,10 +106,20 @@ async def educations(
         es.indices.create(index = 'activity')
     #steps
     res = es.search(index="activity", query={'match' : {"userid":current_user.userid}},size=10000)["hits"]["hits"]
+    res_baseline = es.search(index="baseline", query={'match' : {"userid":current_user.userid}},size=10000)["hits"]["hits"][0]["_source"]["questionnaire"]
+    try:
+        gender=res_baseline["Dem_gender"]
+    except:
+        raise Exception("Gender missing from questionnaire")
+    try:
+        height=res_baseline["Dem_height"]
+    except:
+        raise Exception("Height missing from questionnaire")
     steps=0
     if res!=[]:
         res=list(map(lambda x: x["_source"],res))
         steps=sum(list(map(lambda x: x["steps"],res)))
+    distance=steps2distance(steps,gender,height)
     #exercises
     if not es.indices.exists(index="exercise"):
         es.indices.create(index = 'exercise')
@@ -118,9 +135,9 @@ async def educations(
     if res!=[]:
         num_education=len(res)
 
-    return [{'totalid': 'TotalDistanceKm', 'progress': steps},
-            {'totalid': 'EducationalRead', 'progress': 9999999},
-            {'totalid': 'EducationalQuizAnswers', 'progress': num_education},
+    return [{'totalid': 'TotalDistanceKm', 'progress': round(distance,2)},
+            {'totalid': 'EducationalRead', 'progress': num_education },
+            {'totalid': 'EducationalQuizAnswers', 'progress': 9999999},
             {'totalid': 'ExercisesCompleted', 'progress': num_exercises}]
 
 class Activity(BaseModel):
@@ -129,6 +146,49 @@ class Activity(BaseModel):
     type:str
     steps:int
 
+
+@router.get("/daily_progress/{from_point}/{to_point}")
+async def daily_progress(
+    current_user: Annotated[User, Depends(get_current_active_user)],
+    from_point:str,
+    to_point:str
+):
+    #should I update achievements here?
+    #progress total
+    #
+    # res_exercise=es.search(index="exercise",query={'match' : {"userid":current_user.userid}},size=10000)["hits"]["hits"]
+
+    res_exercise=es.search(index="exercise", query={
+        "bool": {
+            "must": [
+                {
+                    "match": {
+                        "userid": current_user.userid
+                    }
+                },
+                {
+                    "range": {
+                        "date": {
+                            "gte": from_point,  # Greater than or equal to 10
+                            "lte": to_point  # Less than or equal to 100
+                        }
+                    }
+                }
+            ]
+        }
+    }
+    )
+
+    print(res_exercise)
+    raise
+    progress_activity=1
+
+    return {
+        "progress": 66,
+        "progress_activity":50,
+        "progress_education":100,
+        "progress_exercise":50
+    }
 
 
 

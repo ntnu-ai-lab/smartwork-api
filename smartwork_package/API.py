@@ -35,11 +35,13 @@ async def root():
 
 if __name__ == "__main__":
     uvicorn.run(
-        "API:app", 
+        app, 
         host="0.0.0.0", 
         port=443, 
-        ssl_keyfile="./key_no_pw.pem",
-        ssl_certfile="./certificate.pem",
-        reload=True,
-        workers=4)
-    #back-up:~/smartwork/smartwork_package$ sudo ~/.venv/bin/python API.py
+        ssl_keyfile="/opt/selfback/smartwork_cert.key",
+        ssl_certfile="/opt/selfback/smartwork_cert.pem",
+        # reload=True,
+        # workers=4
+        )
+    #back-up:~/smartwork/smartwork_package$ sudo ~/.venv/bin/python API.py Trux32
+    #ssh -R 443:localhost:8080 stuartgo@back-up.idi.ntnu.no
