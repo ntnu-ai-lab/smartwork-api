@@ -55,12 +55,11 @@ def createExerciseJson(language, filename, type, output_dir="./json/"):
     df['time'] = df['time'].astype(int)
     # if 'group_order' in df.columns:
     #     df['group_order'] = df['group_order'].astype(int)
-
+    df["description_type"]="exercise"
     dict = df.to_dict(orient='records')
     list_es = [
         {
             "_index": "data_description",
-            "_type": type,
             "_id": d["exerciseid"],
             "_source": d
         } for d in dict]

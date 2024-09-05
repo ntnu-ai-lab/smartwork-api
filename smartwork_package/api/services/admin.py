@@ -24,10 +24,13 @@ class FullUser(BaseModel):
 
 @router.post("/adduser")
 async def adduser(
-    # current_user: Annotated[User, Depends(get_current_active_user)],
+    current_user: Annotated[User, Depends(get_current_active_user)],
     user_data:FullUser
-):
-    print(user_data.password)
+): 
+    submitting_user=es.get(index="account",id=current_user.userid)["_source"]
+    print(submitting_user["rights"])
+    if not "ROLE_ADMIN" in submitting_user["rights"]:
+        raise HTTPException(403,"You need admin access to create users")
     if not es.indices.exists(index="account"):
         es.indices.create(index = 'account')
     if not es.indices.exists(index="baseline"):

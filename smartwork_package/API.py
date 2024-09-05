@@ -35,12 +35,12 @@ async def root():
 
 if __name__ == "__main__":
     uvicorn.run(
-        app, 
+        "API:app", 
         host="0.0.0.0", 
         port=443, 
         ssl_keyfile="/opt/selfback/smartwork_cert.key",
         ssl_certfile="/opt/selfback/smartwork_cert.pem",
-        # reload=True,
+        reload=True,
         # workers=4
         )
     #back-up:~/smartwork/smartwork_package$ sudo ~/.venv/bin/python API.py Trux32

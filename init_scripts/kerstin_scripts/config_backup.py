@@ -15,6 +15,7 @@ ACHIEVEMENT_DIR = STATIC_PATH + "achievements/"
 CODEBOOK_PATH = STATIC_PATH + "SmaRTWork-codebook_updated_11052023.xlsx"
 # OUTPUT_DIR = "./json/"
 OUTPUT_DIR = "./temp/"
+BACKEND_STATIC_DIR= "./backend_static_data/"
 
 # also copy files to backend_static_dir. Make it None to skip copying to the backend source dir.
 # BACKEND_STATIC_DIR = None

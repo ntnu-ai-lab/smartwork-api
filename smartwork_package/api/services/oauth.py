@@ -66,7 +66,7 @@ def get_user(username):
         es.indices.create(index = 'account')
     res = es.search(index="account", query={'match' : {"_id":username}})
     if not res["hits"]["hits"]:
-        return False
+        return None
     return UserInDB(**res.body["hits"]["hits"][0]["_source"])
 
 

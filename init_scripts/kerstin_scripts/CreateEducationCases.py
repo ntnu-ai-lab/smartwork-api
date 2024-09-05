@@ -46,11 +46,11 @@ def createEducationJson(language, filename, type, output_dir):
     df = df.where(df.notnull(), None)
 
     # df = df.set_index('educationid')
+    df["description_type"]="education"
     dict = df.to_dict(orient='records')
     list_es = [
         {
             "_index": "data_description",
-            "_type": type,
             "_id": d[EDUCATIONID],
             "_source": d
         } for d in dict]
@@ -62,6 +62,7 @@ def createEducationJson(language, filename, type, output_dir):
 
     # list of ids of quizes
     quizes = df.dropna(subset=['answer_text'])
+    print(output_dir + 'quizes.properties')
     f = open(output_dir + 'quizes.properties', "w")
     s = 'quiz_list=' + ','.join(quizes[EDUCATIONID].values)
     f.write(s)
@@ -117,7 +118,6 @@ def createEducationWebJson(language, filename, type, output_dir):
     list_es = [
         {
             "_index": "data_description",
-            "_type": type,
             "_id": d[EDUCATIONID],
             "_source": d
         } for d in dict]

@@ -52,6 +52,7 @@ def createQuestionnaireProperties(filename, output_dir):
                   }
     df.rename(columns=rename_map, inplace=True)
     # filtering only columns from rename_map
+    print(df.columns)
     df = df[list(rename_map.values())]
 
     # trimming ids just in case

@@ -1,7 +1,6 @@
 [
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "SetGoalSetting",
 		"_source": {
 			"achievementid": "SetGoalSetting",
@@ -12,12 +11,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/set-goal-setting.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Ufullstendig."
+			"goaltext": "Ufullstendig.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "SetSleepTool",
 		"_source": {
 			"achievementid": "SetSleepTool",
@@ -28,12 +27,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/sleep-reminder.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Ufullstendig."
+			"goaltext": "Ufullstendig.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "UseMindfulness",
 		"_source": {
 			"achievementid": "UseMindfulness",
@@ -44,12 +43,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/mindfulness-completed.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Ufullstendig."
+			"goaltext": "Ufullstendig.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "QACompleted",
 		"_source": {
 			"achievementid": "QACompleted",
@@ -60,12 +59,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/qa-completed.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Ufullstendig."
+			"goaltext": "Ufullstendig.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "SessionCompleted",
 		"_source": {
 			"achievementid": "SessionCompleted",
@@ -76,12 +75,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/session-completed.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Ufullstendig."
+			"goaltext": "Ufullstendig.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalCorrectQuiz1",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz1",
@@ -92,12 +91,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/correct-quiz-1.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalCorrectQuiz3",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz3",
@@ -108,12 +107,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/correct-quiz-3.png",
 			"language": "nb",
 			"goal": 3,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalCorrectQuiz7",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz7",
@@ -124,12 +123,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/correct-quiz-7.png",
 			"language": "nb",
 			"goal": 7,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalCorrectQuiz14",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz14",
@@ -140,12 +139,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/correct-quiz-14.png",
 			"language": "nb",
 			"goal": 14,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalCorrectQuiz25",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz25",
@@ -156,12 +155,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/correct-quiz-25.png",
 			"language": "nb",
 			"goal": 25,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalMaterialRead1",
 		"_source": {
 			"achievementid": "EducationalMaterialRead1",
@@ -172,12 +171,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read-1.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalMaterialRead3",
 		"_source": {
 			"achievementid": "EducationalMaterialRead3",
@@ -188,12 +187,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read-3.png",
 			"language": "nb",
 			"goal": 3,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalMaterialRead7",
 		"_source": {
 			"achievementid": "EducationalMaterialRead7",
@@ -204,12 +203,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read-7.png",
 			"language": "nb",
 			"goal": 7,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalMaterialRead14",
 		"_source": {
 			"achievementid": "EducationalMaterialRead14",
@@ -220,12 +219,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read-14.png",
 			"language": "nb",
 			"goal": 14,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalMaterialRead25",
 		"_source": {
 			"achievementid": "EducationalMaterialRead25",
@@ -236,12 +235,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read-25.png",
 			"language": "nb",
 			"goal": 25,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalMaterialRead40",
 		"_source": {
 			"achievementid": "EducationalMaterialRead40",
@@ -252,12 +251,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read-40.png",
 			"language": "nb",
 			"goal": 40,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalMaterialRead60",
 		"_source": {
 			"achievementid": "EducationalMaterialRead60",
@@ -268,12 +267,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read-60.png",
 			"language": "nb",
 			"goal": 60,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalMaterialRead80",
 		"_source": {
 			"achievementid": "EducationalMaterialRead80",
@@ -284,12 +283,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read-80.png",
 			"language": "nb",
 			"goal": 80,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalMaterialRead100",
 		"_source": {
 			"achievementid": "EducationalMaterialRead100",
@@ -300,12 +299,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read-100.png",
 			"language": "nb",
 			"goal": 100,
-			"goaltext": "Fullført."
+			"goaltext": "Fullført.",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyActivitiesCompleted1",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted1",
@@ -316,12 +315,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-activities-completed-1.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyActivitiesCompleted3",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted3",
@@ -332,12 +331,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-activities-completed-2.png",
 			"language": "nb",
 			"goal": 3,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyActivitiesCompleted7",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted7",
@@ -348,12 +347,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-activities-completed-3.png",
 			"language": "nb",
 			"goal": 7,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyActivitiesCompleted14",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted14",
@@ -364,12 +363,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-activities-completed-4.png",
 			"language": "nb",
 			"goal": 14,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyActivitiesCompleted25",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted25",
@@ -380,12 +379,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-activities-completed-5.png",
 			"language": "nb",
 			"goal": 25,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyActivitiesCompleted40",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted40",
@@ -396,12 +395,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-activities-completed-6.png",
 			"language": "nb",
 			"goal": 40,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyGoalSteps1",
 		"_source": {
 			"achievementid": "DailyGoalSteps1",
@@ -412,12 +411,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-goal-steps-1.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyGoalSteps3",
 		"_source": {
 			"achievementid": "DailyGoalSteps3",
@@ -428,12 +427,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-goal-steps-3.png",
 			"language": "nb",
 			"goal": 3,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyGoalSteps7",
 		"_source": {
 			"achievementid": "DailyGoalSteps7",
@@ -444,12 +443,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-goal-steps-7.png",
 			"language": "nb",
 			"goal": 7,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyGoalSteps14",
 		"_source": {
 			"achievementid": "DailyGoalSteps14",
@@ -460,12 +459,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-goal-steps-14.png",
 			"language": "nb",
 			"goal": 14,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyGoalSteps25",
 		"_source": {
 			"achievementid": "DailyGoalSteps25",
@@ -476,12 +475,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-goal-steps-25.png",
 			"language": "nb",
 			"goal": 25,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyGoalSteps40",
 		"_source": {
 			"achievementid": "DailyGoalSteps40",
@@ -492,12 +491,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-goal-steps-40.png",
 			"language": "nb",
 			"goal": 40,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyGoalSteps60",
 		"_source": {
 			"achievementid": "DailyGoalSteps60",
@@ -508,12 +507,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-goal-steps-60.png",
 			"language": "nb",
 			"goal": 60,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyGoalSteps80",
 		"_source": {
 			"achievementid": "DailyGoalSteps80",
@@ -524,12 +523,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-goal-steps-80.png",
 			"language": "nb",
 			"goal": 80,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyGoalSteps100",
 		"_source": {
 			"achievementid": "DailyGoalSteps100",
@@ -540,12 +539,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-goal-steps-100.png",
 			"language": "nb",
 			"goal": 100,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "FullCompletedWeekSteps",
 		"_source": {
 			"achievementid": "FullCompletedWeekSteps",
@@ -556,12 +555,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/full-completed-week-steps.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "RowCompletedSteps3",
 		"_source": {
 			"achievementid": "RowCompletedSteps3",
@@ -572,12 +571,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/row-completed-steps-3.png",
 			"language": "nb",
 			"goal": 3,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "RowCompletedSteps7",
 		"_source": {
 			"achievementid": "RowCompletedSteps7",
@@ -588,12 +587,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/row-completed-steps-7.png",
 			"language": "nb",
 			"goal": 7,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "RowCompletedSteps14",
 		"_source": {
 			"achievementid": "RowCompletedSteps14",
@@ -604,12 +603,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/row-completed-steps-14.png",
 			"language": "nb",
 			"goal": 14,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "RowCompletedSteps25",
 		"_source": {
 			"achievementid": "RowCompletedSteps25",
@@ -620,12 +619,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/row-completed-steps-25.png",
 			"language": "nb",
 			"goal": 25,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "RowCompletedSteps40",
 		"_source": {
 			"achievementid": "RowCompletedSteps40",
@@ -636,12 +635,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/row-completed-steps-40.png",
 			"language": "nb",
 			"goal": 40,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyRecordSteps10",
 		"_source": {
 			"achievementid": "DailyRecordSteps10",
@@ -652,12 +651,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-record-steps-10.png",
 			"language": "nb",
 			"goal": 10000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyRecordSteps12",
 		"_source": {
 			"achievementid": "DailyRecordSteps12",
@@ -668,12 +667,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-record-steps-12.png",
 			"language": "nb",
 			"goal": 12000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyRecordSteps14",
 		"_source": {
 			"achievementid": "DailyRecordSteps14",
@@ -684,12 +683,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-record-steps-14.png",
 			"language": "nb",
 			"goal": 14000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyRecordSteps16",
 		"_source": {
 			"achievementid": "DailyRecordSteps16",
@@ -700,12 +699,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-record-steps-16.png",
 			"language": "nb",
 			"goal": 16000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyRecordSteps18",
 		"_source": {
 			"achievementid": "DailyRecordSteps18",
@@ -716,12 +715,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-record-steps-18.png",
 			"language": "nb",
 			"goal": 18000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "DailyRecordSteps20",
 		"_source": {
 			"achievementid": "DailyRecordSteps20",
@@ -732,12 +731,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/daily-record-steps-20.png",
 			"language": "nb",
 			"goal": 20000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "TotalSteps50",
 		"_source": {
 			"achievementid": "TotalSteps50",
@@ -748,12 +747,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-50.png",
 			"language": "nb",
 			"goal": 50000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "TotalSteps100",
 		"_source": {
 			"achievementid": "TotalSteps100",
@@ -764,12 +763,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-100.png",
 			"language": "nb",
 			"goal": 100000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "TotalSteps200",
 		"_source": {
 			"achievementid": "TotalSteps200",
@@ -780,12 +779,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-200.png",
 			"language": "nb",
 			"goal": 200000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "TotalSteps400",
 		"_source": {
 			"achievementid": "TotalSteps400",
@@ -796,12 +795,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-400.png",
 			"language": "nb",
 			"goal": 400000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "TotalSteps600",
 		"_source": {
 			"achievementid": "TotalSteps600",
@@ -812,12 +811,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-600.png",
 			"language": "nb",
 			"goal": 600000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "TotalSteps800",
 		"_source": {
 			"achievementid": "TotalSteps800",
@@ -828,12 +827,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-800.png",
 			"language": "nb",
 			"goal": 800000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "TotalSteps1000",
 		"_source": {
 			"achievementid": "TotalSteps1000",
@@ -844,12 +843,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-1000.png",
 			"language": "nb",
 			"goal": 1000000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "Marathon",
 		"_source": {
 			"achievementid": "Marathon",
@@ -860,12 +859,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/marathon.png",
 			"language": "nb",
 			"goal": -1,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "AverageStepsWeek5",
 		"_source": {
 			"achievementid": "AverageStepsWeek5",
@@ -876,12 +875,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/average-steps-week-5.png",
 			"language": "nb",
 			"goal": 5000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "AverageStepsWeek6",
 		"_source": {
 			"achievementid": "AverageStepsWeek6",
@@ -892,12 +891,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/average-steps-week-6.png",
 			"language": "nb",
 			"goal": 6000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "AverageStepsWeek8",
 		"_source": {
 			"achievementid": "AverageStepsWeek8",
@@ -908,12 +907,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/average-steps-week-8.png",
 			"language": "nb",
 			"goal": 8000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "AverageStepsWeek10",
 		"_source": {
 			"achievementid": "AverageStepsWeek10",
@@ -924,12 +923,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/average-steps-week-10.png",
 			"language": "nb",
 			"goal": 10000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "AverageStepsWeek12",
 		"_source": {
 			"achievementid": "AverageStepsWeek12",
@@ -940,12 +939,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/average-steps-week-12.png",
 			"language": "nb",
 			"goal": 12000,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExerciseDaysCompleted1",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted1",
@@ -956,12 +955,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercise-days-completed-1.png",
 			"language": "nb",
 			"goal": 1,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExerciseDaysCompleted3",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted3",
@@ -972,12 +971,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercise-days-completed-3.png",
 			"language": "nb",
 			"goal": 3,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExerciseDaysCompleted7",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted7",
@@ -988,12 +987,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercise-days-completed-7.png",
 			"language": "nb",
 			"goal": 7,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExerciseDaysCompleted14",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted14",
@@ -1004,12 +1003,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercise-days-completed-14.png",
 			"language": "nb",
 			"goal": 14,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExerciseDaysCompleted25",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted25",
@@ -1020,12 +1019,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercise-days-completed-25.png",
 			"language": "nb",
 			"goal": 25,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExerciseDaysCompleted40",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted40",
@@ -1036,12 +1035,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercise-days-completed-40.png",
 			"language": "nb",
 			"goal": 40,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExerciseDaysCompleted60",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted60",
@@ -1052,12 +1051,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercise-days-completed-60.png",
 			"language": "nb",
 			"goal": 60,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExerciseDaysCompleted80",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted80",
@@ -1068,12 +1067,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercise-days-completed-80.png",
 			"language": "nb",
 			"goal": 80,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExerciseDaysCompleted100",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted100",
@@ -1084,12 +1083,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercise-days-completed-100.png",
 			"language": "nb",
 			"goal": 100,
-			"goaltext": "Fullført"
+			"goaltext": "Fullført",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalQuizAnswers",
 		"_source": {
 			"achievementid": "EducationalQuizAnswers",
@@ -1099,12 +1098,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-quiz-answers.png",
 			"language": "nb",
 			"goal": -1,
-			"goaltext": "Kunnskapsquiz besvart"
+			"goaltext": "Kunnskapsquiz besvart",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "TotalDistanceKm",
 		"_source": {
 			"achievementid": "TotalDistanceKm",
@@ -1114,12 +1113,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-distance-km.png",
 			"language": "nb",
 			"goal": -1,
-			"goaltext": "Kilometer gått"
+			"goaltext": "Kilometer gått",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "EducationalRead",
 		"_source": {
 			"achievementid": "EducationalRead",
@@ -1129,12 +1128,12 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/educational-read.png",
 			"language": "nb",
 			"goal": -1,
-			"goaltext": "Kunnskapsmeldinger lest"
+			"goaltext": "Kunnskapsmeldinger lest",
+			"description_type": "achievement"
 		}
 	},
 	{
 		"_index": "data_description",
-		"_type": "achievements_nb",
 		"_id": "ExercisesCompleted",
 		"_source": {
 			"achievementid": "ExercisesCompleted",
@@ -1144,7 +1143,8 @@
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/exercises-done.png",
 			"language": "nb",
 			"goal": -1,
-			"goaltext": "Fullførte øvelser"
+			"goaltext": "Fullførte øvelser",
+			"description_type": "achievement"
 		}
 	}
 ]
