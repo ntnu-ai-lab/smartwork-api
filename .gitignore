@@ -2,3 +2,5 @@
 *.pem
 random_tests/
 ./smartwork_package/config.json
+./Experimental things
+certificate_prep.txt
