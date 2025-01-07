@@ -15,35 +15,46 @@ es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=Fa
 
 
 @router.get("/education/list")
-async def root(
+async def EducationalItems(
     current_user: Annotated[User, Depends(get_current_active_user)],
-
 ):
+    """
+    Returns a list of all educational items
+    """
     res = es.search(index="data_description",query={"match":{"description_type":"education"}},size=900)["hits"]["hits"]
     return list(map(lambda x: x["_source"],res))
 
 @router.get("/exercise/list")
-async def root(
+async def ExerciseItems(
     current_user: Annotated[User, Depends(get_current_active_user)],
 
 ):
+    """
+    Returns a list of all exercise items
+    """
     res = es.search(index="data_description",query={"match":{"description_type":"exercise"}},size=900)["hits"]["hits"]
     return list(map(lambda x: x["_source"],res))
 
 
 @router.get("/achievement/list")
-async def root(
+async def AchievementItems(
     current_user: Annotated[User, Depends(get_current_active_user)],
 
 ):
+    """
+    Returns a list of all achievement items
+    """
     res = es.search(index="data_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
     return list(map(lambda x: x["_source"],res))
 
 @router.get("/achievement/types")
-async def root(
+async def AchievementTypes(
     current_user: Annotated[User, Depends(get_current_active_user)],
 
 ):
+    """
+    Returns a list of all achievement types
+    """
     res = es.search(index="data_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
     types=set(map(lambda x: x["_source"]["type"],res))
     return list(map(lambda x: {"type":x},types))

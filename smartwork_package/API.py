@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import FastAPI,Depends,Request
+from fastapi import FastAPI,Depends,Request,status
 import os
 import sys
 
@@ -8,8 +8,9 @@ from api.services.patient import router as patient_router
 from api.services.data import router as data_router
 from api.services.admin import router as admin_router
 from api.services.plan import router as plan_router
-
-
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+import logging
 
 
 
@@ -18,6 +19,12 @@ app = FastAPI(
     docs_url="/"
 )
 
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+	exc_str = f'{exc}'.replace('\n', ' ').replace('   ', ' ')
+	logging.error(f"{request}: {exc_str}")
+	content = {'status_code': 10422, 'message': exc_str, 'data': None}
+	return JSONResponse(content=content, status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 app.include_router(oauth_router)
 app.include_router(patient_router)

@@ -1,0 +1,398 @@
+{
+    "construct_next": 26,
+    "painIntensity_q01": {
+        "value": "8"
+    },
+    "painIntensity_q02": {
+        "value": "3"
+    },
+    "painDuration_q01": {
+        "value": "4"
+    },
+    "painMedication_q01": {
+        "value": "0"
+    },
+    "RMDQ_q01": {
+        "value": "1"
+    },
+    "RMDQ_q02": {
+        "value": "0"
+    },
+    "RMDQ_q03": {
+        "value": "1"
+    },
+    "RMDQ_q04": {
+        "value": "0"
+    },
+    "RMDQ_q05": {
+        "value": "1"
+    },
+    "RMDQ_q06": {
+        "value": "0"
+    },
+    "RMDQ_q07": {
+        "value": "1"
+    },
+    "RMDQ_q08": {
+        "value": "0"
+    },
+    "RMDQ_q09": {
+        "value": "1"
+    },
+    "RMDQ_q10": {
+        "value": "0"
+    },
+    "RMDQ_q11": {
+        "value": "1"
+    },
+    "RMDQ_q12": {
+        "value": "0"
+    },
+    "RMDQ_q13": {
+        "value": "1"
+    },
+    "RMDQ_q14": {
+        "value": "0"
+    },
+    "RMDQ_q15": {
+        "value": "1"
+    },
+    "RMDQ_q16": {
+        "value": "0"
+    },
+    "RMDQ_q17": {
+        "value": "1"
+    },
+    "RMDQ_q18": {
+        "value": "0"
+    },
+    "RMDQ_q19": {
+        "value": "1"
+    },
+    "RMDQ_q20": {
+        "value": "0"
+    },
+    "RMDQ_q21": {
+        "value": "1"
+    },
+    "RMDQ_q22": {
+        "value": "0"
+    },
+    "RMDQ_q23": {
+        "value": "1"
+    },
+    "RMDQ_q24": {
+        "value": "0"
+    },
+    "WAI_q01": {
+        "value": "5"
+    },
+    "saltinGrimby_q01": {
+        "value": "1"
+    },
+    "FABQ_q01": {
+        "value": "0"
+    },
+    "FABQ_q02": {
+        "value": "1"
+    },
+    "FABQ_q03": {
+        "value": "2"
+    },
+    "FABQ_q04": {
+        "value": "3"
+    },
+    "FABQ_q05": {
+        "value": "4"
+    },
+    "PSEQ_q01": {
+        "value": "0"
+    },
+    "PSEQ_q02": {
+        "value": "1"
+    },
+    "PSEQ_q03": {
+        "value": "2"
+    },
+    "PSEQ_q04": {
+        "value": "3"
+    },
+    "PSEQ_q05": {
+        "value": "4"
+    },
+    "PSEQ_q06": {
+        "value": "5"
+    },
+    "PSEQ_q07": {
+        "value": "6"
+    },
+    "PSEQ_q08": {
+        "value": "0"
+    },
+    "PSEQ_q09": {
+        "value": "1"
+    },
+    "PSEQ_q10": {
+        "value": "2"
+    },
+    "BIPQ_q01": {
+        "value": "0"
+    },
+    "BIPQ_q02": {
+        "value": "1"
+    },
+    "BIPQ_q03": {
+        "value": "2"
+    },
+    "BIPQ_q04": {
+        "value": "3"
+    },
+    "BIPQ_q05": {
+        "value": "4"
+    },
+    "BIPQ_q06": {
+        "value": "5"
+    },
+    "BIPQ_q07": {
+        "value": "6"
+    },
+    "BIPQ_q08": {
+        "value": "7"
+    },
+    "PSFS_q01": {
+        "value": "Gaming",
+        "scale": "3"
+    },
+    "PSFS_q02": {
+        "value": "Eating",
+        "scale": "5"
+    },
+    "mannequin_q01": {
+        "value": "1"
+    },
+    "mannequin_q02": {
+        "value": 0
+    },
+    "mannequin_q03": {
+        "value": 0
+    },
+    "mannequin_q04": {
+        "value": "1"
+    },
+    "mannequin_q05": {
+        "value": 0
+    },
+    "mannequin_q06": {
+        "value": 0
+    },
+    "mannequin_q07": {
+        "value": 0
+    },
+    "mannequin_q08": {
+        "value": "1"
+    },
+    "mannequin_q09": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q01": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q02": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q03": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q04": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q05": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q06": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q07": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q08": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q09": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q10": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q11": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q12": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q13": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q14": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q15": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q16": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q17": {
+        "value": 0
+    },
+    "otherDiseasesConditions_q18": {
+        "value": "Hello World!"
+    },
+    "otherDiseasesConditions_q19": {
+        "value": 0
+    },
+    "qualityOfLifeMobility_q01": {
+        "value": "0"
+    },
+    "qualityOfLifeSelfCare_q01": {
+        "value": "1"
+    },
+    "qualityOfLifeUsualActivities_q01": {
+        "value": "2"
+    },
+    "qualityOfLifePainDiscomfort_q01": {
+        "value": "3"
+    },
+    "qualityOfLifeAnxietyDepression_q01": {
+        "value": "4"
+    },
+    "qualityOfLifeScale_q01": {
+        "value": "52"
+    },
+    "sleep_q01": {
+        "value": "0"
+    },
+    "sleep_q02": {
+        "value": "1"
+    },
+    "sleep_q03": {
+        "value": "2"
+    },
+    "sleep_q04": {
+        "value": "0"
+    },
+    "PSS_q01": {
+        "value": "0"
+    },
+    "PSS_q02": {
+        "value": "1"
+    },
+    "PSS_q03": {
+        "value": "2"
+    },
+    "PSS_q04": {
+        "value": "3"
+    },
+    "PSS_q05": {
+        "value": "4"
+    },
+    "PSS_q06": {
+        "value": "0"
+    },
+    "PSS_q07": {
+        "value": "1"
+    },
+    "PSS_q08": {
+        "value": "2"
+    },
+    "PSS_q09": {
+        "value": "3"
+    },
+    "PSS_q10": {
+        "value": "4"
+    },
+    "PHQ_q01": {
+        "value": "0"
+    },
+    "PHQ_q02": {
+        "value": "1"
+    },
+    "GPE_q01": {
+        "value": "-3"
+    },
+    "PASS_q01": {
+        "value": "0"
+    },
+    "NDI_q01": {
+        "value": "0"
+    },
+    "NDI_q02": {
+        "value": "1"
+    },
+    "NDI_q03": {
+        "value": "2"
+    },
+    "NDI_q04": {
+        "value": "3"
+    },
+    "NDI_q05": {
+        "value": "4"
+    },
+    "NDI_q06": {
+        "value": "5"
+    },
+    "NDI_q07": {
+        "value": "0"
+    },
+    "NDI_q08": {
+        "value": "1"
+    },
+    "NDI_q09": {
+        "value": "2"
+    },
+    "NDI_q10": {
+        "value": "3"
+    },
+    "MSKHQ_q01": {
+        "value": "0"
+    },
+    "MSKHQ_q02": {
+        "value": "1"
+    },
+    "MSKHQ_q03": {
+        "value": "2"
+    },
+    "MSKHQ_q04": {
+        "value": "3"
+    },
+    "MSKHQ_q05": {
+        "value": "4"
+    },
+    "MSKHQ_q06": {
+        "value": "0"
+    },
+    "MSKHQ_q07": {
+        "value": "1"
+    },
+    "MSKHQ_q08": {
+        "value": "2"
+    },
+    "MSKHQ_q09": {
+        "value": "3"
+    },
+    "MSKHQ_q10": {
+        "value": "4"
+    },
+    "MSKHQ_q11": {
+        "value": "0"
+    },
+    "MSKHQ_q12": {
+        "value": "1"
+    },
+    "MSKHQ_q13": {
+        "value": "2"
+    },
+    "MSKHQ_q14": {
+        "value": "3"
+    }
+}

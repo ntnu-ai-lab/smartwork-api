@@ -1,10 +1,11 @@
+import json
 import shutil
-from typing import Any
+from typing import Any, Optional
 
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Form, Request
 from pydantic import BaseModel
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta,timezone
 from typing import Annotated, Union
 
 from fastapi import Depends, FastAPI, HTTPException, status
@@ -25,7 +26,7 @@ router = APIRouter(prefix="/oauth",route_class=LoggingRoute,tags=["Oauth"])
 # openssl rand -hex 32
 SECRET_KEY = "d1ae20565dd342009f3bad85b91ec0ad6e868bea11f69a990d498091855e71f3"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 3000
+ACCESS_TOKEN_EXPIRE_MINUTES = 6*30*24*60*60
 
 
 
@@ -42,15 +43,23 @@ class TokenData(BaseModel):
 class User(BaseModel):
     userid: str
     isenabled: Union[bool, None] = None
-    country: str
+    admin: bool = False
+    
 
 class UserInDB(User):
     password: str
+    language: str
 
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+
+
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="oauth/token",description="Either authenticate as a user using username and password or as a client using client_id and client_secret to access the admin endpoints. When entering as a client use Request Body for the client_id and client_secret.")
+
+
+
 
 # print(pwd_context.hash("secret"))
 
@@ -82,9 +91,9 @@ def authenticate_user(username: str, password: str):
 def create_access_token(data: dict, expires_delta: Union[timedelta, None] = None):
     to_encode = data.copy()
     if expires_delta:
-        expire = datetime.utcnow() + expires_delta
+        expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.utcnow() + timedelta(days=30)
+        expire = datetime.now(timezone.utc) + timedelta(days=30)
     to_encode.update({"exp": expire})
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
@@ -99,6 +108,9 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         username: str = payload.get("sub")
+        admin: str = payload.get("access")
+        if admin is not None:
+            return User(userid="temp",admin=True,isenabled=True)
         if username is None:
             raise credentials_exception
         token_data = TokenData(username=username)
@@ -117,11 +129,52 @@ async def get_current_active_user(
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
 
+class OAuth2PasswordRequestFormCustom(OAuth2PasswordRequestForm):
+    #just to make username and password optional so we can have client side only authorization, not sure if that is common though....
+    def __init__(
+        self,
+        grant_type: str = Form(default=None, regex="password"),
+        username: Optional[str] = Form(default=None),
+        password: Optional[str] = Form(default=None),
+        scope: str = Form(default=""),
+        client_id: Optional[str] = Form(default=None),
+        client_secret: Optional[str] = Form(default=None),
+    ):
+        self.grant_type = grant_type
+        self.username = username
+        self.password = password
+        self.scopes = scope.split()
+        self.client_id = client_id
+        self.client_secret = client_secret
+
 
 @router.post("/token", response_model=Token)
 async def login_for_access_token(
-    form_data: Annotated[OAuth2PasswordRequestForm, Depends()]
+    form_data: Annotated[OAuth2PasswordRequestFormCustom, Depends()]
 ):
+    """
+    Used to generate tokens, both for users and clients
+    """
+    if form_data.client_id:
+        with open("config.json", "r") as file:
+            client_ids = json.load(file)
+        if form_data.client_id not in client_ids.keys():
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Incorrect client_id",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+        if client_ids[form_data.client_id] != form_data.client_secret:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Incorrect client_secret",
+                headers={"WWW-Authenticate": "Bearer"},
+            )
+        access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+        access_token = create_access_token(
+        data={"sub": "temp","access":"admin"}, expires_delta=access_token_expires
+        )
+        return {"access_token": access_token, "token_type": "bearer"}
     user = authenticate_user(form_data.username, form_data.password)
     if not user:
         raise HTTPException(
@@ -140,11 +193,15 @@ async def login_for_access_token(
 async def read_users_me(
     current_user: Annotated[User, Depends(get_current_active_user)]
 ):
+    """
+    Returns the user that is signed in
+    """
     return current_user
 
 
-@router.get("/users/me/items/")
-async def read_own_items(
-    current_user: Annotated[User, Depends(get_current_active_user)]
-):
-    return [{"item_id": "Foo", "owner": current_user.username}]
+# @router.get("/users/me/items/")
+# async def read_own_items(
+#     current_user: Annotated[User, Depends(get_current_active_user)]
+# ):
+    
+#     return [{"item_id": "Foo", "owner": current_user.username}]

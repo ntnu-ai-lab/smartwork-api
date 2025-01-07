@@ -7,14 +7,15 @@ from elasticsearch import helpers
 import json
 from typing import Annotated
 from typing import Optional
-import zen
+from api.services.patient import activity_done
 import datetime
 import requests
 import functools
 import math
 from functools import cmp_to_key
 import random
-from api.achievements.check_achievements import complete_onetime_goal
+from api.resources.constants import FIRST_WEEK_EDUCATION,FIRST_WEEK_EXERCISES
+from api.achievements.check_achievements import complete_quiz,complete_educational_read,update_goal
 from api.resources.custom_router import LoggingRoute
 es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
 
@@ -223,6 +224,7 @@ def fetch_cbr_educational_items(base_questionnaire):
                       params={"k":-1}
     )
     cbr_education_items=set("".join(list(map(lambda x: x["SelfManagement_Education"],response.json()))).strip(";").split(";"))
+    cbr_education_items=list(filter(lambda x: x!="",cbr_education_items))
     return cbr_education_items
 
 def isquiz(educationid,userid):
@@ -250,9 +252,6 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     # else:
     #     priority_queue=res[0]["_source"]["educational_items"].copy()
 
-    if not es.indices.exists(index="education"):
-        es.indices.create(index = 'education')
-
     #fetch all educational items
     educational_items = es.search(index="data_description", query={'match' : {"description_type":"education"}},size=1000)["hits"]["hits"]
     educational_items=list(map(lambda x: x["_source"],educational_items))
@@ -279,7 +278,7 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
         rule_education_items=[]
     selected_educational_items=list(cbr_education_items)
     selected_educational_items.extend(rule_education_items)
-
+    # print(selected_educational_items)
     #figure out if educational item is used before by checking history of user from es, same for thisweek
     selected_educational_items=list(map(lambda x: {"educationid":x,
                                                    "used":x in educational_items_used,
@@ -303,13 +302,14 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
         groups=set(map(lambda x: x["group"] if "group" in x.keys() else None,result))
 
         generic_items_w_groups=grouping(list(map(lambda x: {"educationid":x},GENERIC_EDUCATION_ITEMS)))#decision_grouping.evaluate({"priority_queue":list(map(lambda x: {"id":x},generic_education_items))})["result"]
+        # print(generic_items_w_groups)
         for generic_item in generic_items_w_groups:
             if generic_item["group"] not in groups:
                 today=datetime.datetime.now() + datetime.timedelta(days=1)
                 result.append({
-                    "id":generic_item["id"],
+                    "educationid":generic_item["educationid"],
                     "priority":1,
-                    "expiredate":float(today.timestamp()+datetime.timedelta(weeks=1)),
+                    "expiredate":(today+datetime.timedelta(weeks=1)).timestamp(),
                     "thisweek":False,
                     "group":generic_item["group"],
                     "avoid":False,
@@ -359,14 +359,15 @@ def add_core_back_ab(cbr_exercise_items,es_exercise_items):
             exercises.append(random.choice(es_exercise_grouping))
     return exercises
 
-def add_other_types(exercise_set,number_exercises,selected_execrises):
+def add_other_types(exercise_set,number_exercises,selected_exercises):
     exercises=[]
-    types_of_exercises=set(map(lambda x: x["type"] ,exercise_set))
-    for ex_type in types_of_exercises:
-        #checks if type already added in exercises
-        if list(filter(lambda x: ex_type==x["type"], exercises))==[]:
-
-            exercises.append(random.choice(list(filter(lambda x: ex_type==x["type"],exercise_set))))
+    already_selected_types=set(map(lambda x: x["type"] ,selected_exercises))
+    all_existing_types=set(map(lambda x: x["type"] ,exercise_set))
+    new_types=set(filter(lambda x: x not in already_selected_types ,all_existing_types))
+    for new_type in new_types:
+        # print(new_type)
+        ex_w_new_type=list(filter(lambda x: new_type==x["type"],exercise_set))
+        exercises.append(ex_w_new_type[0])
         if len(exercises)==number_exercises:
             return exercises
     return exercises
@@ -402,41 +403,61 @@ def generate_plan_exercise(base_questionnaire,update_questionnaire,duration):
                       json=base_questionnaire,
                       params={"k":-1}
     )
+
     #get exercise names from cbr
     cbr_exercise_items=list(set("".join(list(map(lambda x: x["SelfManagement_Exercise"],response.json()))).split(";")))
+    # print(cbr_exercise_items)
+    # raise
     #lookup each of the names in ES to get additional info on the exercises
     cbr_exercise_items=es.search(index="data_description", query={"bool": {"filter": {"terms": {"exerciseid": cbr_exercise_items}}}},size=10000)["hits"]["hits"]
     cbr_exercise_items=list(map(lambda x: x["_source"],cbr_exercise_items))
     #fetch exercises from rulebase
     es_exercise_items = es.search(index="data_description", query={'match' : {"description_type":"exercise"}},size=10000)["hits"]["hits"]
     es_exercise_items=list(map(lambda x: x["_source"],es_exercise_items))
+    #filter level of exercises
+    res=es.search(index="exercise", query={'match' : {"userid":"stuart"}})
+    exercises_performed=res.body["hits"]["hits"]
+    total_reps=list(map(lambda x: x["repsperformed1"]+x["repsperformed2"]+x["repsperformed3"],exercises_performed))
+    if len(exercises_performed)==0:
+        percentage_reps=0
+    else:
+        percentage_reps=sum(total_reps)/(30*len(exercises_performed))#assume 10 per set
+    total_exercise_time=len(exercises_performed)*5
+    exercise_level=1
+    if total_exercise_time>=45 and percentage_reps>=1:
+        exercise_level+=1
+    es_exercise_items=list(filter(lambda x: x["level"]==exercise_level,es_exercise_items))
+    cbr_exercise_items=list(filter(lambda x: x["level"]==exercise_level,cbr_exercise_items))
     number_exercises=calc_sets_reps(duration)["number"]
     exercises=[]
     if update_questionnaire:
         if check_pain_relief(update_questionnaire):
             return get_pain_relief_exercises(cbr_exercise_items,es_exercise_items,number_exercises)
     #######not pain relief
-    #add random exercise of back,ab and core from cbr system
+    #add random exercise from back,ab and core from cbr system
     exercises.extend(add_core_back_ab(cbr_exercise_items,es_exercise_items))
+    # print(list(map(lambda x: x["exerciseid"],exercises)))
     if len(exercises)==number_exercises:
         return exercises
 
     # print(exercises,"post ab back")
     #add exercises of types that are not already in exercises list
     exercises.extend(add_other_types(cbr_exercise_items,number_exercises-len(exercises),exercises))
-    
+    # print(list(map(lambda x: x["exerciseid"],exercises)))
     if len(exercises)==number_exercises:
         return exercises
-    # print(exercises,"other types cbr")
     #same as above but for exercises from elasticsearch
     exercises.extend(add_other_types(es_exercise_items,number_exercises-len(exercises),exercises))
+    # print(list(map(lambda x: x["exerciseid"],exercises)))
     if len(exercises)==number_exercises:
         return exercises
+    
     # print(exercises,"other types es")
     #if there are still slots to fill and all types are represented add one more of each type until filled
     exercises.extend(add_same_type(exercises,cbr_exercise_items,number_exercises-len(exercises)))
     if len(exercises)==number_exercises:
         return exercises
+    # print(list(map(lambda x: x["exerciseid"],exercises)))
     #same as above but for es
     exercises.extend(add_same_type(exercises,es_exercise_items,number_exercises-len(exercises)))
     return exercises
@@ -464,19 +485,15 @@ def min_max_activity(goal):
 
 def generate_activity_goal(current_user):
     #get latest completed plan
-    res=es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
-    #no previous plan
-    if res==[] or res[0]["_source"]["history"]==[]: #TODO: not entirely sure this is correct, can history be empty if a plan exists?
+    prev_plan=es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
+    if prev_plan==[]:
         return {
         "goal":STEP_GOAL_MIN,
         "recommended_min":STEP_GOAL_MIN,
         "recommended_max":STEP_GOAL_MAX
         }
-    else:
-        res=res[0]["_source"]["history"][-1]["activity"]
-    #fetch done part of that plan
-    #where is this even stored?
-    prev_steps=res[0]["_source"]["done"]["steps"]
+    prev_plan=es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=1,sort=[{"created": {"order": "asc"}}])["hits"]["hits"][0]["_source"]
+    prev_steps=prev_plan["done"]["steps"]
     
     if prev_steps>STEP_GOAL_MAX:
         prev_steps=STEP_GOAL_MAX
@@ -485,7 +502,8 @@ def generate_activity_goal(current_user):
     
     # average between last week goal and steps done
     #TODO: assumes latest plan is latest in history
-    previous_goal=res["goal"]
+    print(prev_plan)
+    previous_goal=prev_plan["plan"]["activity"]["goal"]
     new_goal= (prev_steps +previous_goal)/2
     # round to hundreds
     new_goal=int(math.ceil(new_goal / 100.0)) * 100
@@ -502,60 +520,29 @@ def generate_activity_goal(current_user):
 def plan_is_active(current_plan):
     if current_plan==[]:
         return False
-    plan=current_plan[0]["_source"]
-    if datetime.datetime.fromisoformat(plan["start"])<datetime.datetime.now() and datetime.datetime.fromisoformat(plan["end"])>datetime.datetime.now():
+    if current_plan["start"]<datetime.datetime.now().timestamp() and current_plan["end"]>datetime.datetime.now().timestamp():
         return True
     return False
     
-    
-@router.post("/next")
-async def next(
-    current_user: Annotated[User, Depends(get_current_user)],
-    plan_info: Plan_info
-):
-    if not es.indices.exists(index="plan"):
-        es.indices.create(index = 'plan')
-    #TODO: check if current plan has expired before creating a new plan, if not error
-    current_plan=es.search(index="plan",body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
-    if plan_is_active(current_plan):
-        raise HTTPException(status_code=500,detail="User already has a valid plan.")
-    #check if user has questionnaire
-    base_questionnaire=res = es.search(index="baseline", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"][0]["_source"]["questionnaire"]
-    #check if user has a previous plan
-    previous_plan=res = es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=100)["hits"]["hits"] #TODO: change to most recent rather than top 100
-    if previous_plan!=[]:
-        history=previous_plan[0]["_source"]["history"]
-    else:
-        history=[]
-    if base_questionnaire==[]:
-        raise HTTPException(status_code=500,detail="Missing baseline questionannaire")
-    # else:
-    #     #merges baseline questionnaire with new info
-    #     if plan_info.questionnaire is not None:
-    #         complete_questionnaire=questionnaire[0]["_source"]["questionnaire"] | plan_info.questionnaire
-    #     else:
-    #         complete_questionnaire=questionnaire[0]["_source"]["questionnaire"]
-    
 
+def generate_plan(current_user,plan_info,educations,exercises):
     curr_dt = datetime.datetime.now()
-    exercises=generate_plan_exercise(base_questionnaire,plan_info.questionnaire,plan_info.exercises_duration)
-    # print(list(map(lambda x: es.search(index="data_description", query={'match' : {"ExerciseID":x}},size=100)["hits"]["hits"][0]["_source"],exercises)))
-    complete_plan={
+    return {
                     "userid":current_user.userid,
                     "created":int(curr_dt.timestamp()),
-                    "start":curr_dt.isoformat(),#int(datetime.datetime.combine(curr_dt, datetime.time.min).timestamp()),
-                    "end":datetime.datetime.combine(curr_dt+datetime.timedelta(days=7), datetime.time.max).isoformat(),
+                    "start":datetime.datetime.combine(curr_dt, datetime.time.min).timestamp(),
+                    "end":datetime.datetime.combine(curr_dt+datetime.timedelta(days=7), datetime.time.max).timestamp(),
                     "exercises_duration":plan_info.exercises_duration,
-                    "history":history,
+                    # "history":history,
                     "plan":{
-                        "date":curr_dt.isoformat(),
-                        "educations":generate_plan_education(current_user,base_questionnaire,plan_info.questionnaire),
+                        "date":curr_dt.timestamp(),
+                        "educations":educations,
                         "exercises":exercises,
                         "activity":generate_activity_goal(current_user)
                     },
                     "done":{
                         "steps":0,
-                        "date":curr_dt.isoformat(),
+                        "date":curr_dt.timestamp(),
                         "exercises":[],
                         "educations":[],
                         "activity": {
@@ -566,13 +553,63 @@ async def next(
                         } #TODO: what is this supposed to be? Woulfnt it just be 0?
                    }
     
+@router.post("/next")
+async def next(
+    current_user: Annotated[User, Depends(get_current_user)],
+    plan_info: Plan_info
+):
+    print("neeeeext")
+    all_plans=es.search(index="plan",body={"query":{'match' : {"userid":current_user.userid}}},size=1000)["hits"]["hits"]
+    #set standard first week plan
+    if all_plans==[]:
+        response = es.mget(index="data_description", body={"ids": FIRST_WEEK_EDUCATION})
+        educations=list(map(lambda x: x["_source"],response["docs"]))
+        
+        response = es.mget(index="data_description", body={"ids": FIRST_WEEK_EXERCISES})
+        exercises=list(map(lambda x: x["_source"],response["docs"]))[:plan_info.exercises_duration//5]
+        # print(exercises)
+        # print(educations)
+        # raise
+        complete_plan=generate_plan(current_user,plan_info,educations,exercises)
+        es.index(index='plan', document=complete_plan)
+        es.indices.refresh(index='plan')
+        return complete_plan
+    all_plans.sort(key=lambda x: x["_source"]["created"],reverse=True)
+    current_plan=all_plans[0]["_source"]
+    if plan_is_active(current_plan):
+        raise HTTPException(status_code=500,detail="User already has a valid plan.")
+    #check if user has questionnaire
+    base_questionnaire = es.search(index="questionnaire", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"][0]["_source"]["questionnaire"]
+    #check if user has a previous plan
+    previous_plan = es.search(index="plan", query={'match' : {"userid":"stuart"}},sort=[{"created": {"order": "asc"}}],size=1)["hits"]["hits"][0]["_source"]
+
+    if base_questionnaire==[]:
+        raise HTTPException(status_code=500,detail="Missing baseline questionannaire")
+    else:
+        #merges baseline questionnaire with new info
+        if plan_info.questionnaire is not None:
+            complete_questionnaire=base_questionnaire | plan_info.questionnaire
+        else:
+            complete_questionnaire=base_questionnaire
+        complete_questionnaire["Activity_StepCount"]=activity_done(previous_plan["start"],previous_plan["end"])
+    if plan_info.questionnaire is not None:
+        tmp_questionnaire=plan_info.questionnaire.copy()
+        tmp_questionnaire["userid"]=current_user.userid
+        tmp_questionnaire["date"]=datetime.datetime.now().timestamp()
+        es.index(index='tailoring_questionnaire', document=tmp_questionnaire)
+
+    exercises=generate_plan_exercise(complete_questionnaire,plan_info.questionnaire,plan_info.exercises_duration)
+    educations=generate_plan_education(current_user,complete_questionnaire,plan_info.questionnaire),
+    # print(list(map(lambda x: es.search(index="data_description", query={'match' : {"ExerciseID":x}},size=100)["hits"]["hits"][0]["_source"],exercises)))
+    complete_plan=generate_plan(current_user,plan_info,educations,exercises)
+    
     #TODO: need to check if plan is valid first
-    complete_onetime_goal(current_user.userid,"SessionCompleted")
-    es.update(index="appsettings",id=current_user.userid,doc={"hideIntroSession":True})
-    es.index(index='plan', body=json.dumps(complete_plan))
+    update_goal(current_user.userid,"SessionCompleted")
+    if es.exists(index="appsettings", id=current_user.userid):
+        es.update(index="appsettings",id=current_user.userid,doc={"hideIntroSession":True})
+    es.index(index='plan', document=complete_plan)
+    es.indices.refresh(index='plan')
 
-
-    #should exercises also be added to the Exercise ES index?
     return complete_plan
 
 
@@ -593,17 +630,15 @@ async def exercise(
 ):
     status=exercises[0]["status"]
     exerciseid=exercises[0]["exerciseid"]
-    if not es.indices.exists(index="plan"):
-            es.indices.create(index = 'plan')
+
     res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=1)["hits"]["hits"]
     id=res[0]["_id"]
     doc=res[0]["_source"]
-    exercises_doc=doc["plan"]["exercises"]
-    for exercise in exercises_doc:
-            if exercise["exerciseid"]==exerciseid:
-                exercise["skipped"]=True
+    if status=="skip" or status=="skip_replace":
+        for exercise in doc["plan"]["exercises"]:
+                if exercise["exerciseid"]==exerciseid:
+                    exercise["skipped"]=True
     if status=="skip":
-        doc["plan"]["exercises"]=exercises_doc
         es.update(index="plan",id=id,doc=doc)
         return {"status":200}
     elif status=="skip_replace":
@@ -613,35 +648,24 @@ async def exercise(
         original_level = original_exercise["_source"]["level"]
         original_type = original_exercise["_source"]["type"]
         if reason=="pain":
-            new_exercise=es.search(index="data_description",query={"bool":
-                                                    {"must":[
-                                                        {"match":{"type":original_type}},
-                                                            
-                                                    ],
-                                                    "must_not":[
-                                                        {"match":{"level":original_level}}
-                                                        ]
-                                            
-                                            }},size=900).body["hits"]["hits"][0]["_source"]
-        else:
-            if reason=="easy":
-                new_level=original_level-1
-            elif reason=="difficult":
-                new_level=original_level+1
-            elif reason=="instruction_unclear":
-                new_level=original_level
-            new_level=min([new_level,6])
-            new_level=max([new_level,1])
-            new_exercise=es.search(index="data_description",query={"bool":
-                                                    {"must":[
-                                                        {"match":{"type":original_type}},
-                                                            {"match":{"level":new_level}}
-                                                    ],
-                                                    "must_not":[{"match":{"exerciseid":exerciseid}}]
-                                            
-                                            }},size=900).body["hits"]["hits"][0]["_source"]
-        exercises_doc.append(new_exercise)
-        doc["plan"]["exercises"]=exercises_doc
+            new_level=original_level
+        elif reason=="easy":
+            new_level=original_level+1
+        elif reason=="difficult":
+            new_level=original_level-1
+        elif reason=="instruction_unclear":
+            new_level=original_level
+        new_level=min([new_level,6])
+        new_level=max([new_level,1])
+        new_exercise=es.search(index="data_description",query={"bool":
+                                                {"must":[
+                                                    {"match":{"type":original_type}},
+                                                        {"match":{"level":new_level}}
+                                                ],
+                                                "must_not":[{"match":{"exerciseid":exerciseid}}]
+                                        
+                                        }},size=900).body["hits"]["hits"][0]["_source"]
+        doc["plan"]["exercises"].append(new_exercise)
         es.update(index="plan",id=id,doc=doc)
         return {"status":200}
     #check for status skip_replace
@@ -654,6 +678,10 @@ async def exercise(
         exercise_item["userid"]=current_user.userid
         exercise_item["_id"]=current_user.userid+"_"+exercise_item["exerciseid"]
         exercise_item["date"]=int(datetime.datetime.now().timestamp())
+    # doc["plan"]["exercises"]=doc["plan"]["exercises"].extend(exercise_dicts)
+    doc["done"]["exercises"].extend(exercise_dicts)
+    print(doc["done"])
+    es.update(index="plan",id=id,doc=doc)
     helpers.bulk(es,exercise_dicts,index="exercise")
     return {"status":200}
 
@@ -668,8 +696,8 @@ async def education(
     current_user: Annotated[User, Depends(get_current_user)],
     education_items: list[Education_item]
 ):
-    if not es.indices.exists(index="education"):
-        es.indices.create(index = 'education')
+    complete_quiz(current_user.userid)
+    complete_educational_read(current_user.userid)
     education_dicts=list(map(lambda x: dict(x),education_items))
     for education_item in education_dicts:
         education_item["_id"]=current_user.userid+"_"+education_item["educationid"]
@@ -684,8 +712,6 @@ async def education(
 async def latest(
     current_user: Annotated[User, Depends(get_current_user)],
 ):
-    if not es.indices.exists(index="plan"):
-        es.indices.create(index = 'plan')
     res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=999)["hits"]["hits"]
     if res==[]:
         return []
@@ -697,7 +723,8 @@ async def latest(
     plan=plans[0]
     # print(plans)
     plan["plan"]["exercises"]=list(filter(lambda x: "skipped" not in x.keys(),plan["plan"]["exercises"]))
-
+    # if  not plan_is_active(plan):
+    #     return []
     return plan
 
 
@@ -711,12 +738,17 @@ async def activity_goal(
     goal:int
 ):
     # print(request.query_params)
-    res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=1)["hits"]["hits"]
+    res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},sort=[
+    {
+      "start": {
+        "order": "desc"
+      }
+    }
+  ],size=1)["hits"]["hits"]
     plan=res[0]["_source"]
     plan["plan"]["activity"]["goal"]=goal
     es.update(index='plan',id=res[0]["_id"],doc=plan)
     return plan
-
 
 
 @router.get("/on/{day}")
@@ -727,13 +759,10 @@ async def on(
     query_date=datetime.datetime.strptime(day, "%Y-%m-%d")
     # query_date=query_date.timestamp()
     res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=1)["hits"]["hits"]
-    plans=res[0]["_source"]["history"]
-    current_plan=res[0]["_source"]
-    current_plan.pop("history")
-    plans.append(current_plan) #add current plan list with history
+    plans=list(map(lambda x: x["_source"],res))
     for plan in plans:
-        start=datetime.datetime.fromisoformat(plan["start"])
-        end=datetime.datetime.fromisoformat(plan["end"])
+        start=datetime.datetime.fromtimestamp(plan["start"])
+        end=datetime.datetime.fromtimestamp(plan["end"])
         if query_date>=datetime.datetime.combine(start,datetime.time.min) and query_date<=datetime.datetime.combine(end,datetime.time.max):
             return plan
     return {}
@@ -804,15 +833,74 @@ async def can_skip(
     # new_plan=plan_query["_source"].copy()
     # new_plan["plan"]=plan
     # es.update(index='plan', doc=new_plan,id=plan_id)
-    
 
+def physical_activity_progress(userid):
+    goal=es.search(index="plan", query={'match' : {"userid":userid}},size=1,sort=[{"created": {"order": "asc"}}])["hits"]["hits"][0]["_source"]["plan"]["activity"]["goal"]
+    activities=es.search(index="activity",query={'match' : {"userid":userid}},size=1)["hits"]["hits"]
+    activities_past_week=list(filter(lambda x: datetime.datetime.fromtimestamp(x["_source"]["date"])>datetime.datetime.now()-datetime.timedelta(days=7),activities))
+    total_steps=sum([x["_source"]["steps"] for x in activities_past_week])
+    return total_steps/goal
+
+def filter_tailoring(previous_tailorings,baseline,userid):
+    print(baseline["BT_wai"])
+    pa_percentage=physical_activity_progress(userid)
+    tailoring=["BT_pain_average"]
+    if len(previous_tailorings)%2==0:
+        tailoring.append("T_cpg_function")
+    if (len(previous_tailorings)+2)%4==0 and len(previous_tailorings)>=2 and (int(baseline["T_tampa_fear"])>=2 or pa_percentage<0.5):
+        tailoring.append("T_tampa_fear")
+    if (len(previous_tailorings)+8)%8==0 and len(previous_tailorings)>=8 and int(baseline["BT_wai"])<=5:
+        tailoring.append("BT_wai")
+    if (len(previous_tailorings)+4)%4==0 and len(previous_tailorings)>=4 and int(baseline["BT_wai"])>5:
+        tailoring.append("T_sleep")#missing logic
+    pseq_total=list(map(lambda x: int(baseline[f"PSEQPre_SQ00{x}"]) if x<10 else int(baseline[f"PSEQPre_SQ0{x}"]),range(1,11)))
+    pseq_total=sum(pseq_total)
+    if (len(previous_tailorings)+2)%2==0 and len(previous_tailorings)>=2 and pseq_total<=24:
+        tailoring.append("BT_pseq_5")
+        tailoring.append("BT_pseq_9")
+    if (len(previous_tailorings)+8)%8==0 and len(previous_tailorings)>=8 and int(baseline["BT_PSS"])>=14:
+        tailoring.extend(["BT_PSS_2","BT_PSS_4","BT_PSS_5","BT_PSS_10"])
+    if (len(previous_tailorings)+3)%4==0 and len(previous_tailorings)>=3 and int(baseline["BT_PHQ_2item"])>=2:
+        tailoring.append("BT_phq_1")
+        tailoring.append("BT_phq_2")
+    if pa_percentage<0.75:
+        tailoring.append("T_barriers")
+    if len(previous_tailorings)>=2:
+        barriers_past_two=previous_tailorings[-2:]
+        barriers_past_two=list(map(lambda x: 0 if "T_barriers" not in x["_source"].keys() else 0 if x["_source"]["T_barriers"]!=7 else 1,barriers_past_two))
+        if sum(barriers_past_two)==0:
+            tailoring.remove("T_barriers")
+    # if (len(previous_tailorings)+2)%2==0 and len(previous_tailorings)>=2:
+    #     if 
 
 
 @router.get("/tailoring")
 async def tailoring(
     current_user: Annotated[User, Depends(get_current_user)],
 ):
-    res = es.search(index="data_description",query={"match":{"description_type":"tailoring"}},size=900)
-    tailoring=list(map(lambda x: x["_source"],res["hits"]["hits"]))
-    complete_onetime_goal(current_user.userid,"QACompleted")
+    baseline = es.get(index="questionnaire",id=current_user.userid)["_source"]["questionnaire"]
+    # all_tailoring_questions=list(map(lambda x: x["_source"],res["hits"]["hits"]))
+    print(baseline)
+    previous_tailorings=es.search(index="tailoring_questionnaire", query={'match' : {"userid":current_user.userid}},size=9999)["hits"]["hits"]
+    previous_tailorings.sort(key=lambda x: x["_source"]["date"],reverse=True)
+    tailoring=filter_tailoring(previous_tailorings,baseline,current_user.userid)
+    # update_goal(current_user.userid,"QACompleted")
     return tailoring
+
+@router.get("/summary")
+async def tailoring(
+    current_user: Annotated[User, Depends(get_current_user)],
+):
+    res = es.search(index="achievements", query={"bool":{"must":[{'match' : {"userid":"stuart"}}],
+                                                   "must_not":[{'match' : {"achievedat":-1}}],
+                                                  }
+                                          }
+                      ,size=10000)["hits"]["hits"]
+    print(res)
+    achievements=list(map(lambda x: x["_source"],res))
+    # for i in 
+
+    past_week=datetime.datetime.now()-datetime.timedelta(days=7)
+    # list
+    achievements=list(filter(lambda x: datetime.datetime.fromtimestamp(str(x["achievedate"]))>past_week,achievements))
+    return achievements

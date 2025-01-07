@@ -1,0 +1,106 @@
+[
+	{
+		"_index": "questionnaire",
+		"_type": "tbarr",
+		"_id": "1",
+		"_score": null,
+		"_source": {
+			"date": 1524816038803,
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "BT_pain_average",
+					"answer": "8"
+				},
+				{
+					"questionid": "T_barriers",
+					"answer": "lack_of_time;too_tired"
+				}
+			]
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "tbarr",
+		"_id": "2",
+		"_score": null,
+		"_source": {
+			"date": 1524762714436,
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "BT_pain_average",
+					"answer": "2"
+				},
+				{
+					"questionid": "T_barriers",
+					"answer": "0;1"
+				}
+			]
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "tbarr",
+		"_id": "3",
+		"_score": null,
+		"_source": {
+			"date": 1524762643387,
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "BT_pain_average",
+					"answer": "2"
+				},
+				{
+					"questionid": "T_barriers",
+					"answer": "0;1"
+				}
+			]
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "tbarr",
+		"_id": "4",
+		"_score": null,
+		"_source": {
+			"date": 1524742737461,
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "BT_pain_average",
+					"answer": "4"
+				},
+				{
+					"questionid": "T_barriers",
+					"answer": "none"
+				}
+			]
+		}
+	},
+	{
+		"_index": "questionnaire",
+		"_type": "tbarr",
+		"_id": "5",
+		"_score": null,
+		"_source": {
+			"date": 1524738993404,
+			"type": "tailoring",
+			"questions": [
+				{
+					"questionid": "BT_pain_average",
+					"answer": "3"
+				},
+				{
+					"questionid": "T_cpg_function",
+					"answer": "4"
+				},
+				{
+					"questionid": "T_barriers",
+					"answer": "0"
+				}
+			]
+		}
+	}
+]
