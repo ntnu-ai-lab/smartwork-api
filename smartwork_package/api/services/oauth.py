@@ -14,9 +14,11 @@ from jose import JWTError, jwt
 from passlib.context import CryptContext
 from elasticsearch import Elasticsearch
 # from api.resources.constants import PORT,PASSWORD,USERNAME,HOST
-from api.resources.constants import PORT,PASSWORD,USERNAME,HOST
 from api.resources.custom_router import LoggingRoute
-es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+from api.resources.constants import ES_PASSWORD,ES_URL
+
+
+es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 
 
 

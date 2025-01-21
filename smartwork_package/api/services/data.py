@@ -2,7 +2,7 @@ from fastapi import APIRouter,Depends
 from elasticsearch import Elasticsearch
 from api.services.oauth import get_current_active_user,User
 from typing import Annotated
-from api.resources.constants import PORT,PASSWORD,USERNAME,HOST
+from api.resources.constants import ES_URL,ES_PASSWORD
 from api.resources.custom_router import LoggingRoute
 
 router = APIRouter(prefix="/data",route_class=LoggingRoute,tags=["Data"])
@@ -10,7 +10,7 @@ router = APIRouter(prefix="/data",route_class=LoggingRoute,tags=["Data"])
 
 
 
-es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 
 
 

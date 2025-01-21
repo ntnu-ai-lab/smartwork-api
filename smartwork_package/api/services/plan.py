@@ -14,10 +14,10 @@ import functools
 import math
 from functools import cmp_to_key
 import random
-from api.resources.constants import FIRST_WEEK_EDUCATION,FIRST_WEEK_EXERCISES
+from api.resources.constants import FIRST_WEEK_EDUCATION,FIRST_WEEK_EXERCISES,ES_PASSWORD,ES_URL
 from api.achievements.check_achievements import complete_quiz,complete_educational_read,update_goal
 from api.resources.custom_router import LoggingRoute
-es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_URL),verify_certs=False)
 
 
 

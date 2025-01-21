@@ -3,10 +3,12 @@ from typing import Callable
 
 from fastapi import APIRouter, FastAPI, Request, Response
 from fastapi.routing import APIRoute
-from api.resources.constants import PORT,PASSWORD,USERNAME,HOST
-from elasticsearch import Elasticsearch
 
-es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+from elasticsearch import Elasticsearch
+from api.resources.constants import ES_PASSWORD,ES_URL
+
+
+es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 
 class LoggingRoute(APIRoute):
     def get_route_handler(self) -> Callable:

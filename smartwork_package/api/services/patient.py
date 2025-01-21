@@ -2,7 +2,7 @@ from fastapi import APIRouter,Depends
 from api.services.oauth import get_current_active_user,User
 from typing import Annotated
 from elasticsearch import Elasticsearch
-from api.resources.constants import PORT,PASSWORD,USERNAME,HOST,ACHIEVEMENT_ORDER
+from api.resources.constants import ES_PASSWORD,ES_URL
 from pydantic import BaseModel
 from api.resources.custom_router import LoggingRoute
 from elasticsearch import helpers
@@ -10,7 +10,7 @@ from datetime import datetime
 import pandas as pd
 from api.achievements.check_achievements import update_goal,total_steps,daily_steps,avg_weekly_steps
 
-es = Elasticsearch(HOST+str(PORT),basic_auth=(USERNAME,PASSWORD),verify_certs=False)
+es = Elasticsearch(ES_URL,basic_auth=("elastic","ES_PASSWORD"),verify_certs=False)
 
 
 router = APIRouter(prefix="/patient",route_class=LoggingRoute,tags=["Patient"])

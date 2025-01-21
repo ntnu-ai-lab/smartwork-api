@@ -1,10 +1,16 @@
-PORT=9400
-PASSWORD="secret"
-USERNAME="elastic"
-HOST="http://localhost:"
-URL="https://back-up.idi.ntnu.no"
-ES_URL="http://localhost:9400"
-BASIC_AUTH=("elastic","secret")
+import argparse
+parser=argparse.ArgumentParser()
+parser.add_argument("--es_password")
+parser.add_argument("--es_port")
+args=parser.parse_args()
+
+
+ES_PASSWORD=args.es_password
+ES_PORT=args.es_port
+ES_URL=f"http://localhost:{ES_PORT}"
+
+
+
 STEP_GOAL_MIN=3000
 STEP_GOAL_MAX=10000
 EXERCISE_MAX_SIZE=12

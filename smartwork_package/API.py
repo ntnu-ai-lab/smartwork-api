@@ -14,6 +14,8 @@ import logging
 
 
 
+
+
 app = FastAPI(
     title="SmartWork",
     docs_url="/"
