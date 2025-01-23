@@ -8,7 +8,7 @@ args=parser.parse_args()
 
 
 ES_PASSWORD=args.es_password
-LIMESURVEY_API_KEY=args.LIMESURVEY_API_KEY
+LIMESURVEY_API_KEY=args.limesurvey_api_key
 ES_URL=args.es_url
 MYCBR_URL=args.mycbr_url
 
