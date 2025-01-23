@@ -15,7 +15,7 @@ from passlib.context import CryptContext
 from elasticsearch import Elasticsearch
 # from api.resources.constants import PORT,PASSWORD,USERNAME,HOST
 from api.resources.custom_router import LoggingRoute
-from api.resources.constants import ES_PASSWORD,ES_URL,limesurvey_api_key
+from api.resources.constants import ES_PASSWORD,ES_URL,LIMESURVEY_API_KEY
 
 
 es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
@@ -158,7 +158,7 @@ async def login_for_access_token(
     Used to generate tokens, both for users and clients
     """
     if form_data.client_id:
-        if form_data.client_id!=limesurvey_api_key:
+        if form_data.client_id!=LIMESURVEY_API_KEY:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Incorrect client_id",

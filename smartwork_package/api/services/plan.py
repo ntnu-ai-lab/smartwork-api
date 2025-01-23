@@ -14,10 +14,10 @@ import functools
 import math
 from functools import cmp_to_key
 import random
-from api.resources.constants import FIRST_WEEK_EDUCATION,FIRST_WEEK_EXERCISES,ES_PASSWORD,ES_URL
+from api.resources.constants import FIRST_WEEK_EDUCATION,FIRST_WEEK_EXERCISES,ES_PASSWORD,ES_URL,MYCBR_URL
 from api.achievements.check_achievements import complete_quiz,complete_educational_read,update_goal
 from api.resources.custom_router import LoggingRoute
-es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_URL),verify_certs=False)
+es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 
 
 
@@ -219,7 +219,7 @@ def rule_filter_education(questionnaire):
 
 
 def fetch_cbr_educational_items(base_questionnaire):
-    response=requests.post("http://localhost:8080/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Education/retrievalByMultipleAttributes",
+    response=requests.post(f"{MYCBR_URL}/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Education/retrievalByMultipleAttributes",
                       json=base_questionnaire,
                       params={"k":-1}
     )
@@ -399,7 +399,7 @@ def get_pain_relief_exercises(cbr_exercise_items,es_exercise_items,number_exerci
 
 def generate_plan_exercise(base_questionnaire,update_questionnaire,duration):
     #fetch exercises from cbr 
-    response=requests.post("http://localhost:8080/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Exercise/retrievalByMultipleAttributes",
+    response=requests.post(f"{MYCBR_URL}/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Exercise/retrievalByMultipleAttributes",
                       json=base_questionnaire,
                       params={"k":-1}
     )

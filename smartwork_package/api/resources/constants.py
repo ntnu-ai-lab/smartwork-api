@@ -3,12 +3,14 @@ parser=argparse.ArgumentParser()
 parser.add_argument("--es_password")
 parser.add_argument("--es_url")
 parser.add_argument("--limesurvey_api_key")
+parser.add_argument("--mycbr_url")
 args=parser.parse_args()
 
 
 ES_PASSWORD=args.es_password
-limesurvey_api_key=args.limesurvey_api_key
+LIMESURVEY_API_KEY=args.LIMESURVEY_API_KEY
 ES_URL=args.es_url
+MYCBR_URL=args.mycbr_url
 
 
 
