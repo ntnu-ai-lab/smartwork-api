@@ -2,11 +2,13 @@ import argparse
 parser=argparse.ArgumentParser()
 parser.add_argument("--es_password")
 parser.add_argument("--es_port")
+parser.add_argument("--limesurvey_api_key")
 args=parser.parse_args()
 
 
 ES_PASSWORD=args.es_password
 ES_PORT=args.es_port
+limesurvey_api_key=args.limesurvey_api_key
 ES_URL=f"http://localhost:{ES_PORT}"
 
 
