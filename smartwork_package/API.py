@@ -11,9 +11,9 @@ from api.services.plan import router as plan_router
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 import logging
-
-
-
+from api.resources.constants import ES_PASSWORD,ES_URL,LS_MAPPING
+from elasticsearch import Elasticsearch,helpers
+from init_scripts.static import populate_db
 
 
 app = FastAPI(
@@ -43,6 +43,10 @@ async def root():
 
 
 if __name__ == "__main__":
+    
+    es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
+    if not es.indices.exists(index='data_description'):
+         populate_db(ES_URL,ES_PASSWORD)
     uvicorn.run(
         "API:app", 
         host="0.0.0.0", 
