@@ -13,7 +13,7 @@ args=parser.parse_args()
 
 
 from config_backup import BACKEND_STATIC_DIR
-es = Elasticsearch(parser.es_url,basic_auth=("elastic",parser.es_password),verify_certs=False)
+es = Elasticsearch(args.es_url,basic_auth=("elastic",args.es_password),verify_certs=False)
 
 def read_json_file(file_path):
     with open(file_path, 'r') as file:
