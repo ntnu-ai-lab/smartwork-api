@@ -15,7 +15,7 @@ from passlib.context import CryptContext
 from elasticsearch import Elasticsearch
 # from api.resources.constants import PORT,PASSWORD,USERNAME,HOST
 from api.resources.custom_router import LoggingRoute
-from api.resources.constants import ES_PASSWORD,ES_URL,LIMESURVEY_API_KEY
+from api.resources.constants import ES_PASSWORD,ES_URL,LIMESURVEY_API_KEY,SECRET_KEY,CLIENT_IDS
 
 
 es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
@@ -26,7 +26,7 @@ router = APIRouter(prefix="/oauth",route_class=LoggingRoute,tags=["Oauth"])
 # router.route_class=LoggingRoute
 # to get a string like this run:
 # openssl rand -hex 32
-SECRET_KEY = "d1ae20565dd342009f3bad85b91ec0ad6e868bea11f69a990d498091855e71f3"
+
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 6*30*24*60*60
 
@@ -164,7 +164,7 @@ async def login_for_access_token(
                 detail="Incorrect client_id",
                 headers={"WWW-Authenticate": "Bearer"},
             )
-        if client_ids[form_data.client_id] != form_data.client_secret:
+        if CLIENT_IDS[form_data.client_id] != form_data.client_secret:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Incorrect client_secret",

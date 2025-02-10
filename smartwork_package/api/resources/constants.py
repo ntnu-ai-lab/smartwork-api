@@ -4,6 +4,9 @@ parser.add_argument("--es_password")
 parser.add_argument("--es_url")
 parser.add_argument("--limesurvey_api_key")
 parser.add_argument("--mycbr_url")
+parser.add_argument("--secret_key")
+parser.add_argument("--client_id")
+parser.add_argument("--client_secret")
 args=parser.parse_args()
 
 
@@ -11,8 +14,8 @@ ES_PASSWORD=args.es_password
 LIMESURVEY_API_KEY=args.limesurvey_api_key
 ES_URL=args.es_url
 MYCBR_URL=args.mycbr_url
-
-
+SECRET_KEY = args.secret_key
+CLIENT_IDS={args.client_id:args.client_secret}
 
 STEP_GOAL_MIN=3000
 STEP_GOAL_MAX=10000
