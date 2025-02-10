@@ -4,8 +4,16 @@ from fastapi import HTTPException
 from elasticsearch import Elasticsearch
 import parsing
 import json
+import argparse
+
+parser=argparse.ArgumentParser()
+parser.add_argument("--es_password")
+parser.add_argument("--es_url")
+args=parser.parse_args()
+
+
 from config_backup import BACKEND_STATIC_DIR
-es = Elasticsearch("http://localhost:9400",basic_auth=("elastic","secret"),verify_certs=False)
+es = Elasticsearch(parser.es_url,basic_auth=("elastic",parser.es_password),verify_certs=False)
 
 def read_json_file(file_path):
     with open(file_path, 'r') as file:
