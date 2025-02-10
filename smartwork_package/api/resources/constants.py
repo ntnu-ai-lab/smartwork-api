@@ -2,7 +2,6 @@ import argparse
 parser=argparse.ArgumentParser()
 parser.add_argument("--es_password")
 parser.add_argument("--es_url")
-parser.add_argument("--limesurvey_api_key")
 parser.add_argument("--mycbr_url")
 parser.add_argument("--secret_key")
 parser.add_argument("--client_id")
@@ -11,7 +10,7 @@ args=parser.parse_args()
 
 
 ES_PASSWORD=args.es_password
-LIMESURVEY_API_KEY=args.limesurvey_api_key
+CLIENT_ID=args.client_id
 ES_URL=args.es_url
 MYCBR_URL=args.mycbr_url
 SECRET_KEY = args.secret_key
