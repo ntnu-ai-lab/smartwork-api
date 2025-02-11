@@ -2,7 +2,7 @@ from fastapi import APIRouter,Depends
 from api.services.oauth import get_current_active_user,User
 from typing import Annotated
 from elasticsearch import Elasticsearch
-from api.resources.constants import ES_PASSWORD,ES_URL
+from api.resources.constants import ES_PASSWORD,ES_URL,ACHIEVEMENT_ORDER
 from pydantic import BaseModel
 from api.resources.custom_router import LoggingRoute
 from elasticsearch import helpers
