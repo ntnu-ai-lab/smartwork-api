@@ -157,7 +157,6 @@ async def login_for_access_token(
     """
     Used to generate tokens, both for users and clients
     """
-    print(form_data,"jinkers")
     if form_data.client_id:
         if form_data.client_id!=CLIENT_ID:
             raise HTTPException(

@@ -10,7 +10,7 @@ from datetime import datetime
 import pandas as pd
 from api.achievements.check_achievements import update_goal,total_steps,daily_steps,avg_weekly_steps
 
-es = Elasticsearch(ES_URL,basic_auth=("elastic","ES_PASSWORD"),verify_certs=False)
+es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 
 
 router = APIRouter(prefix="/patient",route_class=LoggingRoute,tags=["Patient"])
