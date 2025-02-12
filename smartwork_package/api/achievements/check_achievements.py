@@ -1,7 +1,8 @@
 from elasticsearch import Elasticsearch, helpers
 from datetime import datetime,time,timedelta
 import pandas as pd
-es = Elasticsearch("http://localhost:9400",basic_auth=("elastic","secret"),verify_certs=False)
+from api.resources.constants import ES_PASSWORD,ES_URL
+es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 
 
 

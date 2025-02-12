@@ -69,8 +69,8 @@ async def achievements(
 def steps2distance(step_count,gender,height):
     #https://www.walkingwithattitude.com/articles/features/how-to-measure-stride-or-step-length-for-your-pedometer
     if gender=="female":
-        return 0.413*int(height)*step_count*0.00001
-    return 0.415*int(height)*step_count*0.00001
+        return 0.413*float(height)*step_count*0.00001
+    return 0.415*float(height)*step_count*0.00001
 
 
 @router.get("/totals")
@@ -212,7 +212,16 @@ async def daily_progress(
             ]
         }
     }
-    )["hits"]["hits"][0]["_source"]["plan"]["activity"]["goal"]
+    )["hits"]["hits"]
+    if len(activity_goal)==0:
+        return {
+            "progress": 0,
+            "progress_activity":0,
+            "progress_education":0,
+            "progress_exercise":0,
+        }
+    else:
+        activity_goal=activity_goal[0]["_source"]["plan"]["activity"]["goal"]
     
     completed_exercises=res_exercise["hits"]["hits"]
     completed_educations=res_education["hits"]["hits"]

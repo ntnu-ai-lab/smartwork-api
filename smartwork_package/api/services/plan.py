@@ -27,7 +27,7 @@ router = APIRouter(prefix="/patient/plan",route_class=LoggingRoute,tags=["Plan"]
 
 
 class Plan_info(BaseModel):
-    questionnaire:Optional[dict]
+    questions:Optional[list]#changed from questionnaire to questions
     exercises_duration:int
 
 
@@ -626,8 +626,10 @@ class Exercise(BaseModel):
 @router.post("/exercise")
 async def exercise(
     current_user: Annotated[User, Depends(get_current_user)],
-    exercises: list
+    # exerciseid: list
+    request:Request
 ):
+    exercises=await request.json()
     status=exercises[0]["status"]
     exerciseid=exercises[0]["exerciseid"]
 
