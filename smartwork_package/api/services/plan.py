@@ -219,10 +219,13 @@ def rule_filter_education(questionnaire):
 
 
 def fetch_cbr_educational_items(base_questionnaire):
+    print(base_questionnaire)
     response=requests.post(f"{MYCBR_URL}/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Education/retrievalByMultipleAttributes",
                       json=base_questionnaire,
                       params={"k":-1}
     )
+    print(response.json())
+    raise
     cbr_education_items=set("".join(list(map(lambda x: x["SelfManagement_Education"],response.json()))).strip(";").split(";"))
     cbr_education_items=list(filter(lambda x: x!="",cbr_education_items))
     return cbr_education_items
@@ -399,11 +402,31 @@ def get_pain_relief_exercises(cbr_exercise_items,es_exercise_items,number_exerci
 
 def generate_plan_exercise(base_questionnaire,update_questionnaire,duration):
     #fetch exercises from cbr 
+    # print(base_questionnaire)
+    rel_attributes=['Activity_StepCount', 'BIPQ_concern', 'BIPQ_control', 'BIPQ_emotion', 'BIPQ_life', 'BIPQ_pain_continuation', 'BIPQ_selfmanagement', 'BIPQ_symptoms', 'BIPQ_understanding', 'BT_PHQ_2item', 'BT_PSEQ_2item', 'BT_PSS', 'BT_pain_average', 'BT_wai', 'Comorbidities', 'Dem_age', 'Dem_bmi', 'Dem_gender', 'Dem_height', 'Dem_weight', 'EQ5D', 'EQ5D_activity', 'EQ5D_anxiety', 'EQ5D_mobility', 'EQ5D_pain', 'EQ5D_selfcare', 'Education', 'Employment', 'FABQ', 'FABQ_lbp_cause', 'F_GPE', 'F_PASS', 'Family', 'MSKHQ', 'NDI', 'PSFS_activity', 'PSFS_activity_name', 'PSFS_score', 'PSS', 'Pain_1year', 'Pain_medication', 'Pain_self_efficacy', 'Pain_sites', 'Pain_worst', 'Primary_pain_site', 'RMDQ', 'SaltinGrimby', 'SelfManagement_Activity', 'SelfManagement_Education', 'SelfManagement_Exercise', 'Sleep_day', 'Sleep_difficulty', 'Sleep_end', 'Sleep_wakeup', 'T_barriers', 'T_cpg_function', 'T_sleep', 'T_tampa_fear', 'Work_characteristics']
+    reduced_questionnaire={}
+    for k in base_questionnaire:
+        if k in rel_attributes:
+            isfloat=False
+            temp_value=base_questionnaire[k]
+            try:
+                float(temp_value)
+                isfloat=True
+            except:
+                pass
+
+            if isfloat:
+                temp_value=float(temp_value)
+                if temp_value.is_integer():
+                    temp_value=int(temp_value)
+            reduced_questionnaire[k]=str(temp_value)
+    # print(reduced_questionnaire)
     response=requests.post(f"{MYCBR_URL}/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Exercise/retrievalByMultipleAttributes",
-                      json=base_questionnaire,
+                      json=reduced_questionnaire,
                       params={"k":-1}
     )
-
+    # print(response.json())
+    # raise
     #get exercise names from cbr
     cbr_exercise_items=list(set("".join(list(map(lambda x: x["SelfManagement_Exercise"],response.json()))).split(";")))
     # print(cbr_exercise_items)
@@ -552,7 +575,16 @@ def generate_plan(current_user,plan_info,educations,exercises):
                                     }
                         } #TODO: what is this supposed to be? Woulfnt it just be 0?
                    }
-    
+
+def find_previous_stepcounts(previous_plans):
+    final_activity=""
+    for i,previous_plan in enumerate(previous_plans):
+        # print(previous_plan["_source"]["start"])
+        print(i)
+        activity=activity_done(previous_plan["_source"]["start"],previous_plan["_source"]["end"])
+        final_activity+=str(i)+":"+str(activity)+";"
+    return final_activity
+
 @router.post("/next")
 async def next(
     current_user: Annotated[User, Depends(get_current_user)],
@@ -576,30 +608,30 @@ async def next(
         return complete_plan
     all_plans.sort(key=lambda x: x["_source"]["created"],reverse=True)
     current_plan=all_plans[0]["_source"]
-    if plan_is_active(current_plan):
-        raise HTTPException(status_code=500,detail="User already has a valid plan.")
+    # if plan_is_active(current_plan):
+    #     raise HTTPException(status_code=500,detail="User already has a valid plan.")
     #check if user has questionnaire
     base_questionnaire = es.search(index="questionnaire", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"][0]["_source"]["questionnaire"]
     #check if user has a previous plan
-    previous_plan = es.search(index="plan", query={'match' : {"userid":"stuart"}},sort=[{"created": {"order": "asc"}}],size=1)["hits"]["hits"][0]["_source"]
+    previous_plans = es.search(index="plan", query={'match' : {"userid":current_user.userid}},sort=[{"created": {"order": "asc"}}],size=1)["hits"]["hits"]
 
     if base_questionnaire==[]:
         raise HTTPException(status_code=500,detail="Missing baseline questionannaire")
     else:
         #merges baseline questionnaire with new info
-        if plan_info.questionnaire is not None:
-            complete_questionnaire=base_questionnaire | plan_info.questionnaire
+        if plan_info.questions is not None:
+            complete_questionnaire=base_questionnaire | plan_info.questions[0]
         else:
             complete_questionnaire=base_questionnaire
-        complete_questionnaire["Activity_StepCount"]=activity_done(previous_plan["start"],previous_plan["end"])
-    if plan_info.questionnaire is not None:
-        tmp_questionnaire=plan_info.questionnaire.copy()
+        complete_questionnaire["Activity_StepCount"]=find_previous_stepcounts(previous_plans)
+    if plan_info.questions[0] is not None:
+        tmp_questionnaire=plan_info.questions[0].copy()
         tmp_questionnaire["userid"]=current_user.userid
         tmp_questionnaire["date"]=datetime.datetime.now().timestamp()
         es.index(index='tailoring_questionnaire', document=tmp_questionnaire)
 
-    exercises=generate_plan_exercise(complete_questionnaire,plan_info.questionnaire,plan_info.exercises_duration)
-    educations=generate_plan_education(current_user,complete_questionnaire,plan_info.questionnaire),
+    exercises=generate_plan_exercise(complete_questionnaire,plan_info.questions[0],plan_info.exercises_duration)
+    educations=generate_plan_education(current_user,complete_questionnaire,plan_info.questions[0]),
     # print(list(map(lambda x: es.search(index="data_description", query={'match' : {"ExerciseID":x}},size=100)["hits"]["hits"][0]["_source"],exercises)))
     complete_plan=generate_plan(current_user,plan_info,educations,exercises)
     

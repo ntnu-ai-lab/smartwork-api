@@ -253,7 +253,7 @@ LS_MAPPING={
     "EQ5DActivity":"EQ5D_activity",
 	"EQ5DPain":"EQ5D_pain",
 	"EQ5DAnxiety":"EQ5D_anxiety",
-	"EQ5DVAS":"EQ5D",
+	# "EQ5DVAS":"EQ5D",
 	"SleepDifficulty":"Sleep_difficulty",
     "SleepWakeup":"Sleep_wakeup",
     "SleepEnd":"Sleep_end",

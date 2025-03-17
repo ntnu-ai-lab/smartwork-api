@@ -21,6 +21,10 @@ class FullUser(BaseModel):
 class PartialUser(BaseModel):
     questionnaire:dict
     username: str
+    
+class PasswordReset(BaseModel):
+    username: str
+    password: str
 
 # def format_data(questionnaire):
 #     comorbidities=""
@@ -28,7 +32,20 @@ class PartialUser(BaseModel):
 #     painsites=""
 #     for i in range(1,10):
 #         painsites+=questionnaire["PainSites_SQ_00"]
-
+@router.post("/reset_password")
+async def adduser(
+    current_user: Annotated[User, Depends(get_current_active_user)],
+    user_data:PasswordReset
+): 
+    if not current_user.admin:
+        raise HTTPException(403,"You need admin access to create users")
+    es.update(index='account', id=user_data.username,
+            doc={
+                'password': pwd_context.hash(user_data.password),
+                }
+    )
+    es.indices.refresh(index='account')
+    return "Password was reset"
 
 @router.post("/adduser")
 async def adduser(

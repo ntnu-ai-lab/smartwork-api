@@ -5,9 +5,18 @@ from elasticsearch import Elasticsearch
 from init_scripts.parsing import run_parse
 import json
 import argparse
+import requests
 from init_scripts.config_backup import BACKEND_STATIC_DIR
 
-
+def init_mycbr(mycbr_url):
+    response=requests.put(mycbr_url+"/concepts/Case/attributes/Activity_StepCount/sequence/similarityFunctions/test_sequence",
+                      json={"maxDiff":1000}
+    )
+    print(response.text)
+    response=requests.put(mycbr_url+"/concepts/Case/attributes/BT_pain_average/sequence/similarityFunctions/test_sequence",
+                      json={"maxDiff":1000}
+    )
+    print(response.text)
 
 def populate_db(es_url,es_password):
     run_parse()
