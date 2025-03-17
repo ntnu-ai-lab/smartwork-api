@@ -38,7 +38,7 @@ async def adduser(
     user_data:PasswordReset
 ): 
     if not current_user.admin:
-        raise HTTPException(403,"You need admin access to create users")
+        raise HTTPException(403,"You need admin access to change password")
     es.update(index='account', id=user_data.username,
             doc={
                 'password': user_data.password,
