@@ -41,7 +41,7 @@ async def adduser(
         raise HTTPException(403,"You need admin access to create users")
     es.update(index='account', id=user_data.username,
             doc={
-                'password': pwd_context.hash(user_data.password),
+                'password': user_data.password,
                 }
     )
     es.indices.refresh(index='account')
@@ -59,14 +59,14 @@ async def adduser(
     res = es.index(index='account', id=user_data.username, 
             document={
                 'userid': user_data.username,
-                'password': pwd_context.hash(user_data.password),
+                'password': None,
                 'language': user_data.language,
                 'clinician': 'NTNU',
                 # 'rights': user_data.role,
                 'isaccountnonexpired': True,
                 'isaccountnonlocked': True,
                 'iscredentialsnonexpired': True,
-                'isenabled': True,
+                'isenabled': False,
                 'date':datetime.datetime.now().timestamp()}
     )
     es.indices.refresh(index='account')
