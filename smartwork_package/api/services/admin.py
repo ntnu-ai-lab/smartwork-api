@@ -59,7 +59,7 @@ async def adduser(
     res = es.index(index='account', id=user_data.username, 
             document={
                 'userid': user_data.username,
-                'password': 123,#None,
+                'password': "123",#None,
                 'language': user_data.language,
                 'clinician': 'NTNU',
                 # 'rights': user_data.role,
