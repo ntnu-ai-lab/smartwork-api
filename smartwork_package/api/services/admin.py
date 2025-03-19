@@ -66,7 +66,7 @@ async def adduser(
                 'isaccountnonexpired': True,
                 'isaccountnonlocked': True,
                 'iscredentialsnonexpired': True,
-                'isenabled': True#False,
+                'isenabled': True,#False,
                 'date':datetime.datetime.now().timestamp()}
     )
     es.indices.refresh(index='account')
