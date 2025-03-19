@@ -50,8 +50,8 @@ if __name__ == "__main__":
     
     es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
     if not es.indices.exists(index='data_description'):
-        populate_db(ES_URL,ES_PASSWORD)
         init_mycbr(MYCBR_URL)
+        populate_db(ES_URL,ES_PASSWORD)
     uvicorn.run(
         "API:app", 
         host="0.0.0.0", 

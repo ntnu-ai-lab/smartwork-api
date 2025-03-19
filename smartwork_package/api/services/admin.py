@@ -33,7 +33,7 @@ class PasswordReset(BaseModel):
 #     for i in range(1,10):
 #         painsites+=questionnaire["PainSites_SQ_00"]
 @router.post("/reset_password")
-async def adduser(
+async def reset_password(
     current_user: Annotated[User, Depends(get_current_active_user)],
     user_data:PasswordReset
 ): 
@@ -42,6 +42,7 @@ async def adduser(
     es.update(index='account', id=user_data.username,
             doc={
                 'password': user_data.password,
+                'isenabled': True,
                 }
     )
     es.indices.refresh(index='account')
@@ -52,21 +53,20 @@ async def adduser(
     current_user: Annotated[User, Depends(get_current_active_user)],
     user_data:FullUser
 ): 
-    
     if not current_user.admin:
         raise HTTPException(403,"You need admin access to create users")
     # try:
     res = es.index(index='account', id=user_data.username, 
             document={
                 'userid': user_data.username,
-                'password': None,
+                'password': 123,#None,
                 'language': user_data.language,
                 'clinician': 'NTNU',
                 # 'rights': user_data.role,
                 'isaccountnonexpired': True,
                 'isaccountnonlocked': True,
                 'iscredentialsnonexpired': True,
-                'isenabled': False,
+                'isenabled': True#False,
                 'date':datetime.datetime.now().timestamp()}
     )
     es.indices.refresh(index='account')

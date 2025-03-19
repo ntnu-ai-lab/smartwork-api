@@ -239,7 +239,6 @@ async def daily_progress(
         "progress_education":progress_education*100,
         "progress_exercise":progress_exercise*100,
     }
-
 class Activity(BaseModel):
     start:int
     end:int
@@ -247,11 +246,14 @@ class Activity(BaseModel):
     steps:int
 
 
+class ActivityContainer(BaseModel):
+    activities:list[Activity]
+
 
 @router.post("/activity")
 async def activity(
     current_user: Annotated[User, Depends(get_current_active_user)],
-    activities: list[Activity]
+    activities: ActivityContainer
 ):
     """
     Adds activity to the user

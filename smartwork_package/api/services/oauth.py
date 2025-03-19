@@ -67,6 +67,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="oauth/token",description="Either 
 
 
 def verify_password(plain_password, hashed_password):
+    print(plain_password,hashed_password)
     return pwd_context.verify(plain_password, hashed_password)
 
 
@@ -75,10 +76,11 @@ def verify_password(plain_password, hashed_password):
 def get_user(username):
     if not es.indices.exists(index="account"):
         es.indices.create(index = 'account')
-    res = es.search(index="account", query={'match' : {"_id":username}})
-    if not res["hits"]["hits"]:
+    try:
+        res=es.get(index="account",id=username)
+    except:
         return None
-    return UserInDB(**res.body["hits"]["hits"][0]["_source"])
+    return UserInDB(**res["_source"])
 
 
 def authenticate_user(username: str, password: str):

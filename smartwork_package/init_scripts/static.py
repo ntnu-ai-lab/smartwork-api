@@ -46,14 +46,8 @@ def populate_db(es_url,es_password):
         del tail["_type"]
     print(tailoring)
     helpers.bulk(es,tailoring,index="data_description")
+    for index in ["plan","exercise","education","achievements","activity","appsettings","tailoring_questionnaire","account","baseline","questionnaire"]:
 
-    # es.indices.create(index = 'plan')
-    # es.indices.create(index = 'exercise')
-    # es.indices.create(index = 'education')
-    # es.indices.create(index = 'achievements')
-    # es.indices.create(index = 'activity')
-    # es.indices.create(index = 'appsettings')
-    # es.indices.create(index = 'tailoring_questionnaire')
-    # es.indices.create(index = 'account')
-    # es.indices.create(index = 'baseline')
-    # es.indices.create(index = 'questionnaire')
+        es.indices.create(index = index,ignore=400)
+
+  
