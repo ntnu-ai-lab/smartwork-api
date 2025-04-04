@@ -59,14 +59,14 @@ async def adduser(
     res = es.index(index='account', id=user_data.username, 
             document={
                 'userid': user_data.username,
-                'password': "123",#None,
+                'password': None,
                 'language': user_data.language,
                 'clinician': 'NTNU',
                 # 'rights': user_data.role,
                 'isaccountnonexpired': True,
                 'isaccountnonlocked': True,
                 'iscredentialsnonexpired': True,
-                'isenabled': True,#False,
+                'isenabled': False,
                 'date':datetime.datetime.now().timestamp()}
     )
     es.indices.refresh(index='account')
