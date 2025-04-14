@@ -258,7 +258,7 @@ async def activity(
     """
     Adds activity to the user
     """
-    activity_dicts=list(map(lambda x: dict(x),activities))
+    activity_dicts=list(map(lambda x: x.model_dump(),activities.activities))
     for activity in activity_dicts:
         activity["date"]=datetime.now().timestamp()
         activity["userid"]=current_user.userid

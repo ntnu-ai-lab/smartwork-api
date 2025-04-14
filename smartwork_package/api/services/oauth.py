@@ -67,7 +67,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="oauth/token",description="Either 
 
 
 def verify_password(plain_password, hashed_password):
-    print(plain_password,hashed_password)
+    # print(plain_password,hashed_password)
     return pwd_context.verify(plain_password, hashed_password)
 
 
@@ -80,6 +80,7 @@ def get_user(username):
         res=es.get(index="account",id=username)
     except:
         return None
+    # print(res["_source"])
     return UserInDB(**res["_source"])
 
 

@@ -730,10 +730,11 @@ async def education(
     current_user: Annotated[User, Depends(get_current_user)],
     education_items: list[Education_item]
 ):
-    complete_quiz(current_user.userid)
     complete_educational_read(current_user.userid)
     education_dicts=list(map(lambda x: dict(x),education_items))
     for education_item in education_dicts:
+        if education_item["is_quiz"]:
+            complete_quiz(current_user.userid)
         education_item["_id"]=current_user.userid+"_"+education_item["educationid"]
         education_item["userid"]=current_user.userid
         education_item["date"]=int(datetime.datetime.now().timestamp())
