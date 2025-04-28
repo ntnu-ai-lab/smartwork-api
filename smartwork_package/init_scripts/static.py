@@ -2,12 +2,12 @@ import pandas as pd
 from elasticsearch import helpers
 from fastapi import HTTPException
 from elasticsearch import Elasticsearch
-from init_scripts.parsing import run_parse
+
 import json
 import argparse
 import requests
 from init_scripts.config_backup import BACKEND_STATIC_DIR
-
+from init_scripts.parsing import run_parse
 def init_mycbr(mycbr_url):
     response=requests.put(mycbr_url+"/concepts/Case/attributes/Activity_StepCount/sequence/similarityFunctions/test_sequence",
                       json={"maxDiff":1000}
@@ -30,24 +30,21 @@ def populate_db(es_url,es_password):
 
 
     education = read_json_file(BACKEND_STATIC_DIR+"education_nb.json")
-    helpers.bulk(es,education,index="data_description")
-
+    helpers.bulk(es,education,index="education_description")
     exercise = read_json_file(BACKEND_STATIC_DIR+"exercise_nb.json")
-    helpers.bulk(es,exercise,index="data_description")
+    helpers.bulk(es,exercise,index="exercise_description")
 
     achievements= read_json_file(BACKEND_STATIC_DIR+"achievements_nb.json")
-
-    helpers.bulk(es,achievements,index="data_description")
+    helpers.bulk(es,achievements,index="achievement_description")
 
     tailoring=read_json_file(BACKEND_STATIC_DIR+"tailoring_nb.json")
     # print(tailoring)
     for tail in tailoring:
         tail["_source"]["description_type"]="tailoring"
         del tail["_type"]
-    print(tailoring)
-    helpers.bulk(es,tailoring,index="data_description")
+    # print(tailoring)
+    helpers.bulk(es,tailoring,index="tailoring_description")
     for index in ["plan","exercise","education","achievements","activity","appsettings","tailoring_questionnaire","account","baseline","questionnaire"]:
 
         es.indices.create(index = index,ignore=400)
-
-  
+populate_db("http://localhost:9200","smartwork4ever")

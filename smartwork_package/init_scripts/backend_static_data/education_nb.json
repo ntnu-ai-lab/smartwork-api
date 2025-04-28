@@ -1,6 +1,6 @@
 [
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Cause of LBP_1",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -19,7 +19,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Cause of LBP_2",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -38,7 +38,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Cause of LBP_3",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -57,7 +57,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Cause of LBP_4",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -76,7 +76,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Cause of LBP_5",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -95,7 +95,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Cause of LBP_6",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -114,7 +114,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Guideline LBP_1",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -133,7 +133,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Guideline LBP_2",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -152,7 +152,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Guideline LBP_3",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -171,7 +171,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Imaging_1",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -190,7 +190,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Imaging_2",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -209,7 +209,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Pain rating_1",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -228,7 +228,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_1",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -247,7 +247,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_2",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -266,7 +266,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_3",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -285,7 +285,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_4",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -304,7 +304,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_5",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -323,7 +323,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_6",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -342,7 +342,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_7",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -361,7 +361,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_8",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -380,7 +380,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_9",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -399,7 +399,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Reassurance_10",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -418,7 +418,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_1",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -437,7 +437,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_2",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -456,7 +456,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_3",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -475,7 +475,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_4",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -494,7 +494,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_5",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -513,7 +513,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_6",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -532,7 +532,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_7",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -551,7 +551,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_8",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -570,7 +570,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_9",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -589,7 +589,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_10",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -608,7 +608,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_11",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -627,7 +627,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_12",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -646,7 +646,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_13",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -665,7 +665,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stay active_14",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -684,7 +684,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_1",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -703,7 +703,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_2",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -722,7 +722,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_3",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -741,7 +741,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_4",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -760,7 +760,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_5",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -779,7 +779,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_6",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -798,7 +798,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_7",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -817,7 +817,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_8",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -836,7 +836,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_9",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -855,7 +855,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Start exercise_10",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -874,7 +874,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Structure of back_1",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -893,7 +893,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Structure of back_2",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -912,7 +912,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Structure of back_3",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -931,7 +931,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Structure of back_4",
 		"_source": {
 			"headcomponent": "Generell informasjon om ryggsmerter",
@@ -950,7 +950,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_1",
 		"_source": {
 			"headcomponent": "Samspill mellom tanker og kropp",
@@ -969,7 +969,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_2",
 		"_source": {
 			"headcomponent": "Samspill mellom tanker og kropp",
@@ -988,7 +988,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_3",
 		"_source": {
 			"headcomponent": "Mental innstilling",
@@ -1007,7 +1007,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_4",
 		"_source": {
 			"headcomponent": "Samspill mellom tanker og kropp",
@@ -1026,7 +1026,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_5",
 		"_source": {
 			"headcomponent": "Samspill mellom tanker og kropp",
@@ -1045,7 +1045,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_6",
 		"_source": {
 			"headcomponent": "Samspill mellom tanker og kropp",
@@ -1064,7 +1064,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_7",
 		"_source": {
 			"headcomponent": "Samspill mellom tanker og kropp",
@@ -1083,7 +1083,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_8",
 		"_source": {
 			"headcomponent": "Samspill mellom tanker og kropp",
@@ -1102,7 +1102,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_9",
 		"_source": {
 			"headcomponent": "Samspill mellom tanker og kropp",
@@ -1121,7 +1121,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Mind-body connection_10",
 		"_source": {
 			"headcomponent": "Samspill mellom tanker og kropp",
@@ -1140,7 +1140,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Encouragement to SM_1",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene dine",
@@ -1159,7 +1159,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Encouragement to SM_2",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene dine",
@@ -1178,7 +1178,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Encouragement to SM_4",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene dine",
@@ -1197,7 +1197,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Encouragement to SM_5",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene dine",
@@ -1216,7 +1216,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Encouragement to SM_6",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene dine",
@@ -1235,7 +1235,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Encouragement to SM_7",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene dine",
@@ -1254,7 +1254,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Encouragement to SM_8",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene dine",
@@ -1273,7 +1273,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Accepting pain_1",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1292,7 +1292,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Accepting pain_2",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1311,7 +1311,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Accepting pain_3",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1330,7 +1330,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Anxious_1",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1349,7 +1349,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Anxious_2",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1368,7 +1368,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Anxious_3",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1387,7 +1387,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Attitude_1",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1406,7 +1406,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Attitude_2",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1425,7 +1425,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Attitude_3",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1444,7 +1444,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Attitude_4",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1463,7 +1463,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Attitude_5",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1482,7 +1482,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Attitude_6",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1501,7 +1501,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Changing negative thoughts_1",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1520,7 +1520,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Changing negative thoughts_2",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1539,7 +1539,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Changing negative thoughts_3",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1558,7 +1558,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Changing negative thoughts_4",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1577,7 +1577,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Changing negative thoughts_5",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1596,7 +1596,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Changing negative thoughts_6",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1615,7 +1615,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Changing negative thoughts_7",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1634,7 +1634,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Changing negative thoughts_9",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1653,7 +1653,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Changing negative thoughts_10",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1672,7 +1672,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Distraction_1",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1691,7 +1691,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Distraction_2",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1710,7 +1710,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Distraction_3",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1729,7 +1729,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Distraction_4",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1748,7 +1748,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Distraction_5",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1767,7 +1767,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Distraction_6",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1786,7 +1786,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Distress_1",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1805,7 +1805,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Fear-avoidance_1",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1824,7 +1824,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Fear-avoidance_2",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1843,7 +1843,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Fear-avoidance_3",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1862,7 +1862,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Fear-avoidance_4",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1881,7 +1881,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Fear-avoidance_5",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1900,7 +1900,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Fear-avoidance_6",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1919,7 +1919,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stress_1",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1938,7 +1938,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stress_2",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1957,7 +1957,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Stress_3",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1976,7 +1976,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Thoughts_1",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -1995,7 +1995,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Thoughts_2",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -2014,7 +2014,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Thoughts_3",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -2033,7 +2033,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Thoughts_4",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -2052,7 +2052,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Thoughts_5",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -2071,7 +2071,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Thoughts_6",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -2090,7 +2090,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Thoughts_7",
 		"_source": {
 			"headcomponent": "Hvordan tankene påvirker smertene",
@@ -2109,7 +2109,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Daily activity_1",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene i hverdagen",
@@ -2128,7 +2128,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Daily activity_2",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene i hverdagen",
@@ -2147,7 +2147,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Daily activity_3",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene i hverdagen",
@@ -2166,7 +2166,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Daily activity_4",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene i hverdagen",
@@ -2185,7 +2185,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Daily activity_5",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene i hverdagen",
@@ -2204,7 +2204,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Me time_1",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene i hverdagen",
@@ -2223,7 +2223,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Me time_2",
 		"_source": {
 			"headcomponent": "Håndtering av ryggsmertene i hverdagen",
@@ -2242,7 +2242,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Reassurance_2",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2261,7 +2261,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Reassurance_3",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2280,7 +2280,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Reassurance_4",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2299,7 +2299,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Reassurance_5",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2318,7 +2318,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Stay active_1",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2337,7 +2337,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Stay active_2",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2356,7 +2356,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Stay active_3",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2375,7 +2375,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Stay active_4",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2394,7 +2394,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Stay active_5",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2413,7 +2413,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Stay active_6",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2432,7 +2432,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "FA Stay active_7",
 		"_source": {
 			"headcomponent": "Gode råd for akutte ryggsmerter",
@@ -2451,7 +2451,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Depression_1",
 		"_source": {
 			"headcomponent": "Ryggsmerter og livsstilssykdommer",
@@ -2470,7 +2470,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Anxiety_1",
 		"_source": {
 			"headcomponent": "Ryggsmerter og livsstilssykdommer",
@@ -2489,7 +2489,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Sleep disorders_1",
 		"_source": {
 			"headcomponent": "Ryggsmerter og livsstilssykdommer",
@@ -2508,7 +2508,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "MSK pain_1",
 		"_source": {
 			"headcomponent": "Ryggsmerter og livsstilssykdommer",
@@ -2527,7 +2527,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Goal setting_1",
 		"_source": {
 			"headcomponent": "Hvordan sette seg SMARTe mål",
@@ -2546,7 +2546,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Goal setting_2",
 		"_source": {
 			"headcomponent": "Hvordan sette seg SMARTe mål",
@@ -2565,7 +2565,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Goal setting_3",
 		"_source": {
 			"headcomponent": "Hvordan sette seg SMARTe mål",
@@ -2584,7 +2584,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Goal setting_4",
 		"_source": {
 			"headcomponent": "Hvordan sette seg SMARTe mål",
@@ -2603,7 +2603,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Goal setting_5",
 		"_source": {
 			"headcomponent": "Hvordan sette seg SMARTe mål",
@@ -2622,7 +2622,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Action planning_1",
 		"_source": {
 			"headcomponent": "Hvordan sette seg SMARTe mål",
@@ -2641,7 +2641,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Action planning_2",
 		"_source": {
 			"headcomponent": "Hvordan sette seg SMARTe mål",
@@ -2660,7 +2660,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Action planning_3",
 		"_source": {
 			"headcomponent": "Hvordan sette seg SMARTe mål",
@@ -2679,7 +2679,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Pacing_1",
 		"_source": {
 			"headcomponent": "Hvordan nå målene dine",
@@ -2698,7 +2698,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Pacing_2",
 		"_source": {
 			"headcomponent": "Hvordan nå målene dine",
@@ -2717,7 +2717,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Pacing_3",
 		"_source": {
 			"headcomponent": "Hvordan nå målene dine",
@@ -2736,7 +2736,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Pacing_4",
 		"_source": {
 			"headcomponent": "Hvordan nå målene dine",
@@ -2755,7 +2755,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Pacing_5",
 		"_source": {
 			"headcomponent": "Hvordan nå målene dine",
@@ -2774,7 +2774,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Pacing_6",
 		"_source": {
 			"headcomponent": "Hvordan nå målene dine",
@@ -2793,7 +2793,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Pacing_7",
 		"_source": {
 			"headcomponent": "Hvordan nå målene dine",
@@ -2812,7 +2812,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Problem solving_1",
 		"_source": {
 			"headcomponent": "Hvordan løse problemer",
@@ -2831,7 +2831,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Problem solving_2",
 		"_source": {
 			"headcomponent": "Hvordan løse problemer",
@@ -2850,7 +2850,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Problem solving_3",
 		"_source": {
 			"headcomponent": "Hvordan løse problemer",
@@ -2869,7 +2869,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Problem solving_4",
 		"_source": {
 			"headcomponent": "Hvordan løse problemer",
@@ -2888,7 +2888,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Relaxation_1",
 		"_source": {
 			"headcomponent": "Hvordan bruke avspenning",
@@ -2907,7 +2907,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Relaxation_2",
 		"_source": {
 			"headcomponent": "Hvordan bruke avspenning",
@@ -2926,7 +2926,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Relaxation_3",
 		"_source": {
 			"headcomponent": "Hvordan bruke avspenning",
@@ -2945,7 +2945,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Relaxation_4",
 		"_source": {
 			"headcomponent": "Hvordan bruke avspenning",
@@ -2964,7 +2964,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Relaxation_5",
 		"_source": {
 			"headcomponent": "Hvordan bruke avspenning",
@@ -2983,7 +2983,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Sleep_1",
 		"_source": {
 			"headcomponent": "Hvordan sove bedre",
@@ -3002,7 +3002,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Sleep_2",
 		"_source": {
 			"headcomponent": "Hvordan sove bedre",
@@ -3021,7 +3021,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Sleep_3",
 		"_source": {
 			"headcomponent": "Hvordan sove bedre",
@@ -3040,7 +3040,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Sleep_4",
 		"_source": {
 			"headcomponent": "Hvordan sove bedre",
@@ -3059,7 +3059,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Work_1",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3078,7 +3078,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Work_2",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3097,7 +3097,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Work_3",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3116,7 +3116,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Work_4",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3135,7 +3135,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Work_5",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3154,7 +3154,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Family and friends_1",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3173,7 +3173,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Family and friends_2",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3192,7 +3192,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Family and friends_3",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3211,7 +3211,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Family and friends_4",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3230,7 +3230,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Family and friends_5",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3249,7 +3249,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Family and friends_6",
 		"_source": {
 			"headcomponent": "Hvordan få støtte fra andre",
@@ -3268,7 +3268,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Work_isolation_1",
 		"_source": {
 			"headcomponent": "Hvordan unngå isolering ved sykmelding.",
@@ -3287,7 +3287,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Work_isolation_2",
 		"_source": {
 			"headcomponent": "Hvordan unngå isolering ved sykmelding.",
@@ -3306,7 +3306,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier time_1",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3325,7 +3325,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier time_2",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3344,7 +3344,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier tiredness_1",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3363,7 +3363,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier tiredness_2",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3382,7 +3382,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier support_1",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3401,7 +3401,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier family work_1",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3420,7 +3420,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier family work_2",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3439,7 +3439,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier weather_1",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3458,7 +3458,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier weather_2",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3477,7 +3477,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier facilities_1",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3496,7 +3496,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier facilities_2",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3515,7 +3515,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Barrier facilities_3",
 		"_source": {
 			"headcomponent": "Hvordan håndtere barrierer",
@@ -3534,7 +3534,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "active_onsickleave_1",
 		"_source": {
 			"headcomponent": "Active when sick listed",
@@ -3553,7 +3553,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "active_onsickleave_2",
 		"_source": {
 			"headcomponent": "Active when sick listed",
@@ -3572,7 +3572,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "active_onsickleave_3",
 		"_source": {
 			"headcomponent": "Active when sick listed",
@@ -3591,7 +3591,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "workplace_contact_1",
 		"_source": {
 			"headcomponent": "Kontakt med arbeidsplassen 100% SM?",
@@ -3610,7 +3610,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "workplace_contact_2",
 		"_source": {
 			"headcomponent": "Kontakt med arbeidsplassen 100% SM?",
@@ -3629,7 +3629,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "workplace_conflict_1",
 		"_source": {
 			"headcomponent": "Hvordan håndtere arbeidskonflikt",
@@ -3648,7 +3648,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "workplace_conflict_2",
 		"_source": {
 			"headcomponent": "Hvordan håndtere arbeidskonflikt",
@@ -3667,7 +3667,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "workplace_conflict_3",
 		"_source": {
 			"headcomponent": "Hvordan håndtere arbeidskonflikt",
@@ -3686,7 +3686,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "NAV_1",
 		"_source": {
 			"headcomponent": "NAV oppfølging og ytelser",
@@ -3705,7 +3705,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "NAV_2",
 		"_source": {
 			"headcomponent": "NAV oppfølging og ytelser",
@@ -3724,7 +3724,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "NAV_3",
 		"_source": {
 			"headcomponent": "NAV oppfølging og ytelser",
@@ -3743,7 +3743,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Long_absence_1",
 		"_source": {
 			"headcomponent": "NAV ytelser ved langvarig fravær",
@@ -3762,7 +3762,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Long_absence_2",
 		"_source": {
 			"headcomponent": "NAV ytelser ved langvarig fravær",
@@ -3781,7 +3781,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Privatelife_absence_1",
 		"_source": {
 			"headcomponent": "Privat livets påvirkning på sykefravær",
@@ -3800,7 +3800,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Privatelife_absence_2",
 		"_source": {
 			"headcomponent": "Privat livets påvirkning på sykefravær",
@@ -3819,7 +3819,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Privatelife_absence_3",
 		"_source": {
 			"headcomponent": "Privat livets påvirkning på sykefravær",
@@ -3838,7 +3838,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "RTW_plan_1",
 		"_source": {
 			"headcomponent": "RTW plan",
@@ -3857,7 +3857,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "RTW_plan_2",
 		"_source": {
 			"headcomponent": "RTW plan",
@@ -3876,7 +3876,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "RTW_plan_3",
 		"_source": {
 			"headcomponent": "RTW plan",
@@ -3895,7 +3895,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "RTW_plan_4",
 		"_source": {
 			"headcomponent": "RTW plan",
@@ -3914,7 +3914,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "RTW_process_1",
 		"_source": {
 			"headcomponent": "Retur til arbeid som prosess",
@@ -3933,7 +3933,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "New_job_1",
 		"_source": {
 			"headcomponent": "Newjob",
@@ -3952,7 +3952,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Graded_1",
 		"_source": {
 			"headcomponent": "Positivt å være i jobb, gradert SM",
@@ -3971,7 +3971,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Graded_2",
 		"_source": {
 			"headcomponent": "Positivt å være i jobb, gradert SM",
@@ -3990,7 +3990,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Graded_3",
 		"_source": {
 			"headcomponent": "Positivt å være i jobb, gradert SM",
@@ -4009,7 +4009,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "education_description",
 		"_id": "Red_flags",
 		"_source": {
 			"headcomponent": "Røde flagg",

@@ -1,6 +1,6 @@
 [
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "back_01_01",
 		"_source": {
 			"exerciseid": "back_01_01",
@@ -19,7 +19,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "backneck_01_01",
 		"_source": {
 			"exerciseid": "backneck_01_01",
@@ -38,7 +38,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_01_01",
 		"_source": {
 			"exerciseid": "neck_01_01",
@@ -57,7 +57,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_01_02",
 		"_source": {
 			"exerciseid": "neck_01_02",
@@ -76,7 +76,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "backneck_02_01",
 		"_source": {
 			"exerciseid": "backneck_02_01",
@@ -95,7 +95,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "backneck_02_02",
 		"_source": {
 			"exerciseid": "backneck_02_02",
@@ -114,7 +114,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_02_01",
 		"_source": {
 			"exerciseid": "neck_02_01",
@@ -133,7 +133,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "backneck_03_01",
 		"_source": {
 			"exerciseid": "backneck_03_01",
@@ -152,7 +152,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "back_03_01",
 		"_source": {
 			"exerciseid": "back_03_01",
@@ -171,7 +171,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_03_01",
 		"_source": {
 			"exerciseid": "neck_03_01",
@@ -190,7 +190,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_03_02",
 		"_source": {
 			"exerciseid": "neck_03_02",
@@ -209,7 +209,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "backneck_04_01",
 		"_source": {
 			"exerciseid": "backneck_04_01",
@@ -228,7 +228,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "back_04_01",
 		"_source": {
 			"exerciseid": "back_04_01",
@@ -247,7 +247,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_04_01",
 		"_source": {
 			"exerciseid": "neck_04_01",
@@ -266,7 +266,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_04_02",
 		"_source": {
 			"exerciseid": "neck_04_02",
@@ -285,7 +285,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "backneck_05_01",
 		"_source": {
 			"exerciseid": "backneck_05_01",
@@ -304,7 +304,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "back_05_01",
 		"_source": {
 			"exerciseid": "back_05_01",
@@ -323,7 +323,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_05_01",
 		"_source": {
 			"exerciseid": "neck_05_01",
@@ -342,7 +342,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_05_02",
 		"_source": {
 			"exerciseid": "neck_05_02",
@@ -361,7 +361,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "backneck_06_01",
 		"_source": {
 			"exerciseid": "backneck_06_01",
@@ -380,7 +380,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "backneck_06_02",
 		"_source": {
 			"exerciseid": "backneck_06_02",
@@ -399,7 +399,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "neck_06_01",
 		"_source": {
 			"exerciseid": "neck_06_01",
@@ -418,7 +418,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_01_01",
 		"_source": {
 			"exerciseid": "glut_01_01",
@@ -437,7 +437,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_01_02",
 		"_source": {
 			"exerciseid": "glut_01_02",
@@ -456,7 +456,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_02_01",
 		"_source": {
 			"exerciseid": "glut_02_01",
@@ -475,7 +475,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_02_02",
 		"_source": {
 			"exerciseid": "glut_02_02",
@@ -494,7 +494,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_03_01",
 		"_source": {
 			"exerciseid": "glut_03_01",
@@ -513,7 +513,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_03_02",
 		"_source": {
 			"exerciseid": "glut_03_02",
@@ -532,7 +532,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_04_01",
 		"_source": {
 			"exerciseid": "glut_04_01",
@@ -551,7 +551,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_04_02",
 		"_source": {
 			"exerciseid": "glut_04_02",
@@ -570,7 +570,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_05_01",
 		"_source": {
 			"exerciseid": "glut_05_01",
@@ -589,7 +589,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_05_02",
 		"_source": {
 			"exerciseid": "glut_05_02",
@@ -608,7 +608,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_06_01",
 		"_source": {
 			"exerciseid": "glut_06_01",
@@ -627,7 +627,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "glut_06_02",
 		"_source": {
 			"exerciseid": "glut_06_02",
@@ -646,7 +646,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_01_01",
 		"_source": {
 			"exerciseid": "ab_01_01",
@@ -665,7 +665,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_01_02",
 		"_source": {
 			"exerciseid": "ab_01_02",
@@ -684,7 +684,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_02_01",
 		"_source": {
 			"exerciseid": "ab_02_01",
@@ -703,7 +703,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_02_02",
 		"_source": {
 			"exerciseid": "ab_02_02",
@@ -722,7 +722,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_03_01",
 		"_source": {
 			"exerciseid": "ab_03_01",
@@ -741,7 +741,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_03_02",
 		"_source": {
 			"exerciseid": "ab_03_02",
@@ -760,7 +760,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_03_03",
 		"_source": {
 			"exerciseid": "ab_03_03",
@@ -779,7 +779,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_04_01",
 		"_source": {
 			"exerciseid": "ab_04_01",
@@ -798,7 +798,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_04_02",
 		"_source": {
 			"exerciseid": "ab_04_02",
@@ -817,7 +817,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_04_03",
 		"_source": {
 			"exerciseid": "ab_04_03",
@@ -836,7 +836,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_05_01",
 		"_source": {
 			"exerciseid": "ab_05_01",
@@ -855,7 +855,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_05_02",
 		"_source": {
 			"exerciseid": "ab_05_02",
@@ -874,7 +874,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_06_01",
 		"_source": {
 			"exerciseid": "ab_06_01",
@@ -893,7 +893,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "ab_06_02",
 		"_source": {
 			"exerciseid": "ab_06_02",
@@ -912,7 +912,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_01_01",
 		"_source": {
 			"exerciseid": "core_01_01",
@@ -931,7 +931,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_01_02",
 		"_source": {
 			"exerciseid": "core_01_02",
@@ -950,7 +950,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_02_01",
 		"_source": {
 			"exerciseid": "core_02_01",
@@ -969,7 +969,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_02_02",
 		"_source": {
 			"exerciseid": "core_02_02",
@@ -988,7 +988,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_03_01",
 		"_source": {
 			"exerciseid": "core_03_01",
@@ -1007,7 +1007,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_03_02",
 		"_source": {
 			"exerciseid": "core_03_02",
@@ -1026,7 +1026,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_04_01",
 		"_source": {
 			"exerciseid": "core_04_01",
@@ -1045,7 +1045,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_04_02",
 		"_source": {
 			"exerciseid": "core_04_02",
@@ -1064,7 +1064,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_05_01",
 		"_source": {
 			"exerciseid": "core_05_01",
@@ -1083,7 +1083,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_05_02",
 		"_source": {
 			"exerciseid": "core_05_02",
@@ -1102,7 +1102,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_06_01",
 		"_source": {
 			"exerciseid": "core_06_01",
@@ -1121,7 +1121,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "core_06_02",
 		"_source": {
 			"exerciseid": "core_06_02",
@@ -1140,7 +1140,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_01_01",
 		"_source": {
 			"exerciseid": "pain_01_01",
@@ -1159,7 +1159,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_01_02",
 		"_source": {
 			"exerciseid": "pain_01_02",
@@ -1178,7 +1178,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_02_01",
 		"_source": {
 			"exerciseid": "pain_02_01",
@@ -1197,7 +1197,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_02_02",
 		"_source": {
 			"exerciseid": "pain_02_02",
@@ -1216,7 +1216,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_02_03",
 		"_source": {
 			"exerciseid": "pain_02_03",
@@ -1235,7 +1235,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_02_04",
 		"_source": {
 			"exerciseid": "pain_02_04",
@@ -1254,7 +1254,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_03_01",
 		"_source": {
 			"exerciseid": "pain_03_01",
@@ -1273,7 +1273,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_03_02",
 		"_source": {
 			"exerciseid": "pain_03_02",
@@ -1292,7 +1292,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_03_03",
 		"_source": {
 			"exerciseid": "pain_03_03",
@@ -1311,7 +1311,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_04_01",
 		"_source": {
 			"exerciseid": "pain_04_01",
@@ -1330,7 +1330,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_04_02",
 		"_source": {
 			"exerciseid": "pain_04_02",
@@ -1349,7 +1349,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_05_01",
 		"_source": {
 			"exerciseid": "pain_05_01",
@@ -1368,7 +1368,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_05_02",
 		"_source": {
 			"exerciseid": "pain_05_02",
@@ -1387,7 +1387,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_05_03",
 		"_source": {
 			"exerciseid": "pain_05_03",
@@ -1406,7 +1406,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_05_04",
 		"_source": {
 			"exerciseid": "pain_05_04",
@@ -1425,7 +1425,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_05_05",
 		"_source": {
 			"exerciseid": "pain_05_05",
@@ -1444,7 +1444,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "pain_05_06",
 		"_source": {
 			"exerciseid": "pain_05_06",
@@ -1463,7 +1463,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_01_01",
 		"_source": {
 			"exerciseid": "flex_01_01",
@@ -1482,7 +1482,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_01_02",
 		"_source": {
 			"exerciseid": "flex_01_02",
@@ -1501,7 +1501,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_01_03",
 		"_source": {
 			"exerciseid": "flex_01_03",
@@ -1520,7 +1520,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_01_04",
 		"_source": {
 			"exerciseid": "flex_01_04",
@@ -1539,7 +1539,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_01_05",
 		"_source": {
 			"exerciseid": "flex_01_05",
@@ -1558,7 +1558,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_01_06",
 		"_source": {
 			"exerciseid": "flex_01_06",
@@ -1577,7 +1577,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_01_07",
 		"_source": {
 			"exerciseid": "flex_01_07",
@@ -1596,7 +1596,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_01_08",
 		"_source": {
 			"exerciseid": "flex_01_08",
@@ -1615,7 +1615,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_01_09",
 		"_source": {
 			"exerciseid": "flex_01_09",
@@ -1634,7 +1634,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_01",
 		"_source": {
 			"exerciseid": "flex_02_01",
@@ -1653,7 +1653,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_02",
 		"_source": {
 			"exerciseid": "flex_02_02",
@@ -1672,7 +1672,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_03",
 		"_source": {
 			"exerciseid": "flex_02_03",
@@ -1691,7 +1691,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_04",
 		"_source": {
 			"exerciseid": "flex_02_04",
@@ -1710,7 +1710,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_05",
 		"_source": {
 			"exerciseid": "flex_02_05",
@@ -1729,7 +1729,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_06",
 		"_source": {
 			"exerciseid": "flex_02_06",
@@ -1748,7 +1748,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_07",
 		"_source": {
 			"exerciseid": "flex_02_07",
@@ -1767,7 +1767,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_08",
 		"_source": {
 			"exerciseid": "flex_02_08",
@@ -1786,7 +1786,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_09",
 		"_source": {
 			"exerciseid": "flex_02_09",
@@ -1805,7 +1805,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_10",
 		"_source": {
 			"exerciseid": "flex_02_10",
@@ -1824,7 +1824,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_11",
 		"_source": {
 			"exerciseid": "flex_02_11",
@@ -1843,7 +1843,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "exercise_description",
 		"_id": "flex_02_12",
 		"_source": {
 			"exerciseid": "flex_02_12",

@@ -59,7 +59,7 @@ def createExerciseJson(language, filename, type, output_dir="./json/"):
     dict = df.to_dict(orient='records')
     list_es = [
         {
-            "_index": "data_description",
+            "_index": "exercise_description",
             "_id": d["exerciseid"],
             "_source": d
         } for d in dict]

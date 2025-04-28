@@ -93,7 +93,7 @@ async def adduser(
     es.indices.refresh(index='baseline')
     es.indices.refresh(index='questionnaire')
 
-    res = es.search(index="data_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
+    res = es.search(index="achievement_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
     achievement_goals= list(map(lambda x: (x['_source']["achievementid"],x['_source']["goal"]),res))
     achievements_start=list(map(lambda x: 
                                 {"index":"achievements",

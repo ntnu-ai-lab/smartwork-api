@@ -44,12 +44,13 @@ async def root():
 
 
 if __name__ == "__main__":
-    with open("./smartwork_package/api/resources/logging_config.yaml", "r") as f:
+    with open("./api/resources/logging_config.yaml", "r") as f:
         config = yaml.safe_load(f)
         logging.config.dictConfig(config)
     
     es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
-    if not es.indices.exists(index='data_description'):
+    if not es.indices.exists(index='tailoring_description').body:
+        print("Populating DB")
         init_mycbr(MYCBR_URL)
         populate_db(ES_URL,ES_PASSWORD)
     uvicorn.run(

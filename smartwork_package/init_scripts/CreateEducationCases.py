@@ -50,7 +50,7 @@ def createEducationJson(language, filename, type, output_dir):
     dict = df.to_dict(orient='records')
     list_es = [
         {
-            "_index": "data_description",
+            "_index": "education_description",
             "_id": d[EDUCATIONID],
             "_source": d
         } for d in dict]
@@ -117,7 +117,7 @@ def createEducationWebJson(language, filename, type, output_dir):
     dict = df.to_dict(orient='records')
     list_es = [
         {
-            "_index": "data_description",
+            "_index": "education_description",
             "_id": d[EDUCATIONID],
             "_source": d
         } for d in dict]

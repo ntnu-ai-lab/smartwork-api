@@ -6,7 +6,7 @@
 # STATIC_PATH = DROPBOX_DIR + "selfBACK-DSS/backend/content/"
 # SELFBACK_ROOT = "c:/Dropbox/selfBACK EU project/"
 
-STATIC_PATH = "./smartwork_package/init_scripts/static_files/"
+STATIC_PATH = "./init_scripts/static_files/"
 # WEB_PATH = BACKUP_ROOT + "Webpage_content/"
 
 
@@ -15,7 +15,7 @@ ACHIEVEMENT_DIR = STATIC_PATH + "achievements/"
 CODEBOOK_PATH = STATIC_PATH + "SmaRTWork-codebook_updated_11052023.xlsx"
 # OUTPUT_DIR = "./json/"
 OUTPUT_DIR = "./temp/"
-BACKEND_STATIC_DIR= "./smartwork_package/init_scripts/backend_static_data/"
+BACKEND_STATIC_DIR= "./init_scripts/backend_static_data/"
 
 # also copy files to backend_static_dir. Make it None to skip copying to the backend source dir.
 # BACKEND_STATIC_DIR = None

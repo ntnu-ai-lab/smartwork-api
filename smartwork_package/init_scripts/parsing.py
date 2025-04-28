@@ -46,7 +46,7 @@ def createAchievementJson(language, filename, output_dir):
         for d in dict:
             d["description_type"]="achievement"
             list_es.append({
-                "_index": "data_description",
+                "_index": "achievement_description",
                 "_id": d["achievementid"],
                 "_source": d
             })
@@ -126,7 +126,6 @@ def run_parse():
 
     # copying tailoring files from Dropbox as they are.
     copy_by_extension(config.TAILORING_DIR, config.OUTPUT_DIR, "json")
-
     print('')
     # copying all json files to the backend dir
     if config.BACKEND_STATIC_DIR:

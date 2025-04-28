@@ -1,6 +1,6 @@
 [
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_pain_average",
 		"_source": {
@@ -93,7 +93,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "T_cpg_function",
 		"_source": {
@@ -186,7 +186,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "T_tampa_fear",
 		"_source": {
@@ -279,7 +279,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_wai",
 		"_source": {
@@ -372,7 +372,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "T_sleep",
 		"_source": {
@@ -409,7 +409,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_pseq_5",
 		"_source": {
@@ -474,7 +474,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_pseq_9",
 		"_source": {
@@ -539,7 +539,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_pss_2",
 		"_source": {
@@ -590,7 +590,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_pss_4",
 		"_source": {
@@ -641,7 +641,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_pss_5",
 		"_source": {
@@ -692,7 +692,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_pss_10",
 		"_source": {
@@ -743,7 +743,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_phq_1",
 		"_source": {
@@ -787,7 +787,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "BT_phq_2",
 		"_source": {
@@ -831,7 +831,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "tailoring_description",
 		"_type": "tailoring_nb",
 		"_id": "T_barriers",
 		"_source": {

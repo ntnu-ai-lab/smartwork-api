@@ -143,70 +143,79 @@ def expiry_education_items(item):
 
 def rule_filter_education(questionnaire):
     questionnaire_updated=questionnaire.copy()
-    questionnaire_updated["bt_pain_average_change"]=questionnaire_updated["bt_pain_average"]-questionnaire_updated["bt_pain_average_prev"]
-    questionnaire_updated["t_cpg_function_change"]=questionnaire_updated["t_cpg_function"]-questionnaire_updated["t_cpg_function_prev"]
+
+    questionnaire_updated["BT_pain_average_change"]=questionnaire_updated["BT_pain_average"]-questionnaire_updated["BT_pain_average_prev"]
+
+    questionnaire_updated["T_cpg_function_change"]=questionnaire_updated["T_cpg_function"]-questionnaire_updated["T_cpg_function_prev"]
     remove_education=[]
     add_educations=[]
     remove_educations=[]
-    if questionnaire_updated["bt_pain_average"]>=7:
+    if questionnaire_updated["BT_pain_average"]>=7:
         remove_education=BT_PAIN_AVERAGE_HIGH_RM
         add_education=BT_PAIN_AVERAGE_HIGH_ADD
         remove_educations.extend(remove_education)
         add_educations.extend(add_education)
-    if questionnaire_updated["bt_pain_average_change"]>=3:
+    if questionnaire_updated["BT_pain_average_change"]>=3:
         remove_education=BT_PAIN_AVERAGE_CHANGE_RM
         add_education=BT_PAIN_AVERAGE_CHANGE_ADD
         remove_educations.extend(remove_education)
         add_educations.extend(add_education)
-    if questionnaire_updated["bt_pain_average"]>=3 and questionnaire_updated["bt_pain_average"]<=6:
+    if questionnaire_updated["BT_pain_average"]>=3 and questionnaire_updated["BT_pain_average"]<=6:
         remove_education=BT_PAIN_AVERAGE_MEDIUM_RM
         add_education=BT_PAIN_AVERAGE_MEDIUM_ADD
         remove_educations.extend(remove_education)
         add_educations.extend(add_education)
-    if questionnaire_updated["t_cpg_function"]>=5:
+    if questionnaire_updated["T_cpg_function"]>=5:
         add_education=T_CPG_ADD
         add_educations.extend(add_education)
-    if questionnaire_updated["t_cpg_function_change"]>=2:
+    if questionnaire_updated["T_cpg_function_change"]>=2:
         add_education=T_CPG_CHANGE_ADD
         add_educations.extend(add_education)
-    if questionnaire_updated["t_tampa_fear"]>=5:
-        remove_education=TAMPA_RM
-        add_education=TAMPA_ADD
-        remove_educations.extend(remove_education)
-        add_educations.extend(add_education)
-    if questionnaire_updated["bt_wai"]>=3:
-        add_education=BT_WAI_ADD
-        add_educations.extend(add_education)
-    if questionnaire_updated["t_sleep"] in ["Several times a week", "Sometimes"]:
-        add_education=T_SLEEP_ADD
-        add_educations.extend(add_education)
-    if questionnaire_updated["bt_pseq_2item"]<=8:
-        add_education=BT_PSEQ_ADD
-        add_educations.extend(add_education)
-    if questionnaire_updated["bt_pss"]>=6:
-        add_education=BT_PSS_ADD
-        add_educations.extend(add_education)
-    if questionnaire_updated["bt_phq_2item"]>=1:
-        add_education=BT_PHQ_ADD
-        add_educations.extend(add_education)
-    if "lack_of_time" in questionnaire_updated["t_barriers"]:
-        add_education=BARRIERS_TIME_ADD
-        add_educations.extend(add_education)
-    if "too_tired" in questionnaire_updated["t_barriers"]:
-        add_education=BARRIERS_TIRED_ADD
-        add_educations.extend(add_education)
-    if "lack_of_support" in questionnaire_updated["t_barriers"]:
-        add_education=BARRIERS_SUPPORT_ADD
-        add_educations.extend(add_education)
-    if "family_work" in questionnaire_updated["t_barriers"]:
-        add_education=BARRIERS_FAMILY_ADD
-        add_educations.extend(add_education)
-    if "weather" in questionnaire_updated["t_barriers"]:
-        add_education=BARRIERS_WEATHER_ADD
-        add_educations.extend(add_education)
-    if "facilities" in questionnaire_updated["t_barriers"]:
-        add_education=BARRIERS_FACILITIES_ADD
-        add_educations.extend(add_education)
+    if "T_tampa_fear" in questionnaire_updated.keys():
+        if questionnaire_updated["T_tampa_fear"]>=5:
+            remove_education=TAMPA_RM
+            add_education=TAMPA_ADD
+            remove_educations.extend(remove_education)
+            add_educations.extend(add_education)
+    if "BT_wai" in questionnaire_updated.keys():
+        if questionnaire_updated["BT_wai"]>=3:
+            add_education=BT_WAI_ADD
+            add_educations.extend(add_education)
+    if "T_sleep" in questionnaire_updated.keys():
+        if questionnaire_updated["T_sleep"] in ["Several times a week", "Sometimes"]:
+            add_education=T_SLEEP_ADD
+            add_educations.extend(add_education)
+    if "BT_pseq_2item" in questionnaire_updated.keys():
+        if questionnaire_updated["BT_pseq_2item"]<=8:
+            add_education=BT_PSEQ_ADD
+            add_educations.extend(add_education)
+    if "BT_pss" in questionnaire_updated.keys():
+        if questionnaire_updated["BT_pss"]>=6:
+            add_education=BT_PSS_ADD
+            add_educations.extend(add_education)
+    if "BT_phq_2item" in questionnaire_updated.keys():
+        if questionnaire_updated["BT_phq_2item"]>=1:
+            add_education=BT_PHQ_ADD
+            add_educations.extend(add_education)
+    if "T_barriers" in questionnaire_updated.keys():
+        if "lack_of_time" in questionnaire_updated["T_barriers"]:
+            add_education=BARRIERS_TIME_ADD
+            add_educations.extend(add_education)
+        if "too_tired" in questionnaire_updated["T_barriers"]:
+            add_education=BARRIERS_TIRED_ADD
+            add_educations.extend(add_education)
+        if "lack_of_support" in questionnaire_updated["T_barriers"]:
+            add_education=BARRIERS_SUPPORT_ADD
+            add_educations.extend(add_education)
+        if "family_work" in questionnaire_updated["T_barriers"]:
+            add_education=BARRIERS_FAMILY_ADD
+            add_educations.extend(add_education)
+        if "weather" in questionnaire_updated["T_barriers"]:
+            add_education=BARRIERS_WEATHER_ADD
+            add_educations.extend(add_education)
+        if "facilities" in questionnaire_updated["T_barriers"]:
+            add_education=BARRIERS_FACILITIES_ADD
+            add_educations.extend(add_education)
 
     # groups={'Cause of LBP_1': 0, 'Cause of LBP_2': 0, 'Cause of LBP_3': 0, 'Cause of LBP_4': 0, 'Cause of LBP_5': 0, 'Cause of LBP_6': 0, 'Guideline LBP_1': 1, 'Guideline LBP_2': 1, 'Guideline LBP_3': 1, 'Imaging_1': 2, 'Imaging_2': 2, 'Pain rating_1': 3, 'Reassurance_1': 4, 'Reassurance_2': 4, 'Reassurance_3': 4, 'Reassurance_4': 4, 'Reassurance_5': 4, 'Reassurance_6': 4, 'Reassurance_7': 4, 'Reassurance_8': 4, 'Reassurance_9': 4, 'Reassurance_10': 4, 'Stay active_1': 5, 'Stay active_2': 5, 'Stay active_3': 5, 'Stay active_4': 5, 'Stay active_5': 5, 'Stay active_6': 5, 'Stay active_7': 5, 'Stay active_8': 5, 'Stay active_9': 5, 'Stay active_10': 5, 'Stay active_11': 5, 'Stay active_12': 5, 'Stay active_13': 5, 'Stay active_14': 5, 'Start exercise_1': 6, 'Start exercise_2': 6, 'Start exercise_3': 6, 'Start exercise_4': 6, 'Start exercise_5': 6, 'Start exercise_6': 6, 'Start exercise_7': 6, 'Start exercise_8': 6, 'Start exercise_9': 6, 'Start exercise_10': 6, 'Structure of back_1': 7, 'Structure of back_2': 7, 'Structure of back_3': 7, 'Structure of back_4': 7, 'Mind-body connection_1': 8, 'Mind-body connection_2': 8, 'Mind-body connection_3': 8, 'Mind-body connection_4': 8, 'Mind-body connection_5': 8, 'Mind-body connection_6': 8, 'Mind-body connection_7': 8, 'Mind-body connection_8': 8, 'Mind-body connection_9': 8, 'Mind-body connection_10': 8, 'Encouragement to SM_1': 9, 'Encouragement to SM_2': 9, 'Encouragement to SM_4': 9, 'Encouragement to SM_5': 9, 'Encouragement to SM_6': 9, 'Encouragement to SM_7': 9, 'Encouragement to SM_8': 9, 'Accepting pain_1': 10, 'Accepting pain_2': 10, 'Accepting pain_3': 10, 'Anxious_1': 11, 'Anxious_2': 11, 'Anxious_3': 11, 'Attitude_1': 12, 'Attitude_2': 12, 'Attitude_3': 12, 'Attitude_4': 12, 'Attitude_5': 12, 'Attitude_6': 12, 'Changing negative thoughts_1': 13, 'Changing negative thoughts_2': 13, 'Changing negative thoughts_3': 13, 'Changing negative thoughts_4': 13, 'Changing negative thoughts_5': 13, 'Changing negative thoughts_6': 13, 'Changing negative thoughts_7': 13, 'Changing negative thoughts_9': 13, 'Changing negative thoughts_10': 13, 'Distraction_1': 14, 'Distraction_2': 14, 'Distraction_3': 14, 'Distraction_4': 14, 'Distraction_5': 14, 'Distraction_6': 14, 'Distress_1': 15, 'Fear-avoidance_1': 16, 'Fear-avoidance_2': 16, 'Fear-avoidance_3': 16, 'Fear-avoidance_4': 16, 'Fear-avoidance_5': 16, 'Fear-avoidance_6': 16, 'Stress_1': 17, 'Stress_2': 17, 'Stress_3': 17, 'Thoughts_1': 18, 'Thoughts_2': 18, 'Thoughts_3': 18, 'Thoughts_4': 18, 'Thoughts_5': 18, 'Thoughts_6': 18, 'Thoughts_7': 18, 'Daily activity_1': 19, 'Daily activity_2': 19, 'Daily activity_3': 19, 'Daily activity_4': 19, 'Daily activity_5': 19, 'Me time_1': 20, 'Me time_2': 20, 'FA Reassurance_2': 21, 'FA Reassurance_3': 21, 'FA Reassurance_4': 21, 'FA Reassurance_5': 21, 'FA Stay active_1': 22, 'FA Stay active_2': 22, 'FA Stay active_3': 22, 'FA Stay active_4': 22, 'FA Stay active_5': 22, 'FA Stay active_6': 22, 'FA Stay active_7': 22, 'Depression_1': 23, 'Anxiety_1': 24, 'Sleep disorders_1': 25, 'MSK pain_1': 26, 'Goal setting_1': 27, 'Goal setting_2': 27, 'Goal setting_3': 27, 'Goal setting_4': 27, 'Goal setting_5': 27, 'Action planning_1': 28, 'Action planning_2': 28, 'Action planning_3': 28, 'Pacing_1': 29, 'Pacing_2': 29, 'Pacing_3': 29, 'Pacing_4': 29, 'Pacing_5': 29, 'Pacing_6': 29, 'Problem solving_1': 30, 'Problem solving_2': 30, 'Problem solving_3': 30, 'Problem solving_4': 30, 'Relaxation_1': 31, 'Relaxation_2': 31, 'Relaxation_3': 31, 'Relaxation_4': 31, 'Relaxation_5': 31, 'Sleep_1': 32, 'Sleep_2': 32, 'Sleep_3': 32, 'Sleep_4': 32, 'Work_1': 33, 'Work_2': 33, 'Work_3': 33, 'Work_4': 33, 'Work_5': 33, 'Family and friends_1': 34, 'Family and friends_2': 34, 'Family and friends_3': 34, 'Family and friends_4': 34, 'Family and friends_5': 34, 'Family and friends_6': 34, 'Barrier time_1': 35, 'Barrier time_2': 35, 'Barrier tiredness_1': 36, 'Barrier tiredness_2': 36, 'Barrier support_1': 37, 'Barrier family work_1': 38, 'Barrier family work_2': 38, 'Barrier weather_1': 39, 'Barrier weather_2': 39, 'Barrier facilities_1': 40, 'Barrier facilities_2': 40, 'Barrier facilities_3': 40}
     items=list(filter(lambda x: x not in remove_educations,add_educations))
@@ -219,19 +228,25 @@ def rule_filter_education(questionnaire):
 
 
 def fetch_cbr_educational_items(base_questionnaire):
-    print(base_questionnaire)
+    # print(base_questionnaire)
+    
+    mycbr_keys=['Dem_age', 'T_tampa_fear', 'T_sleep', 'BT_PHQ_2item', 'F_GPE', 'Dem_bmi', 'Dem_weight', 'Pain_medication', 'Pain_self_efficacy', 'T_cpg_function', 'Education', 'EQ5D_selfcare', 'Primary_pain_site', 'BT_wai', 'Sleep_day', 'EQ5D_mobility', 'BIPQ_life', 'BIPQ_symptoms', 'Dem_gender', 'BT_PSS', 'BT_PSEQ_2item', 'BIPQ_pain_continuation', 'RMDQ', 'PSS', 'FABQ_lbp_cause', 'Comorbidities', 'BIPQ_concern', 'BIPQ_understanding', 'F_PASS', 'BIPQ_control', 'EQ5D_anxiety', 'SaltinGrimby', 'Activity_StepCount', 'T_barriers', 'PSFS_activity', 'BT_pain_average', 'MSKHQ', 'Pain_sites', 'SelfManagement_Exercise', 'Dem_height', 'NDI', 'Pain_1year', 'Employment', 'PSFS_score', 'Sleep_wakeup', 'EQ5D_activity', 'Sleep_end', 'FABQ', 'BIPQ_selfmanagement', 'EQ5D_pain', 'BIPQ_emotion', 'Sleep_difficulty', 'PSFS_activity_name', 'Pain_worst', 'SelfManagement_Education', 'Work_characteristics', 'Family', 'EQ5D', 'SelfManagement_Activity']
+    rel_keys=list(filter(lambda x: (x in mycbr_keys) and (x in base_questionnaire.keys()),base_questionnaire.keys()))
+    reduced_questionnaire=dict((k, str(base_questionnaire[k]).rstrip("0.")) for k in rel_keys)
+    # print(reduced_questionnaire)
+    # raise
     response=requests.post(f"{MYCBR_URL}/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Education/retrievalByMultipleAttributes",
-                      json=base_questionnaire,
+                      json=reduced_questionnaire,
                       params={"k":-1}
     )
-    print(response.json())
-    raise
+    # print(response.json())
+    # raise
     cbr_education_items=set("".join(list(map(lambda x: x["SelfManagement_Education"],response.json()))).strip(";").split(";"))
     cbr_education_items=list(filter(lambda x: x!="",cbr_education_items))
     return cbr_education_items
 
 def isquiz(educationid,userid):
-    education_description=es.get(index="data_description", id=educationid).body["_source"]["question"]
+    education_description=es.get(index="education_description", id=educationid).body["_source"]["question"]
     has_question=education_description is not None 
     if not has_question: #educational item does not have a question
         return False
@@ -256,8 +271,9 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     #     priority_queue=res[0]["_source"]["educational_items"].copy()
 
     #fetch all educational items
-    educational_items = es.search(index="data_description", query={'match' : {"description_type":"education"}},size=1000)["hits"]["hits"]
+    educational_items = es.search(index="education_description", query={'match_all' : {}},size=1000)["hits"]["hits"]
     educational_items=list(map(lambda x: x["_source"],educational_items))
+    # print(educational_items)
     educational_items_w_question=list(filter(lambda x: x["question"] is not None,educational_items))
 
     educational_items_w_question=list(map(lambda x: x["educationid"],educational_items_w_question))
@@ -338,10 +354,12 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
 
 
 def check_pain_relief(questionnaire):
-    bt_pain_change=questionnaire["bt_pain_average"]-questionnaire["bt_pain_average_prev"]
-    if questionnaire["bt_pain_average"]>=7 or \
-        (questionnaire["bt_pain_average"]<=2 and bt_pain_change>=4) or \
-        (questionnaire["bt_pain_average"]>=3 and questionnaire["bt_pain_average"]<=6 and bt_pain_change>=3):
+
+
+    bt_pain_change=questionnaire["BT_pain_average"]-questionnaire["BT_pain_average_prev"]
+    if questionnaire["BT_pain_average"]>=7 or \
+        (questionnaire["BT_pain_average"]<=2 and bt_pain_change>=4) or \
+        (questionnaire["BT_pain_average"]>=3 and questionnaire["BT_pain_average"]<=6 and bt_pain_change>=3):
         return True
     return False
 
@@ -394,9 +412,9 @@ def get_pain_relief_exercises(cbr_exercise_items,es_exercise_items,number_exerci
     #if not enough add exercises from elasticsearch
     ex_num=0
     while len(exercises)<number_exercises:
-        es_pain_exercises=list(filter(lambda x: "pain_" in x["ExerciseID"],es_exercise_items))
-        if es_pain_exercises[ex_num]["ExerciseID"] not in exercises:
-            exercises.append(es_exercise_items[ex_num]["ExerciseID"])
+        es_pain_exercises=list(filter(lambda x: "pain_" in x["exerciseid"],es_exercise_items))
+        if es_pain_exercises[ex_num]["exerciseid"] not in exercises:
+            exercises.append(es_exercise_items[ex_num]["exerciseid"])
         ex_num+=1
     return exercises[:number_exercises]
 
@@ -432,10 +450,10 @@ def generate_plan_exercise(base_questionnaire,update_questionnaire,duration):
     # print(cbr_exercise_items)
     # raise
     #lookup each of the names in ES to get additional info on the exercises
-    cbr_exercise_items=es.search(index="data_description", query={"bool": {"filter": {"terms": {"exerciseid": cbr_exercise_items}}}},size=10000)["hits"]["hits"]
+    cbr_exercise_items=es.search(index="exercise_description", query={"bool": {"filter": {"terms": {"exerciseid": cbr_exercise_items}}}},size=10000)["hits"]["hits"]
     cbr_exercise_items=list(map(lambda x: x["_source"],cbr_exercise_items))
     #fetch exercises from rulebase
-    es_exercise_items = es.search(index="data_description", query={'match' : {"description_type":"exercise"}},size=10000)["hits"]["hits"]
+    es_exercise_items = es.search(index="exercise_description", query={'match' : {"description_type":"exercise"}},size=10000)["hits"]["hits"]
     es_exercise_items=list(map(lambda x: x["_source"],es_exercise_items))
     #filter level of exercises
     res=es.search(index="exercise", query={'match' : {"userid":"stuart"}})
@@ -525,7 +543,6 @@ def generate_activity_goal(current_user):
     
     # average between last week goal and steps done
     #TODO: assumes latest plan is latest in history
-    print(prev_plan)
     previous_goal=prev_plan["plan"]["activity"]["goal"]
     new_goal= (prev_steps +previous_goal)/2
     # round to hundreds
@@ -580,7 +597,6 @@ def find_previous_stepcounts(previous_plans):
     final_activity=""
     for i,previous_plan in enumerate(previous_plans):
         # print(previous_plan["_source"]["start"])
-        print(i)
         activity=activity_done(previous_plan["_source"]["start"],previous_plan["_source"]["end"])
         final_activity+=str(i)+":"+str(activity)+";"
     return final_activity
@@ -594,10 +610,10 @@ async def next(
     all_plans=es.search(index="plan",body={"query":{'match' : {"userid":current_user.userid}}},size=1000)["hits"]["hits"]
     #set standard first week plan
     if all_plans==[]:
-        response = es.mget(index="data_description", body={"ids": FIRST_WEEK_EDUCATION})
+        response = es.mget(index="education_description", body={"ids": FIRST_WEEK_EDUCATION})
         educations=list(map(lambda x: x["_source"],response["docs"]))
         
-        response = es.mget(index="data_description", body={"ids": FIRST_WEEK_EXERCISES})
+        response = es.mget(index="exercise_description", body={"ids": FIRST_WEEK_EXERCISES})
         exercises=list(map(lambda x: x["_source"],response["docs"]))[:plan_info.exercises_duration//5]
         # print(exercises)
         # print(educations)
@@ -620,18 +636,25 @@ async def next(
     else:
         #merges baseline questionnaire with new info
         if plan_info.questions is not None:
-            complete_questionnaire=base_questionnaire | plan_info.questions[0]
+            tailoring_questionnaire=dict(map(lambda x: (x["questionid"],int(x["answer"]) if x["answer"].isnumeric() else x["answer"]) ,plan_info.questions))
+            if "BT_pain_average_prev" not in tailoring_questionnaire.keys():
+                tailoring_questionnaire["BT_pain_average_prev"]=0
+            if "T_cpg_function_prev" not in tailoring_questionnaire.keys():
+                tailoring_questionnaire["T_cpg_function_prev"]=0
+            complete_questionnaire=base_questionnaire | tailoring_questionnaire
         else:
             complete_questionnaire=base_questionnaire
         complete_questionnaire["Activity_StepCount"]=find_previous_stepcounts(previous_plans)
-    if plan_info.questions[0] is not None:
-        tmp_questionnaire=plan_info.questions[0].copy()
+    if tailoring_questionnaire is not None:
+        tmp_questionnaire=tailoring_questionnaire.copy()
         tmp_questionnaire["userid"]=current_user.userid
         tmp_questionnaire["date"]=datetime.datetime.now().timestamp()
         es.index(index='tailoring_questionnaire', document=tmp_questionnaire)
 
-    exercises=generate_plan_exercise(complete_questionnaire,plan_info.questions[0],plan_info.exercises_duration)
-    educations=generate_plan_education(current_user,complete_questionnaire,plan_info.questions[0]),
+    exercises=generate_plan_exercise(complete_questionnaire,tailoring_questionnaire,plan_info.exercises_duration)
+    exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
+    educations=generate_plan_education(current_user,complete_questionnaire,tailoring_questionnaire)
+    educations=es.mget(index="education_description", body={"ids": list(map(lambda x: x["educationid"],educations)) })["docs"]
     # print(list(map(lambda x: es.search(index="data_description", query={'match' : {"ExerciseID":x}},size=100)["hits"]["hits"][0]["_source"],exercises)))
     complete_plan=generate_plan(current_user,plan_info,educations,exercises)
     
@@ -639,9 +662,11 @@ async def next(
     update_goal(current_user.userid,"SessionCompleted")
     if es.exists(index="appsettings", id=current_user.userid):
         es.update(index="appsettings",id=current_user.userid,doc={"hideIntroSession":True})
+    # print(complete_plan)
+    # raise
     es.index(index='plan', document=complete_plan)
     es.indices.refresh(index='plan')
-
+    # print(complete_plan)
     return complete_plan
 
 
@@ -677,7 +702,7 @@ async def exercise(
         return {"status":200}
     elif status=="skip_replace":
         reason=exercises[0]["reason"]
-        original_exercise = es.search(index="data_description",query={"match":{"exerciseid":exerciseid}},size=900)
+        original_exercise = es.search(index="exercise_description",query={"match":{"exerciseid":exerciseid}},size=900)
         original_exercise=original_exercise["hits"]["hits"][0]
         original_level = original_exercise["_source"]["level"]
         original_type = original_exercise["_source"]["type"]
@@ -691,7 +716,7 @@ async def exercise(
             new_level=original_level
         new_level=min([new_level,6])
         new_level=max([new_level,1])
-        new_exercise=es.search(index="data_description",query={"bool":
+        new_exercise=es.search(index="exercise_description",query={"bool":
                                                 {"must":[
                                                     {"match":{"type":original_type}},
                                                         {"match":{"level":new_level}}
@@ -714,7 +739,6 @@ async def exercise(
         exercise_item["date"]=int(datetime.datetime.now().timestamp())
     # doc["plan"]["exercises"]=doc["plan"]["exercises"].extend(exercise_dicts)
     doc["done"]["exercises"].extend(exercise_dicts)
-    print(doc["done"])
     es.update(index="plan",id=id,doc=doc)
     helpers.bulk(es,exercise_dicts,index="exercise")
     return {"status":200}
@@ -849,7 +873,7 @@ async def can_skip(
     plan_query=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=100)["hits"]["hits"][-1]
     plan_id=plan_query["_id"]
     plan=plan_query["_source"]["plan"]
-    exercise=es.search(index="data_description", query={'match' : {"exerciseid":exercise_id}},size=100)["hits"]["hits"][0]["_source"]
+    exercise=es.search(index="exercise_description", query={'match' : {"exerciseid":exercise_id}},size=100)["hits"]["hits"][0]["_source"]
 
     exercises_from_plan=plan["exercises"]
     exercise_type=exercise["type"]
@@ -877,7 +901,6 @@ def physical_activity_progress(userid):
     return total_steps/goal
 
 def filter_tailoring(previous_tailorings,baseline,userid):
-    print(baseline["BT_wai"])
     pa_percentage=physical_activity_progress(userid)
     tailoring=["BT_pain_average"]
     if len(previous_tailorings)%2==0:
@@ -905,8 +928,7 @@ def filter_tailoring(previous_tailorings,baseline,userid):
         barriers_past_two=list(map(lambda x: 0 if "T_barriers" not in x["_source"].keys() else 0 if x["_source"]["T_barriers"]!=7 else 1,barriers_past_two))
         if sum(barriers_past_two)==0:
             tailoring.remove("T_barriers")
-    # if (len(previous_tailorings)+2)%2==0 and len(previous_tailorings)>=2:
-    #     if 
+    return tailoring
 
 
 @router.get("/tailoring")
@@ -915,11 +937,15 @@ async def tailoring(
 ):
     baseline = es.get(index="questionnaire",id=current_user.userid)["_source"]["questionnaire"]
     # all_tailoring_questions=list(map(lambda x: x["_source"],res["hits"]["hits"]))
-    print(baseline)
     previous_tailorings=es.search(index="tailoring_questionnaire", query={'match' : {"userid":current_user.userid}},size=9999)["hits"]["hits"]
     previous_tailorings.sort(key=lambda x: x["_source"]["date"],reverse=True)
+    # print(previous_tailorings,"previous_tailorings")
     tailoring=filter_tailoring(previous_tailorings,baseline,current_user.userid)
+    # print(tailoring,"ttailoring")
     # update_goal(current_user.userid,"QACompleted")
+    tailoring=es.mget(index="tailoring_description", body={"ids": tailoring}).body["docs"]
+    tailoring=list(map(lambda x: x["_source"],tailoring))
+    # print(tailoring)
     return tailoring
 
 @router.get("/summary")
@@ -931,7 +957,6 @@ async def tailoring(
                                                   }
                                           }
                       ,size=10000)["hits"]["hits"]
-    print(res)
     achievements=list(map(lambda x: x["_source"],res))
     # for i in 
 

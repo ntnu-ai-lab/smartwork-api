@@ -21,7 +21,7 @@ async def EducationalItems(
     """
     Returns a list of all educational items
     """
-    res = es.search(index="data_description",query={"match":{"description_type":"education"}},size=900)["hits"]["hits"]
+    res = es.search(index="education_description",query={"match":{"description_type":"education"}},size=900)["hits"]["hits"]
     return list(map(lambda x: x["_source"],res))
 
 @router.get("/exercise/list")
@@ -32,7 +32,7 @@ async def ExerciseItems(
     """
     Returns a list of all exercise items
     """
-    res = es.search(index="data_description",query={"match":{"description_type":"exercise"}},size=900)["hits"]["hits"]
+    res = es.search(index="exercise_description",query={"match":{"description_type":"exercise"}},size=900)["hits"]["hits"]
     return list(map(lambda x: x["_source"],res))
 
 
@@ -44,7 +44,7 @@ async def AchievementItems(
     """
     Returns a list of all achievement items
     """
-    res = es.search(index="data_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
+    res = es.search(index="achievement_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
     return list(map(lambda x: x["_source"],res))
 
 @router.get("/achievement/types")
@@ -55,6 +55,6 @@ async def AchievementTypes(
     """
     Returns a list of all achievement types
     """
-    res = es.search(index="data_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
+    res = es.search(index="achievement_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
     types=set(map(lambda x: x["_source"]["type"],res))
     return list(map(lambda x: {"type":x},types))

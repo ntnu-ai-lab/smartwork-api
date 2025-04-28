@@ -1,6 +1,6 @@
 [
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "SetGoalSetting",
 		"_source": {
 			"achievementid": "SetGoalSetting",
@@ -16,7 +16,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "SetSleepTool",
 		"_source": {
 			"achievementid": "SetSleepTool",
@@ -32,7 +32,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "UseMindfulness",
 		"_source": {
 			"achievementid": "UseMindfulness",
@@ -48,7 +48,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "QACompleted",
 		"_source": {
 			"achievementid": "QACompleted",
@@ -64,14 +64,14 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "SessionCompleted",
 		"_source": {
 			"achievementid": "SessionCompleted",
 			"type": "general",
-			"title": "Introduksjon til selfBACK",
-			"description_achieved": "Introduksjon til selfBACK er fullført.",
-			"description": "Fullfør introduksjon til selfBACK.",
+			"title": "Introduksjon til smaRTWork",
+			"description_achieved": "Introduksjon til smaRTWork er fullført.",
+			"description": "Fullfør introduksjon til smaRTWork.",
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/session-completed.png",
 			"language": "nb",
 			"goal": 1,
@@ -80,7 +80,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalCorrectQuiz1",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz1",
@@ -96,7 +96,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalCorrectQuiz3",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz3",
@@ -112,7 +112,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalCorrectQuiz7",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz7",
@@ -128,7 +128,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalCorrectQuiz14",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz14",
@@ -144,7 +144,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalCorrectQuiz25",
 		"_source": {
 			"achievementid": "EducationalCorrectQuiz25",
@@ -160,7 +160,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalMaterialRead1",
 		"_source": {
 			"achievementid": "EducationalMaterialRead1",
@@ -176,7 +176,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalMaterialRead3",
 		"_source": {
 			"achievementid": "EducationalMaterialRead3",
@@ -192,7 +192,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalMaterialRead7",
 		"_source": {
 			"achievementid": "EducationalMaterialRead7",
@@ -208,7 +208,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalMaterialRead14",
 		"_source": {
 			"achievementid": "EducationalMaterialRead14",
@@ -224,7 +224,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalMaterialRead25",
 		"_source": {
 			"achievementid": "EducationalMaterialRead25",
@@ -240,7 +240,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalMaterialRead40",
 		"_source": {
 			"achievementid": "EducationalMaterialRead40",
@@ -256,7 +256,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalMaterialRead60",
 		"_source": {
 			"achievementid": "EducationalMaterialRead60",
@@ -272,7 +272,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalMaterialRead80",
 		"_source": {
 			"achievementid": "EducationalMaterialRead80",
@@ -288,7 +288,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalMaterialRead100",
 		"_source": {
 			"achievementid": "EducationalMaterialRead100",
@@ -304,7 +304,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyActivitiesCompleted1",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted1",
@@ -320,7 +320,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyActivitiesCompleted3",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted3",
@@ -336,7 +336,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyActivitiesCompleted7",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted7",
@@ -352,7 +352,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyActivitiesCompleted14",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted14",
@@ -368,7 +368,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyActivitiesCompleted25",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted25",
@@ -384,7 +384,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyActivitiesCompleted40",
 		"_source": {
 			"achievementid": "DailyActivitiesCompleted40",
@@ -400,7 +400,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyGoalSteps1",
 		"_source": {
 			"achievementid": "DailyGoalSteps1",
@@ -416,7 +416,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyGoalSteps3",
 		"_source": {
 			"achievementid": "DailyGoalSteps3",
@@ -432,7 +432,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyGoalSteps7",
 		"_source": {
 			"achievementid": "DailyGoalSteps7",
@@ -448,7 +448,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyGoalSteps14",
 		"_source": {
 			"achievementid": "DailyGoalSteps14",
@@ -464,7 +464,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyGoalSteps25",
 		"_source": {
 			"achievementid": "DailyGoalSteps25",
@@ -480,7 +480,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyGoalSteps40",
 		"_source": {
 			"achievementid": "DailyGoalSteps40",
@@ -496,7 +496,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyGoalSteps60",
 		"_source": {
 			"achievementid": "DailyGoalSteps60",
@@ -512,7 +512,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyGoalSteps80",
 		"_source": {
 			"achievementid": "DailyGoalSteps80",
@@ -528,7 +528,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyGoalSteps100",
 		"_source": {
 			"achievementid": "DailyGoalSteps100",
@@ -544,7 +544,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "FullCompletedWeekSteps",
 		"_source": {
 			"achievementid": "FullCompletedWeekSteps",
@@ -560,7 +560,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "RowCompletedSteps3",
 		"_source": {
 			"achievementid": "RowCompletedSteps3",
@@ -576,7 +576,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "RowCompletedSteps7",
 		"_source": {
 			"achievementid": "RowCompletedSteps7",
@@ -592,7 +592,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "RowCompletedSteps14",
 		"_source": {
 			"achievementid": "RowCompletedSteps14",
@@ -608,7 +608,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "RowCompletedSteps25",
 		"_source": {
 			"achievementid": "RowCompletedSteps25",
@@ -624,7 +624,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "RowCompletedSteps40",
 		"_source": {
 			"achievementid": "RowCompletedSteps40",
@@ -640,7 +640,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyRecordSteps10",
 		"_source": {
 			"achievementid": "DailyRecordSteps10",
@@ -656,7 +656,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyRecordSteps12",
 		"_source": {
 			"achievementid": "DailyRecordSteps12",
@@ -672,7 +672,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyRecordSteps14",
 		"_source": {
 			"achievementid": "DailyRecordSteps14",
@@ -688,7 +688,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyRecordSteps16",
 		"_source": {
 			"achievementid": "DailyRecordSteps16",
@@ -704,7 +704,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyRecordSteps18",
 		"_source": {
 			"achievementid": "DailyRecordSteps18",
@@ -720,7 +720,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "DailyRecordSteps20",
 		"_source": {
 			"achievementid": "DailyRecordSteps20",
@@ -736,14 +736,14 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "TotalSteps50",
 		"_source": {
 			"achievementid": "TotalSteps50",
 			"type": "physical",
 			"title": "Totalt antall skritt",
-			"description_achieved": "Totalt har du nådd 50.000 skritt med bruk av selfBACK.",
-			"description": "Nå et totalt antall skritt på 50.000 med bruk av selfBACK.",
+			"description_achieved": "Totalt har du nådd 50.000 skritt med bruk av smaRTWork.",
+			"description": "Nå et totalt antall skritt på 50.000 med bruk av smaRTWork.",
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-50.png",
 			"language": "nb",
 			"goal": 50000,
@@ -752,14 +752,14 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "TotalSteps100",
 		"_source": {
 			"achievementid": "TotalSteps100",
 			"type": "physical",
 			"title": "Totalt antall skritt",
-			"description_achieved": "Totalt har du nådd 100.000 skritt med bruk av selfBACK.",
-			"description": "Nå et totalt antall skritt på 100.000 med bruk av selfBACK.",
+			"description_achieved": "Totalt har du nådd 100.000 skritt med bruk av smaRTWork.",
+			"description": "Nå et totalt antall skritt på 100.000 med bruk av smaRTWork.",
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-100.png",
 			"language": "nb",
 			"goal": 100000,
@@ -768,14 +768,14 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "TotalSteps200",
 		"_source": {
 			"achievementid": "TotalSteps200",
 			"type": "physical",
 			"title": "Totalt antall skritt",
-			"description_achieved": "Totalt har du nådd 200.000 skritt med bruk av selfBACK.",
-			"description": "Nå et totalt antall skritt på 200.000 med bruk av selfBACK.",
+			"description_achieved": "Totalt har du nådd 200.000 skritt med bruk av smaRTWork.",
+			"description": "Nå et totalt antall skritt på 200.000 med bruk av smaRTWork.",
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-200.png",
 			"language": "nb",
 			"goal": 200000,
@@ -784,14 +784,14 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "TotalSteps400",
 		"_source": {
 			"achievementid": "TotalSteps400",
 			"type": "physical",
 			"title": "Totalt antall skritt",
-			"description_achieved": "Totalt har du nådd 400.000 skritt med bruk av selfBACK.",
-			"description": "Nå et totalt antall skritt på 400.000 med bruk av selfBACK.",
+			"description_achieved": "Totalt har du nådd 400.000 skritt med bruk av smaRTWork.",
+			"description": "Nå et totalt antall skritt på 400.000 med bruk av smaRTWork.",
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-400.png",
 			"language": "nb",
 			"goal": 400000,
@@ -800,14 +800,14 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "TotalSteps600",
 		"_source": {
 			"achievementid": "TotalSteps600",
 			"type": "physical",
 			"title": "Totalt antall skritt",
-			"description_achieved": "Totalt har du nådd 600.000 skritt med bruk av selfBACK.",
-			"description": "Nå et totalt antall skritt på 600.000 med bruk av selfBACK.",
+			"description_achieved": "Totalt har du nådd 600.000 skritt med bruk av smaRTWork.",
+			"description": "Nå et totalt antall skritt på 600.000 med bruk av smaRTWork.",
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-600.png",
 			"language": "nb",
 			"goal": 600000,
@@ -816,14 +816,14 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "TotalSteps800",
 		"_source": {
 			"achievementid": "TotalSteps800",
 			"type": "physical",
 			"title": "Totalt antall skritt",
-			"description_achieved": "Totalt har du nådd 800.000 skritt med bruk av selfBACK.",
-			"description": "Nå et totalt antall skritt på 800.000 med bruk av selfBACK.",
+			"description_achieved": "Totalt har du nådd 800.000 skritt med bruk av smaRTWork.",
+			"description": "Nå et totalt antall skritt på 800.000 med bruk av smaRTWork.",
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-800.png",
 			"language": "nb",
 			"goal": 800000,
@@ -832,14 +832,14 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "TotalSteps1000",
 		"_source": {
 			"achievementid": "TotalSteps1000",
 			"type": "physical",
 			"title": "Totalt antall skritt",
-			"description_achieved": "Totalt har du nådd 1.000.000 skritt med bruk av selfBACK.",
-			"description": "Nå et totalt antall skritt på 1.000.000 med bruk av selfBACK.",
+			"description_achieved": "Totalt har du nådd 1.000.000 skritt med bruk av smaRTWork.",
+			"description": "Nå et totalt antall skritt på 1.000.000 med bruk av smaRTWork.",
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-steps-1000.png",
 			"language": "nb",
 			"goal": 1000000,
@@ -848,7 +848,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "Marathon",
 		"_source": {
 			"achievementid": "Marathon",
@@ -864,7 +864,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "AverageStepsWeek5",
 		"_source": {
 			"achievementid": "AverageStepsWeek5",
@@ -880,7 +880,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "AverageStepsWeek6",
 		"_source": {
 			"achievementid": "AverageStepsWeek6",
@@ -896,7 +896,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "AverageStepsWeek8",
 		"_source": {
 			"achievementid": "AverageStepsWeek8",
@@ -912,7 +912,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "AverageStepsWeek10",
 		"_source": {
 			"achievementid": "AverageStepsWeek10",
@@ -928,7 +928,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "AverageStepsWeek12",
 		"_source": {
 			"achievementid": "AverageStepsWeek12",
@@ -944,7 +944,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExerciseDaysCompleted1",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted1",
@@ -960,7 +960,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExerciseDaysCompleted3",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted3",
@@ -976,7 +976,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExerciseDaysCompleted7",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted7",
@@ -992,7 +992,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExerciseDaysCompleted14",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted14",
@@ -1008,7 +1008,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExerciseDaysCompleted25",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted25",
@@ -1024,7 +1024,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExerciseDaysCompleted40",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted40",
@@ -1040,7 +1040,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExerciseDaysCompleted60",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted60",
@@ -1056,7 +1056,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExerciseDaysCompleted80",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted80",
@@ -1072,7 +1072,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExerciseDaysCompleted100",
 		"_source": {
 			"achievementid": "ExerciseDaysCompleted100",
@@ -1088,7 +1088,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalQuizAnswers",
 		"_source": {
 			"achievementid": "EducationalQuizAnswers",
@@ -1103,13 +1103,13 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "TotalDistanceKm",
 		"_source": {
 			"achievementid": "TotalDistanceKm",
 			"type": "stats",
-			"title": "Antall kilometer gått med selfBACK",
-			"description": "Antall kilometer du har gått fra du startet med selfBACK.",
+			"title": "Antall kilometer gått med smaRTWork",
+			"description": "Antall kilometer du har gått fra du startet med smaRTWork.",
 			"image": "https://dvlxmvtyf5r6m.cloudfront.net/achievements/total-distance-km.png",
 			"language": "nb",
 			"goal": -1,
@@ -1118,7 +1118,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "EducationalRead",
 		"_source": {
 			"achievementid": "EducationalRead",
@@ -1133,7 +1133,7 @@
 		}
 	},
 	{
-		"_index": "data_description",
+		"_index": "achievement_description",
 		"_id": "ExercisesCompleted",
 		"_source": {
 			"achievementid": "ExercisesCompleted",
