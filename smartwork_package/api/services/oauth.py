@@ -191,6 +191,10 @@ async def login_for_access_token(
     access_token = create_access_token(
         data={"sub": user.userid}, expires_delta=access_token_expires
     )
+    if not es.indices.exists(index="signin"):
+        es.indices.create(index = 'signin')
+    es.index(index="signin", id=user.userid, document={"date":datetime.now(timezone.utc).timestamp()})
+    es.indices.refresh(index="signin")
     return {"access_token": access_token, "token_type": "bearer"}
 
 

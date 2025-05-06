@@ -47,4 +47,4 @@ def populate_db(es_url,es_password):
     for index in ["plan","exercise","education","achievements","activity","appsettings","tailoring_questionnaire","account","baseline","questionnaire"]:
 
         es.indices.create(index = index,ignore=400)
-populate_db("http://localhost:9200","smartwork4ever")
+# populate_db("http://localhost:9200","smartwork4ever")

@@ -281,9 +281,13 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     # has_quiz_question=list(filter(lambda x: x ,educational_items))
     #fetch performed exercises and exercises that were part of previous plan
     performed_items=es.search(index="education", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
+    this_weeks_plan=es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=1,sort=[{"created": {"order": "desc"}}])["hits"]["hits"][0]["_source"]["plan"]
+
+    this_weeks_educations=list(map(lambda x: x["educationid"],this_weeks_plan["educations"]))
+
     if performed_items!=[]:
         educational_items_used=list(map(lambda x: x["_source"]["educationid"],performed_items))
-        educational_items_thisweek=list(filter(lambda x: x["thisweek"],performed_items))
+        educational_items_thisweek=list(filter(lambda x: x["_source"]["educationid"] in this_weeks_plan,performed_items))
         educational_items_thisweek=list(map(lambda x: x["educationid"],educational_items_thisweek))
     else:
         educational_items_used=[]
@@ -314,7 +318,6 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
 
     result=grouping(selected_educational_items) #decision_grouping.evaluate({"priority_queue":priority_queue})["result"]
     result.sort(key=lambda x: x["priority"],reverse=True)
-
     #if there are not enough items in plan add generic items
     #TODO: not sure if this is implemented correcty
     if len(result)<7:
@@ -653,11 +656,14 @@ async def next(
 
     exercises=generate_plan_exercise(complete_questionnaire,tailoring_questionnaire,plan_info.exercises_duration)
     exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
+    exercises=list(map(lambda x: x["_source"],exercises))
     educations=generate_plan_education(current_user,complete_questionnaire,tailoring_questionnaire)
     educations=es.mget(index="education_description", body={"ids": list(map(lambda x: x["educationid"],educations)) })["docs"]
+    educations=list(map(lambda x: x["_source"],educations))
     # print(list(map(lambda x: es.search(index="data_description", query={'match' : {"ExerciseID":x}},size=100)["hits"]["hits"][0]["_source"],exercises)))
     complete_plan=generate_plan(current_user,plan_info,educations,exercises)
-    
+    # print(complete_plan)
+    # raise
     #TODO: need to check if plan is valid first
     update_goal(current_user.userid,"SessionCompleted")
     if es.exists(index="appsettings", id=current_user.userid):
