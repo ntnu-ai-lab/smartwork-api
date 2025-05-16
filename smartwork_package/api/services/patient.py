@@ -117,13 +117,13 @@ async def totals(
             {'totalid': 'EducationalQuizAnswers', 'progress': num_quiz},
             {'totalid': 'ExercisesCompleted', 'progress': num_exercises}]
 
-def activity_done(from_point,to_point):
+def activity_done(from_point,to_point,userid):
     activities=es.search(index="activity", query={
         "bool": {
             "must": [
                 {
                     "match": {
-                        "userid": "stuart"
+                        "userid": userid
                     }
                 },
                 {
@@ -228,7 +228,7 @@ async def daily_progress(
     plan=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=1)["hits"]["hits"][0]["_source"]["plan"]
     exercises_in_plan=plan["exercises"]
     education_in_plan=plan["educations"]
-    steps_performed=activity_done(from_point_date,to_point_date)
+    steps_performed=activity_done(from_point_date,to_point_date,current_user.userid)
     progress_exercise=round(len(completed_exercises)/len(exercises_in_plan),2)
     progress_education=round(len(completed_educations)/len(education_in_plan),2)
     progress_activity=steps_performed/activity_goal
@@ -264,6 +264,7 @@ async def activity(
         activity["userid"]=current_user.userid
         # activity["_id"]=current_user.userid+"_"+datetime.fromtimestamp(activity["start"]/1000).timestamp()
     helpers.bulk(es,activity_dicts,index="activity")
+    
     total_steps(current_user.userid)
     daily_steps(current_user.userid)
     avg_weekly_steps(current_user.userid)
