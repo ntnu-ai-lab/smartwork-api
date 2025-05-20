@@ -143,10 +143,15 @@ def expiry_education_items(item):
 
 def rule_filter_education(questionnaire):
     questionnaire_updated=questionnaire.copy()
+    if "BT_pain_average_prev" in questionnaire_updated.keys():
+        questionnaire_updated["BT_pain_average_change"]=questionnaire_updated["BT_pain_average"]-questionnaire_updated["BT_pain_average_prev"]
+    else:
+        questionnaire_updated["BT_pain_average_change"]=0
 
-    questionnaire_updated["BT_pain_average_change"]=questionnaire_updated["BT_pain_average"]-questionnaire_updated["BT_pain_average_prev"]
-
-    questionnaire_updated["T_cpg_function_change"]=questionnaire_updated["T_cpg_function"]-questionnaire_updated["T_cpg_function_prev"]
+    if "T_cpg_function_prev" in questionnaire_updated.keys() and "T_cpg_function" in questionnaire_updated.keys():
+        questionnaire_updated["T_cpg_function_change"]=questionnaire_updated["T_cpg_function"]-questionnaire_updated["T_cpg_function_prev"]
+    else:
+        questionnaire_updated["T_cpg_function_change"]=0
     remove_education=[]
     add_educations=[]
     remove_educations=[]
@@ -165,12 +170,14 @@ def rule_filter_education(questionnaire):
         add_education=BT_PAIN_AVERAGE_MEDIUM_ADD
         remove_educations.extend(remove_education)
         add_educations.extend(add_education)
-    if questionnaire_updated["T_cpg_function"]>=5:
-        add_education=T_CPG_ADD
-        add_educations.extend(add_education)
-    if questionnaire_updated["T_cpg_function_change"]>=2:
-        add_education=T_CPG_CHANGE_ADD
-        add_educations.extend(add_education)
+    if "T_cpg_function" in questionnaire_updated.keys():
+        if questionnaire_updated["T_cpg_function"]>=5:
+            add_education=T_CPG_ADD
+            add_educations.extend(add_education)
+    if "T_cpg_function_change" in questionnaire_updated.keys():
+        if questionnaire_updated["T_cpg_function_change"]>=2:
+            add_education=T_CPG_CHANGE_ADD
+            add_educations.extend(add_education)
     if "T_tampa_fear" in questionnaire_updated.keys():
         if questionnaire_updated["T_tampa_fear"]>=5:
             remove_education=TAMPA_RM
@@ -357,13 +364,14 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
 
 
 def check_pain_relief(questionnaire):
-
-
-    bt_pain_change=questionnaire["BT_pain_average"]-questionnaire["BT_pain_average_prev"]
-    if questionnaire["BT_pain_average"]>=7 or \
-        (questionnaire["BT_pain_average"]<=2 and bt_pain_change>=4) or \
-        (questionnaire["BT_pain_average"]>=3 and questionnaire["BT_pain_average"]<=6 and bt_pain_change>=3):
+    if "BT_pain_average" not in questionnaire.keys():
+        return False
+    if questionnaire["BT_pain_average"]>=7:
         return True
+    if "BT_pain_average_prev" in questionnaire.keys():
+        bt_pain_change=questionnaire["BT_pain_average"]-questionnaire["BT_pain_average_prev"]
+        if (questionnaire["BT_pain_average"]<=2 and bt_pain_change>=4) or (questionnaire["BT_pain_average"]>=3 and questionnaire["BT_pain_average"]<=6 and bt_pain_change>=3):
+            return True
     return False
 
 def calc_sets_reps(duration):
@@ -644,12 +652,12 @@ async def next(
         #merges baseline questionnaire with new info
         if plan_info.questions is not None:
             tailoring_questionnaire=dict(map(lambda x: (x["questionid"],int(x["answer"]) if x["answer"].isnumeric() else x["answer"]) ,plan_info.questions))
-            if "BT_pain_average_prev" not in tailoring_questionnaire.keys():
-                tailoring_questionnaire["BT_pain_average_prev"]=0
-            if "T_cpg_function_prev" not in tailoring_questionnaire.keys():
-                tailoring_questionnaire["T_cpg_function_prev"]=0
-            if "T_cpg_function" not in tailoring_questionnaire.keys():
-                tailoring_questionnaire["T_cpg_function"]=0
+            # if "BT_pain_average_prev" not in tailoring_questionnaire.keys():
+            #     tailoring_questionnaire["BT_pain_average_prev"]=0
+            # if "T_cpg_function_prev" not in tailoring_questionnaire.keys():
+            #     tailoring_questionnaire["T_cpg_function_prev"]=0
+            # if "T_cpg_function" not in tailoring_questionnaire.keys():
+            #     tailoring_questionnaire["T_cpg_function"]=0
             complete_questionnaire=base_questionnaire | tailoring_questionnaire
         else:
             complete_questionnaire=base_questionnaire
@@ -663,8 +671,8 @@ async def next(
     exercises=generate_plan_exercise(complete_questionnaire,tailoring_questionnaire,plan_info.exercises_duration)
     # print(exercises)
     # raise
-    exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
-    exercises=list(map(lambda x: x["_source"],exercises))
+    # exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
+    # exercises=list(map(lambda x: x["_source"],exercises))
     educations=generate_plan_education(current_user,complete_questionnaire,tailoring_questionnaire)
     educations=es.mget(index="education_description", body={"ids": list(map(lambda x: x["educationid"],educations)) })["docs"]
     educations=list(map(lambda x: x["_source"],educations))
