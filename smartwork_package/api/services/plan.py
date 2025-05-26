@@ -18,7 +18,7 @@ from api.resources.constants import FIRST_WEEK_EDUCATION,FIRST_WEEK_EXERCISES,ES
 from api.achievements.check_achievements import complete_quiz,complete_educational_read,update_goal
 from api.resources.custom_router import LoggingRoute
 es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
-
+import re
 
 
 router = APIRouter(prefix="/patient/plan",route_class=LoggingRoute,tags=["Plan"])
@@ -239,15 +239,14 @@ def fetch_cbr_educational_items(base_questionnaire):
     
     mycbr_keys=['Dem_age', 'T_tampa_fear', 'T_sleep', 'BT_PHQ_2item', 'F_GPE', 'Dem_bmi', 'Dem_weight', 'Pain_medication', 'Pain_self_efficacy', 'T_cpg_function', 'Education', 'EQ5D_selfcare', 'Primary_pain_site', 'BT_wai', 'Sleep_day', 'EQ5D_mobility', 'BIPQ_life', 'BIPQ_symptoms', 'Dem_gender', 'BT_PSS', 'BT_PSEQ_2item', 'BIPQ_pain_continuation', 'RMDQ', 'PSS', 'FABQ_lbp_cause', 'Comorbidities', 'BIPQ_concern', 'BIPQ_understanding', 'F_PASS', 'BIPQ_control', 'EQ5D_anxiety', 'SaltinGrimby', 'Activity_StepCount', 'T_barriers', 'PSFS_activity', 'BT_pain_average', 'MSKHQ', 'Pain_sites', 'SelfManagement_Exercise', 'Dem_height', 'NDI', 'Pain_1year', 'Employment', 'PSFS_score', 'Sleep_wakeup', 'EQ5D_activity', 'Sleep_end', 'FABQ', 'BIPQ_selfmanagement', 'EQ5D_pain', 'BIPQ_emotion', 'Sleep_difficulty', 'PSFS_activity_name', 'Pain_worst', 'SelfManagement_Education', 'Work_characteristics', 'Family', 'EQ5D', 'SelfManagement_Activity']
     rel_keys=list(filter(lambda x: (x in mycbr_keys) and (x in base_questionnaire.keys()),base_questionnaire.keys()))
-    reduced_questionnaire=dict((k, str(base_questionnaire[k]).rstrip("0.")) for k in rel_keys)
+    # print(base_questionnaire)
+    reduced_questionnaire=dict((k, re.sub(r"(\.0*)$", "", str(base_questionnaire[k]))) for k in rel_keys)
     # print(reduced_questionnaire)
     # raise
     response=requests.post(f"{MYCBR_URL}/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Education/retrievalByMultipleAttributes",
                       json=reduced_questionnaire,
                       params={"k":-1}
     )
-    # print(response.json())
-    # raise
     cbr_education_items=set("".join(list(map(lambda x: x["SelfManagement_Education"],response.json()))).strip(";").split(";"))
     cbr_education_items=list(filter(lambda x: x!="",cbr_education_items))
     return cbr_education_items
