@@ -670,8 +670,8 @@ async def next(
     exercises=generate_plan_exercise(complete_questionnaire,tailoring_questionnaire,plan_info.exercises_duration)
     # print(exercises)
     # raise
-    # exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
-    # exercises=list(map(lambda x: x["_source"],exercises))
+    exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
+    exercises=list(map(lambda x: x["_source"],exercises))
     educations=generate_plan_education(current_user,complete_questionnaire,tailoring_questionnaire)
     educations=es.mget(index="education_description", body={"ids": list(map(lambda x: x["educationid"],educations)) })["docs"]
     educations=list(map(lambda x: x["_source"],educations))
@@ -813,6 +813,7 @@ async def latest(
     res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=999)["hits"]["hits"]
     print(res)
     if res==[]:
+        # one_week_ago = datetime.datetime.now() - datetime.timedelta(days=7)
         return []
     # if datetime.datetime.fromisoformat(res[0]["_source"]["endDate"])<datetime.datetime.now():
     #     return []
