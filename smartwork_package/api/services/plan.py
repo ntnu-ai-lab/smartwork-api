@@ -740,8 +740,10 @@ async def exercise(
             new_level=original_level-1
         elif reason=="instruction_unclear":
             new_level=original_level
+            
         new_level=min([new_level,6])
         new_level=max([new_level,1])
+        # print(original_type,new_level)
         new_exercise=es.search(index="exercise_description",query={"bool":
                                                 {"must":[
                                                     {"match":{"type":original_type}},
@@ -809,6 +811,7 @@ async def latest(
     current_user: Annotated[User, Depends(get_current_user)],
 ):
     res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=999)["hits"]["hits"]
+    print(res)
     if res==[]:
         return []
     # if datetime.datetime.fromisoformat(res[0]["_source"]["endDate"])<datetime.datetime.now():
@@ -821,6 +824,8 @@ async def latest(
     plan["plan"]["exercises"]=list(filter(lambda x: "skipped" not in x.keys(),plan["plan"]["exercises"]))
     # if  not plan_is_active(plan):
     #     return []
+    plan["planExpired"]=True
+    print(plan)
     return plan
 
 
@@ -875,28 +880,49 @@ async def on(
 ):
     query_date=datetime.datetime.strptime(day, "%Y-%m-%d")
     # query_date=query_date.timestamp()
-    res=es.search(index="plan", query={'match' : {"userid":"eer081"}},size=1)["hits"]["hits"]
-    plans=list(map(lambda x: x["_source"],res))
+    if query_date>datetime.datetime.now():
+        return None
     start_time=datetime.datetime.combine(query_date,datetime.time.min).timestamp()
     end_time=datetime.datetime.combine(query_date,datetime.time.max).timestamp()
-    print(start_time)
-    print(end_time)
-    # raise
-    exercises=get_between("exercise",start_time,end_time,"eer081")
-    educations=get_between("education",start_time,end_time,"eer081")
-    activities=get_between("activity",start_time,end_time,"eer081")
+    # print(start_time,end_time)
+    res=es.search(index="plan", query={
+        "bool": {
+            "must": [
+                {
+                    "match": {
+                        "userid": current_user.userid
+                    }
+                },
+                {
+                    "range": {
+                        "end": {
+                            "gte": end_time
+                        }
+                    }
+                },
+                {
+                    "range": {
+                        "start": {
+                           "lte": start_time,  
+                        }
+                    }
+                }
+            ]
+        }
+    })["hits"]["hits"]#[0]["_source"]["plan"]
+    if len(res)==0:
+        return None
+    else:
+        plan=res[0]["_source"]#["plan"]
+    exercises=get_between("exercise",start_time,end_time,current_user.userid)
+    educations=get_between("education",start_time,end_time,current_user.userid)
+    activities=get_between("activity",start_time,end_time,current_user.userid)
     # print(activities)
-    # raise
-    for plan in plans:
-        start=datetime.datetime.fromtimestamp(plan["start"])
-        end=datetime.datetime.fromtimestamp(plan["end"])
-        if query_date>=datetime.datetime.combine(start,datetime.time.min) and query_date<=datetime.datetime.combine(end,datetime.time.max):
-            break
-    plan["done"]={"exercises":exercises, "educations":educations,"activity":4000}
-    # dummy_plan={"done":}
-    print(plan)
-    # plan
-    # raise
+    steps_done=sum(map(lambda x: x["_source"]["steps"],activities))
+    # print(plan)
+    # print(steps_done)
+    plan["done"]={"exercises":exercises, "educations":educations,"activity":steps_done}
+
     return plan
 
 

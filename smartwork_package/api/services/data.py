@@ -44,7 +44,7 @@ async def AchievementItems(
     """
     Returns a list of all achievement items
     """
-    res = es.search(index="achievement_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
+    res = es.search(index="achievement_description",query={"match_all":{}},size=900)["hits"]["hits"]#{"bool":{"must_not":{"term":{"type":"stats"}}}}
     return list(map(lambda x: x["_source"],res))
 
 @router.get("/achievement/types")
@@ -57,4 +57,5 @@ async def AchievementTypes(
     """
     res = es.search(index="achievement_description",query={"match":{"description_type":"achievement"}},size=900)["hits"]["hits"]
     types=set(map(lambda x: x["_source"]["type"],res))
+    types=list(filter(lambda x: x!="stats", types))
     return list(map(lambda x: {"type":x},types))

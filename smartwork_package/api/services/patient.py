@@ -61,6 +61,7 @@ async def achievements(
     res = es.search(index="achievements", query={'match' : {"userid":current_user.userid}},size=10000)["hits"]["hits"]
     srt = {b: i for i, b in enumerate(ACHIEVEMENT_ORDER)}
     res=sorted(res, key=lambda x: srt[x["_source"]["achievementid"]])
+    # print(res)
     return list(map(lambda x: x["_source"],res))
 
 
