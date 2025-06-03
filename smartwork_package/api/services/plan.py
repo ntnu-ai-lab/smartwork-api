@@ -388,6 +388,8 @@ def add_core_back_ab(cbr_exercise_items,es_exercise_items):
         else:
             #if no exercise from group is available in cbr exercises use es
             exercises.append(random.choice(es_exercise_grouping))
+    # print(exercises)
+    # raise
     return exercises
 
 def add_other_types(exercise_set,number_exercises,selected_exercises):
@@ -399,22 +401,29 @@ def add_other_types(exercise_set,number_exercises,selected_exercises):
         # print(new_type)
         ex_w_new_type=list(filter(lambda x: new_type==x["type"],exercise_set))
         exercises.append(ex_w_new_type[0])
+        # print(exercises)
+        # raise
         if len(exercises)==number_exercises:
             return exercises
     return exercises
 def add_same_type(selected_exercises,exercise_set,number_exercises):
+    # print("add_same_type")
     exercises=[]
     types_of_exercises_selected=set(map(lambda x: x["type"] ,selected_exercises))
     for ex_type in types_of_exercises_selected:
         cbr_ex_type_exercises=list(filter(lambda x: ex_type==x["type"],exercise_set))
         for exercise in cbr_ex_type_exercises:
             if exercise not in selected_exercises:
-                exercises.append(exercise)
+                # print(exercise)
+                # raise
+                exercises.append(exercise["exerciseid"])
             if len(exercises)==number_exercises:
                 return exercises
     return exercises
             
 def get_pain_relief_exercises(cbr_exercise_items,es_exercise_items,number_exercises):
+    # print("get_pain_relief_exercises")
+    # raise
     exercises=[]
     #add exercises from cbr system that are pain relief
     cbr_pain_exercises=list(filter(lambda x: "pain_" in x,cbr_exercise_items))
@@ -424,8 +433,10 @@ def get_pain_relief_exercises(cbr_exercise_items,es_exercise_items,number_exerci
     while len(exercises)<number_exercises:
         es_pain_exercises=list(filter(lambda x: "pain_" in x["exerciseid"],es_exercise_items))
         if es_pain_exercises[ex_num]["exerciseid"] not in exercises:
-            exercises.append(es_exercise_items[ex_num]["exerciseid"])
+            exercises.append(es_exercise_items[ex_num])
         ex_num+=1
+    # print(exercises)
+    # raise
     return exercises[:number_exercises]
 
 def generate_plan_exercise(base_questionnaire,update_questionnaire,duration):
@@ -668,16 +679,17 @@ async def next(
         es.index(index='tailoring_questionnaire', document=tmp_questionnaire)
 
     exercises=generate_plan_exercise(complete_questionnaire,tailoring_questionnaire,plan_info.exercises_duration)
-    # print(exercises)
+    print(exercises)
     # raise
-    exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
-    exercises=list(map(lambda x: x["_source"],exercises))
+    # exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
+    # exercises=list(map(lambda x: x["_source"],exercises))
     educations=generate_plan_education(current_user,complete_questionnaire,tailoring_questionnaire)
     educations=es.mget(index="education_description", body={"ids": list(map(lambda x: x["educationid"],educations)) })["docs"]
     educations=list(map(lambda x: x["_source"],educations))
     # print(list(map(lambda x: es.search(index="data_description", query={'match' : {"ExerciseID":x}},size=100)["hits"]["hits"][0]["_source"],exercises)))
     complete_plan=generate_plan(current_user,plan_info,educations,exercises)
     # print(complete_plan)
+    # raise
     # raise
     #TODO: need to check if plan is valid first
     update_goal(current_user.userid,"SessionCompleted")
@@ -826,7 +838,6 @@ async def latest(
     # if  not plan_is_active(plan):
     #     return []
     plan["planExpired"]=True
-    print(plan)
     return plan
 
 

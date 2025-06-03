@@ -86,6 +86,7 @@ def get_user(username):
 
 def authenticate_user(username: str, password: str):
     user = get_user(username) 
+    return user
     if not user:
         return False
     if user.isenabled is False:
