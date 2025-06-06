@@ -191,7 +191,7 @@
 		"_id": "T_tampa_fear",
 		"_source": {
 			"questionid": "T_tampa_fear",
-			"question": "Hvor engstelig er du for at smertene forverres med fysisk aktivitet eller bevegelse?",
+			"question": "Hvor engstelig er du for at plagene dine forverres med fysisk aktivitet eller bevegelse?",
 			"title": "TAMPA",
 			"type": "single",
 			"structure": "horizontal",
@@ -587,6 +587,44 @@
 				}
 			],
 			"explanation": "Dette spørsmålet gir oss informasjon om ditt opplevde stressnivå. Basert på svaret ditt kan vi anbefale verktøy eller gi deg informasjon som vil hjelpe deg med å håndtere stress som er relatert til smertene dine."
+		}
+	},
+	{
+		"_index": "tailoring_description",
+		"_type": "tailoring_nb",
+		"_id": "T_sickleave",
+		"_source": {
+			"questionid": "T_sickleave",
+			"question": "Er du fortsatt sykemeldt på grunn av muskel- og skjelettplager?",
+			"title": "",
+			"type": "single",
+			"structure": "vertical",
+			"language": "nb",
+			"options": [
+				{
+					"option": "Ja, fullt sykemeldt",
+					"value": "Yes, fully",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 1
+				},
+				{
+					"option": "Ja, gradert sykemelding",
+					"value": "Yes, gradually",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 2
+				},
+				{
+					"option": "Nei",
+					"value": "No",
+					"optiontype": "radiobutton",
+					"inputtype": "select",
+					"position": 3
+				}
+				
+			],
+			"explanation": ""
 		}
 	},
 	{

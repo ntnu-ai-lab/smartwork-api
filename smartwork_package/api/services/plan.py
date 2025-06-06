@@ -160,7 +160,7 @@ def rule_filter_education(questionnaire):
         add_education=BT_PAIN_AVERAGE_HIGH_ADD
         remove_educations.extend(remove_education)
         add_educations.extend(add_education)
-    if questionnaire_updated["BT_pain_average_change"]>=3:
+    if questionnaire_updated["BT_pain_average_change"]>=2:
         remove_education=BT_PAIN_AVERAGE_CHANGE_RM
         add_education=BT_PAIN_AVERAGE_CHANGE_ADD
         remove_educations.extend(remove_education)
@@ -595,7 +595,7 @@ def generate_plan(current_user,plan_info,educations,exercises):
                     "userid":current_user.userid,
                     "created":int(curr_dt.timestamp()),
                     "start":datetime.datetime.combine(curr_dt, datetime.time.min).timestamp(),
-                    "end":datetime.datetime.combine(curr_dt+datetime.timedelta(days=7), datetime.time.max).timestamp(),
+                    "end":datetime.datetime.combine(curr_dt+datetime.timedelta(days=6), datetime.time.max).timestamp(),
                     "exercises_duration":plan_info.exercises_duration,
                     # "history":history,
                     "plan":{
@@ -922,6 +922,7 @@ async def on(
             ]
         }
     })["hits"]["hits"]#[0]["_source"]["plan"]
+    # print(res)
     if len(res)==0:
         return None
     else:
@@ -1014,6 +1015,8 @@ def physical_activity_progress(userid):
 def filter_tailoring(previous_tailorings,baseline,userid):
     pa_percentage=physical_activity_progress(userid)
     tailoring=["BT_pain_average"]
+    if len(previous_tailorings)>=2 and len(previous_tailorings)%2==0:
+        tailoring.append("T_sickleave")
     if len(previous_tailorings)%2==0:
         tailoring.append("T_cpg_function")
     if (len(previous_tailorings)+2)%4==0 and len(previous_tailorings)>=2 and (int(baseline["T_tampa_fear"])>=2 or pa_percentage<0.5):
@@ -1055,6 +1058,7 @@ async def tailoring(
     # print(tailoring,"ttailoring")
     # update_goal(current_user.userid,"QACompleted")
     tailoring=es.mget(index="tailoring_description", body={"ids": tailoring}).body["docs"]
+    print(tailoring,"tailoring")
     tailoring=list(map(lambda x: x["_source"],tailoring))
     # print(tailoring)
     return tailoring
