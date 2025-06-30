@@ -1,0 +1,204 @@
+{
+    "App": {
+      "OpenApp": {
+        "OA-001": "Er du langt unna å nå målene dine?",
+        "OA-002": "Har du oppnådd dagens mål?",
+        "OA-003": "Har du lest dagens informasjon i 'Godt å vite'?",
+        "OA-004": "Finn ut om du har mottatt nytt trofe",
+        "OA-005": "Har du mottatt et nytt trofé denne uken?",
+        "OA-006": "Finn ut om du nærmer deg et nytt trofe.",
+        "OA-007": "Sjekk i appen om et nytt trofe er innenfor rekkevidde.",
+        "OA-008": "Ønsker du å se hva du har lært til nå? Sjekk biblioteket ditt.",
+        "OA-009": "Sjekk ut biblioteket! Her ligger all informasjon og tips du har mottatt frem til nå.",
+        "OA-010": "Biblioteket har nyttig informasjon som kan hjelpe deg med å håndtere muskel- og skjelettplagene dine.",
+        "OA-011": "Trenger du en oppfriskning på hvordan du kan håndtere muskel- og skjelettplagene dine? Sjekk innholdet verktøykassen.",
+        "OA-012": "Verktøykassen er full av gode og nyttige tips som kan hjelpe deg å håndtere muskel- og skjelettplagene dine."
+      }
+    },
+    "Education": {
+      "EducationReminder": {
+        "ED-EDR-001": "Nyttig informasjon venter på deg. Trykk på 'Godt å vite' for å lese mer.",
+        "ED-EDR-002": "Ønsker du flere tips om hvordan du kan håndtere muskel- og skjelettplagene dine? Trykk på 'Godt å vite' for å finne mer informasjon.",
+        "ED-EDR-003": "Det er flere ting du kan gjøre for å redusere muskel- og skjelettplagene dine. Trykk på 'Godt å vite' for å få nyttige tips.",
+        "ED-EDR-004": "Vil du vite mer om hvordan du kan håndtere muskel- og skjelettplagene dine? Det ligger nyttig informasjon og venter på deg under 'Godt å vite'.",
+        "ED-EDR-005": "Vil du vite mer om muskel- og skjelettplager? Trykk på 'Godt å vite'.",
+        "ED-EDR-006": "Ønsker du tips om hvordan du kan håndtere muskel- og skjelettplagene dine? Les mer om dette under 'Godt å vite'.",
+        "ED-EDR-007": "Ny informasjon venter på deg under 'Godt å vite' – finn ut mer om hvordan du kan håndtere muskel- og skjelettplagene dine.",
+        "ED-EDR-008": "Ny informasjon er tilgjengelig under 'Godt å vite'!",
+        "ED-EDR-009": "Det ligger ny informasjon og venter på deg under 'Godt å vite'!",
+        "ED-EDR-010": "Ny informasjon og nyttige tips venter på deg under 'Godt å vite'!"
+      }
+    },
+    "Exercise": {
+      "IncompleteDay": {
+        "EX-ID-001": "Bra jobbet! Du har nå gjennomført noen av dagens øvelser! Har du mulighet til å fullføre resten av øvelsene i programmet?",
+        "EX-ID-002": "Supert! Du er godt i gang med å gjennomføre dagens treningsøvelser. Husk å registrere gjennomføringen av resten av øvelsene.",
+        "EX-ID-003": "Bra jobbet – du har gjennomført noen av dagens øvelser. Du kan gjennomføre resten av øvelsene når som helst – husk å registrere gjennomføringen!",
+        "EX-ID-004": "Husk å registrere gjennomføringen av dagens treningsøvelser!",
+        "EX-ID-005": "Det ser ut som du fortsatt har noen treningsøvelser igjen. Husk å registrere gjennomføringen i appen.",
+        "EX-ID-006": "Du har fortsatt igjen <num> treningsøvelser i dag. Har du kapasitet til å fullføre programmet?",
+        "EX-ID-007": "Du har gjort noen av dagens øvelser og er snart i mål! Du kan når som helst logge inn i appen og fullføre resten av øvelsene."
+      },
+      "PainAndFunction": {
+        "EX-PAF-001": "Treningsøvelsene kan hjelpe deg med å håndtere muskel- og skjelettplagene dine. Du rapporter hvilke øvelser du gjennomfører i appen.",
+        "EX-PAF-002": "Treningsøvelsene er bra for muskel- og skjelettplagene dine – husk at disse alltid er tilgjengelig i appen.",
+        "EX-PAF-003": "Treningsøvelsene kan redusere plagene dine – husk å rapportere i appen når du har gjennomført øvelsene.",
+        "EX-PAF-004": "Treningsøvelsene kan hjelpe deg med å håndtere plagene dine – husk å rapportere i appen når du har gjennomført øvelsene.",
+        "EX-PAF-005": "Treningsøvelsene er bra for muskel- og skjelettplagene dine – husk at du alltid bør rapportere gjennomføringen av øvelsene i appen."
+      },
+      "SufficientDays": {
+        "EX-SD-001": "Gratulerer! Du har gjennomført øvelsesprogrammet minst 3 ganger den siste uken. Fortsett sånn!",
+        "EX-SD-002": "Du har fullført ukens treningsøvelser – det betyr at du tar viktige grep for å håndtere smertene dine!",
+        "EX-SD-003": "Du har gjennomført alle treningsøvelsene i ukeplanen din – vel utført!",
+        "EX-SD-004": "Du har fulgt planen din for treningsøvelsene – regelmessig gjennomføring av øvelsesprogrammet kan være til stor hjelp mot plagene dine.",
+        "EX-SD-005": "Du gjør en veldig god jobb med treningsøvelsene. Fortsett med samme innsats!",
+        "EX-SD-006": "Du har fullført ukens treningsøvelser – det betyr at du tar viktige steg for å håndtere muskel- og skjelettplagene dine!",
+        "EX-SD-007": "Regelmessig trening er hjelper godt mot muskel- og skjelettplager. Supert at du følger planen din!",
+        "EX-SD-008": "Du har gjennomført alle treningsøvelsene i ukeplanen din – vel utført!",
+        "EX-SD-009": "Du har fulgt planen din for treningsøvelsene – regelmessig gjennomføring av øvelsesprogrammet kan være til stor hjelp mot muskel- og skjelettplagene dine.",
+        "EX-SD-010": "Du tar virkelig ansvar for å håndtere muskel- og skjelettplagene dine. Bra innsats – du har gjennomført alle treningsøvelsene!"
+      },
+      "ZeroDays": {
+        "EX-ZD-001": "Treningsøvelser er bra for muskel- og skjelettplagene dine og noen øvelser er bedre enn ingen! Husk å rapportere i appen når du har gjennomført øvelsene.",
+        "EX-ZD-002": "Når du rapporterer øvelsene du gjennomfører hjelper dette oss med å tilpasse dine fremtidige øvelsesprogram.",
+        "EX-ZD-003": "Vi anbefaler at du gjennomfører øvelsesprogrammet 3-5 ganger per uke, men alle øvelser du gjør er bedre ingen! Om du rapporterer i appen når du har gjennomført en øvelse vil neste program tilpasses dine behov.",
+        "EX-ZD-004": "Treningsøvelsene hjelper deg med å håndtere muskel- og skjelettplagene dine – husk å rapportere i appen når du har gjort en øvelse.",
+        "EX-ZD-005": "Treningsøvelser er bra for muskel- og skjelettplagene dine – husk å rapportere i appen hver gang du har gjennomført øvelsene.  ",
+        "EX-ZD-006": "Når du rapporterer øvelsene du har gjennomført hjelper dette oss med å tilpasse de kommende øvelsesprogrammene dine.",
+        "EX-ZD-007": "Vi anbefaler at du gjennomfører øvelsesprogrammet 3-5 ganger per uke – hvilke dager og når på dagen du gjennomfører øvelsene velger du selv.",
+        "EX-ZD-008": "Husk å rapportere i appen når du har gjennomført treningsøvelsene."
+      }
+    },
+    "PhysicalActivity": {
+      "Barriers": {
+        "Facilities": {
+          "PA-BAR-FS-001": "Mange organiserte aktiviteter er gratis og du trenger ikke avansert utstyr. Hvilke aktiviteter kan passe for deg? ",
+          "PA-BAR-FS-002": "Sjekk aktivitetstilbudet i nærmiljøet og se om du kan finne noe som passer for deg. Kanskje du kan invitere med deg noen slik at det blir enklere å gjennomføre? ",
+          "PA-BAR-FS-003": "Du trenger ikke nødvendigvis noe utstyr for å være fysisk aktiv. Gode sko og komfortable klær er alt du trenger for å gå en tur!"
+        },
+        "FamilyAndWork": {
+          "PA-BAR-FW-001": "Kan du være aktiv sammen med familien? Å leke, danse  eller ta en rask gåtur sammen gjør godt for alle!",
+          "PA-BAR-FW-002": "Prøv ulike aktiviteter sammen med familien. En rask gåtur eller morsomme fellesaktiviteter gjør det enklere å finne rom til å være fysisk aktiv i hverdagen.",
+          "PA-BAR-FW-003": "Å være fysisk aktiv sammen med venner og familie kan være både morsomt og motiverende.",
+          "PA-BAR-FW-004": "Kan du organisere 'gåmøter' på jobben? Det bidrar til å øke aktivitetsnivået og møtene kan være like produktive.",
+          "PA-BAR-FW-005": "Kanskje du kan bruke lunsjpausen til litt fysisk aktivitet? En rask gåtur kan gjøre godt.",
+          "PA-BAR-FW-006": "Kanskje du kan bruke lunsjpausen til litt fysisk aktivitet? En rask gåtur sammen med en kollega kan gjøre godt.",
+          "PA-BAR-FW-007": "Kan du gå eller sykle til jobben – eller kanskje en del av strekningen? Dette er en enkel måte å få fysisk aktivitet til å bli en naturlig del av hverdagen."
+        },
+        "Support": {
+          "PA-BAR-SP-001": "Har du noen du kan trene sammen? Dette kan gjøre fysisk aktivitet morsommere og øke sjansen for at du fortsetter med å være aktiv. ",
+          "PA-BAR-SP-002": "Å trene sammen med andre øker sjansen for at du fortsetter med å være fysisk aktiv. Sjekk om det er lag eller klubber i nærmiljøet som har aktiviteter som passer for deg. ",
+          "PA-BAR-SP-003": "Er det noen aktiviteter du kan gjøre sammen med venner eller familie? Kanskje du kan invitere noen med på en rask gåtur?"
+        },
+        "Time": {
+          "PA-BAR-TM-001": "Derson du legger inn fysisk aktivitet som del av dine daglige rutiner blir de enklere å gjennomføre. Du kan foreksempel gå til jobben og butikken eller parkere et stykke unna, og du kan utføre øvelsesprogrammet ditt mens du ser på TV.",
+          "PA-BAR-TM-002": "Finnes det måter du kan tilrettelegge for fysisk aktivitet i hverdagen din? På korte turer kan du for eksempel gå eller sykle istedenfor å ta bilen.",
+          "PA-BAR-TM-003": "Hvis tid er en begrensning kan du prøve å være aktiv i flere kortere perioder i løpet av dagen – all aktivitet teller!",
+          "PA-BAR-TM-004": "Arbeid i hagen, husarbeid og lek med barn kan være en fin måte å øke aktivitetsnivået på."
+        },
+        "Tiredness": {
+          "PA-BAR-TD-001": "Fysisk aktivitet fører til at kroppen frigjør smertestillende stoffer (endorfiner). Se om du kan merke virkningen etter en økt med fysisk aktivitet.",
+          "PA-BAR-TD-002": "Dersom du planlegger fysisk aktivitet på de tidspunktene hvor du vanligvis har overskudd øker sjansen for at du gjennomfører aktiviteten.",
+          "PA-BAR-TD-003": "Planlegg når du skal være fysisk aktiv – skriv det gjerne inn i kalenderen din.",
+          "PA-BAR-TD-004": "Du kan gjerne invitere noen til å være med på fysisk aktivitet. Om du kommer med et konkret forslag til tid og sted er det mer forpliktende for begge.",
+          "PA-BAR-TD-005": "Hvis du skal være aktiv sammen med andre kan det lønne seg å planlegge dette på tidspunkter du vanligvis er mest opplagt."
+        },
+        "Weather": {
+          "PA-BAR-WT-001": "Forsøk å finn noen aktiviteter du kan ha ‘på lager’ som du kan gjennomføre uansett vær og føre.",
+          "PA-BAR-WT-002": "Kan du være fysisk aktiv selv om været ikke er det beste? En gåtur i regnet kan være forfriskende – spesielt med en varm dusj etterpå!",
+          "PA-BAR-WT-003": "Legg inn tid til fysisk aktivitet i planene dine selv om været er dårlig. Lag gjerne en ‘plan B’ med innendørs aktivitet. "
+        }
+      },
+      "EmotionalWellbeing": {
+        "PA-EW-001": "Fysisk aktivitet kan være til god hjelp for at du skal føle deg bedre – forsøk å hold deg aktiv!",
+        "PA-EW-002": "Regelmessig fysisk aktivitet hjelper ofte på humøret – prøv å sette av mer tid til å være aktiv.",
+        "PA-EW-003": "Fysisk aktivitet kan hjelpe deg med å håndtere ulike helseplager på en bedre måte – mer aktivitet kan også føre til at du føler deg bedre.",
+        "PA-EW-004": "Regelmessig fysisk aktivitet er en fin måte å løfte humøret på – kan du sette av mer tid til å være aktiv?",
+        "PA-EW-005": "Regelmessig fysisk aktivitet har god effekt på humøret. Prøv å gjøre mer av de aktivitetene du liker best.",
+        "PA-EW-006": "Regelmessig fysisk aktivitet gjør godt for fysisk og mentalt velvære. Prøv å legge inn fysisk aktivitet på tidspunkt av dagen som passer deg best."
+      },
+      "Full": {
+        "PA-F-001": "Du har nådd målet ditt for antall skritt! Bra jobbet!",
+        "PA-F-002": "Fantastisk innsats i dag! Målet ditt for antall skritt er nådd!",
+        "PA-F-003": "Veldig bra! Du har nådd dagens mål for antall skritt!",
+        "PA-F-004": "Glimrende jobb! Dagens mål for antall skritt er nådd! Gi deg selv en klapp på skulderen!",
+        "PA-F-005": "Du har nådd målet for antall skritt! Bra innsats!",
+        "PA-F-006": "Du har nådd dagens mål for antall skritt! Det er tid for en liten feiring!",
+        "PA-F-007": "Fremragende innsats! Målet for antall skritt er nådd – fortsett sånn!",
+        "PA-F-008": "Dagens mål for antall skritt er nådd! Bra jobbet! Du klarte det!",
+        "PA-F-009": "Dagens mål for antall skritt er nådd! Fortsett sånn!",
+        "PA-F-010": "Målet for antall skritt er nådd! Gå for det samme i morgen!",
+        "PA-F-011": "Bravo! Målet for antall skritt er nådd! Vær stolt av din egen innsats!",
+        "PA-F-012": "Hurra, du klarte det! Dagens mål for antall skritt er nådd!",
+        "PA-F-013": "Bra jobbet i dag! Antall skritt er nådd!",
+        "PA-F-014": "Dagens mål for antall skritt er nådd! Bra innsats!",
+        "PA-F-015": "Dagens mål for antall skritt er nådd! Strålende jobb – vær stolt av deg selv!",
+        "PA-F-016": "Bra jobbet i dag! Dagens mål for antall skritt er nådd!",
+        "PA-F-017": "Hipp Hipp Hurra! Du har nådd dagens mål for antall skritt!"
+      },
+      "High": {
+        "PA-H-001": "Bra jobbet – du har snart nådd målet for antall skritt!",
+        "PA-H-002": "Flott innsats – du nærmer deg målet for antall skritt!",
+        "PA-H-003": "Kjempebra innsats i dag! Du har snart nådd målet for antall skritt!",
+        "PA-H-004": "Utmerket innsats – målet for antall skritt er snart nådd!",
+        "PA-H-005": "Super innsats i dag! Målet for antall skritt er innenfor rekkevidde.",
+        "PA-H-006": "Supert! Du gjør en god jobb for å nå målet for antall skritt!",
+        "PA-H-007": "Stå på! Du er veldig nær å nå målet for antall skritt.",
+        "PA-H-008": "Vær stolt av egen innsats! Du har snart nådd målet for antall skritt!"
+      },
+      "Low": {
+        "PA-L-001": "Dersom du finner aktiviteter som er morsomme eller motiverende er det enklere å øke aktivitetsnivået. Er det noe du har lyst til å lære deg eller bli bedre på? Er det noe musikk som gjør øvelser eller trening lettere å gjennomføre?",
+        "PA-L-002": "Prøv å legg inn fysisk aktivitet som en naturlig del av dine daglige rutiner. På denne måten kan fysisk aktivitet bli en del av hverdagen din!",
+        "PA-L-003": "Husk at hvert skritt teller! Å være aktiv i flere korte perioder gjennom dagen kan være en god måte å øke aktivitetsnivået på.",
+        "PA-L-004": "Kan du sette av mer tid til fysisk aktivitet? Dersom du finner små lommer i hverdagen der du kan bevege deg vil du på sikt oppleve at det enklere å være i aktivitet.",
+        "PA-L-005": "Å ta trappa istedenfor heisen er en enkel måte å bli mer aktiv på. Alle skritt teller!",
+        "PA-L-006": "Fysisk aktivitet kan hjelpe deg med å håndtere ulike helseplager på en bedre måte – mer aktivitet er også godt for muskel- og skjelettplagene dine.",
+        "PA-L-007": "Regelmessig fysisk aktivitet har positiv effekt på velvære – forsøk å finn aktiviteter som du liker og som du kan gjennomføre regelmessig.",
+        "PA-L-008": "Du kan øke aktivitetsnivået ditt ved å gjøre små endringer i hverdagen din, for eksempel ved å parkere bilen lenger unna eller gå av bussen på et tidligere stopp."
+      },
+      "Medium": {
+        "PA-M-001": "Du er over halvveis til målet for antall skritt i dag. Husk at fysisk aktivitet er bra for muskel- og skjelettplagene dine.",
+        "PA-M-002": "Du gjør en god innsats – fysisk aktivitet er viktig for å håndtere muskel- og skjelettplagene dine på en best mulig måte!",
+        "PA-M-003": "Du har god fremgang! Forsøk å finn flere muligheter for å øke aktivitetsnivået – ta trappen istedenfor heisen!",
+        "PA-M-004": "Du er over halvveis til målet for antall skritt i dag. Bruk alle muligheter for å øke aktivitetsnivået – dette hjelper deg å nå målet ditt.",
+        "PA-M-005": "Du er godt i gang! Bruk alle muligheter for å øke aktivitetsnivået – parker litt lenger unna eller gå av bussen litt for tidlig.",
+        "PA-M-006": "Du er godt i gang med aktivitet i dag. Fysisk aktivitet er bra for det meste – spesielt for muskel- og skjelettplager.",
+        "PA-M-007": "Du gjør en god innsats! Fysisk aktivitet er bra for både helse og velvære og hjelper deg med muskel- og skjelettplagene.",
+        "PA-M-008": "Du er godt i gang med aktivitet i dag. Noen korte gåturer hver dag kan hjelpe deg med å nå målet for antall skritt."
+      },
+      "PainAndFunction": {
+        "PA-PAF-001": "Fysisk aktivitet kan hjelpe deg med å håndtere plagene dine – prøv å sette av mer tid til å være aktiv.",
+        "PA-PAF-002": "Fysisk aktivitet kan hjelpe deg med å håndtere plagene dine – prøv å sette av mer tid til å være aktiv.",
+        "PA-PAF-003": "Fysisk aktivitet er bra for muskel- og skjelettplagene dine – prøv å finne tid til morsomme og motiverende aktiviteter.",
+        "PA-PAF-004": "Husk at regelmessig fysisk aktivitet kan være til stor hjelp for muskel- og skjelettplagene dine.",
+        "PA-PAF-005": "Fysisk aktivitet er svært viktig for å håndtere muskel- og skjelettplagene dine. Prøv å legge inn fysisk aktivitet som en naturlig del av dine daglige rutiner.",
+        "PA-PAF-006": "Det er viktig å være fysisk aktiv – spesielt når du har muskel- og skjelettplager."
+      }
+    },
+    "Plan": {
+      "NewPlan": {
+        "PL-NP-001": "Det er nå tid for å svare på de ukentlige spørsmålene slik at vi kan utarbeide en ny ukeplan til deg.",
+        "PL-NP-002": "Den nye ukeplanen din er snart klar – du må svare på alle spørsmålene slik at vi kan tilpasse planen.",
+        "PL-NP-003": "Svar på de ukentlige spørsmålene slik at vi kan utarbeide en ny ukeplan til deg.",
+        "PL-NP-004": "Det er nå på tide å oppdatere ukeplanen. Svar på de ukentlige spørsmålene for å motta den nye planen din.",
+        "PL-NP-005": "Den nye ukeplanen er snart klar – svar på de ukentlige spørsmålene for å motta planen din."
+      },
+      "NewPlanReminder": {
+        "PL-NPR-001": "De ukentlige spørsmålene venter på deg. Du vil få en ny plan som er tilpasset dine behov etter å ha svart på dem.",
+        "PL-NPR-002": "En oppdatert ukeplan venter – fullfør spørsmålene for å få en ny tilpasset plan.",
+        "PL-NPR-003": "En ny ukeplan venter – fullfør spørsmålene for å gjøre planen ferdig.",
+        "PL-NPR-004": "De ukentlige spørsmålene venter på deg. Fullfør spørsmålene slik at du kan motta en ny ukeplan.",
+        "PL-NPR-005": "De ukentlige spørsmålene venter på deg. Du må fylle inn spørsmålene for å motta en ny ukeplan."
+      }
+    },
+    "Titles": {
+      "Education": "Lær mer om muskel- og skjelettplager",
+      "ExerciseReminder": "Påminnelse om treningsøvelsene",
+      "ExerciseUpdate": "Oppdatering om treningsøvelsene",
+      "LowActivity": "Tips",
+      "NewPlan": "Ny plan",
+      "NewPlanReminder": "Påminnelse om ny plan",
+      "OpenApp": "Tips",
+      "StepsUpdate": "Oppdatering om antall skritt"
+    }
+  }

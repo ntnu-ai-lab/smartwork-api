@@ -2,6 +2,7 @@ from elasticsearch import Elasticsearch, helpers
 from datetime import datetime,time,timedelta
 import pandas as pd
 from api.resources.constants import ES_PASSWORD,ES_URL
+from api.resources.helper_functions import get_between
 es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 
 
@@ -9,9 +10,9 @@ es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 def update_goal(userid,goalid,progress=1,achievedat=1):
     #possible goal ids
     #SetGoalSetting,SetSleepTool,UseMindfulness,QACompleted,SessionCompleted
-    res = es.get(index="achievements", 
-          id=userid+"_"+goalid)
-    id=res["_id"]
+    id=userid+"_"+goalid
+    res = es.get(index="achievements",  
+          id=id)
     res=res["_source"]
     res["progress"]=progress
     res["achievedat"]=achievedat#
@@ -31,6 +32,7 @@ def complete_quiz(userid):
                                          
                                           }}
     ,size=900).body["hits"]["hits"]
+    print(correct)
     num_correct=len(correct)
     update_goal(userid,"EducationalQuizAnswers",num_correct,float(num_correct>=1))
     for i in [1,2,7,14,25]:
@@ -49,6 +51,26 @@ def complete_educational_read(userid):
         if num_read>=i:
           completed=1
         update_goal(userid,"EducationalMaterialRead"+str(i),num_read,completed)
+
+def complete_exercise_day(userid):
+    plans=es.search(index="plan",query={"match":{"userid":userid}},size=900).body["hits"]["hits"]
+    days_completed=0
+    for plan in plans:
+      start_plan=datetime.fromtimestamp(plan["_source"]["start"])
+      end_plan=datetime.fromtimestamp(plan["_source"]["end"])
+      num_exercises_plan=len(plan["_source"]["plan"]["exercise"])
+      for day in pd.date_range(start_plan,end_plan):
+        start_day=day.replace(hour=0,minute=0,second=0,microsecond=0).timestamp()
+        end_day=day.replace(hour=23,minute=59,second=59,microsecond=999999).timestamp()
+        exercises_done=get_between("exercise",start_day,end_day,userid)
+        if len(exercises_done)>=num_exercises_plan:
+          days_completed+=1
+    update_goal(userid,"ExercisesCompleted",days_completed,float(days_completed>=1))
+    for i in [1,3,7,14,25,40,60,80,100]:
+        completed=-1
+        if days_completed>=i:
+          completed=1
+        update_goal(userid,"ExerciseDaysCompleted"+str(i),days_completed,completed)
 
 
 def total_steps(userid):
@@ -105,8 +127,8 @@ def daily_steps(userid):
           if last_updated>(datetime.combine(datetime.now(), time.min)-timedelta(days=1)).timestamp()*1000:
             for i in [3,7,14,25,40]:
               update_goal(userid,"RowCompletedSteps"+str(i),progress+1,1 if progress+1>=i else -1)
-          else:
-             update_goal(userid,"RowCompletedSteps"+str(i),1,-1)
+          # else:
+          #    update_goal(userid,"RowCompletedSteps"+str(i),1,-1)
           
           
 
@@ -123,4 +145,5 @@ def avg_weekly_steps(userid):
         complete=-1
         if sum(steps)/7>=i*1000:
           complete=1
+          print("AverageStepsWeek"+str(i))
           update_goal(userid,"AverageStepsWeek"+str(i),round(sum(steps)/7),complete)

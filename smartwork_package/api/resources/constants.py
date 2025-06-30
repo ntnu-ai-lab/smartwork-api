@@ -277,3 +277,5 @@ LS_MAPPING={
 	# T_barriers
 	# F_GPE
 }
+
+PHQ_ANSWER_MAP={"Not at all":1,"Several days":2,"More than half the days":3,"Nearly every day":4}

@@ -29,23 +29,24 @@ def populate_db(es_url,es_password):
     #run parsing scripts
 
 
-    # education = read_json_file(BACKEND_STATIC_DIR+"education_nb.json")
-    # helpers.bulk(es,education,index="education_description")
+    education = read_json_file(BACKEND_STATIC_DIR+"education_nb.json")
+    print(education)
+    helpers.bulk(es,education,index="education_description")
     # exercise = read_json_file(BACKEND_STATIC_DIR+"exercise_nb.json")
     # helpers.bulk(es,exercise,index="exercise_description")
 
     # achievements= read_json_file(BACKEND_STATIC_DIR+"achievements_nb.json")
     # helpers.bulk(es,achievements,index="achievement_description")
 
-    tailoring=read_json_file(BACKEND_STATIC_DIR+"tailoring_nb.json")
+    # tailoring=read_json_file(BACKEND_STATIC_DIR+"tailoring_nb.json")
     # print(tailoring)
-    for tail in tailoring:
-        tail["_source"]["description_type"]="tailoring"
-        del tail["_type"]
-    print(tailoring)
+    # for tail in tailoring:
+    #     tail["_source"]["description_type"]="tailoring"
+    #     del tail["_type"]
+    # print(tailoring)
 
-    helpers.bulk(es,tailoring,index="tailoring_description",raise_on_error=True)
-    print("Tailoring data loaded successfully")
+    # helpers.bulk(es,tailoring,index="tailoring_description",raise_on_error=True)
+    # print("Tailoring data loaded successfully")
     # for index in ["plan","exercise","education","achievements","activity","appsettings","tailoring_questionnaire","account","baseline","questionnaire"]:
 
     #     es.indices.create(index = index,ignore=400)

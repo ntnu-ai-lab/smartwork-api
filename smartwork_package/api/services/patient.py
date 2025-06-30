@@ -9,7 +9,7 @@ from elasticsearch import helpers
 from datetime import datetime
 import pandas as pd
 from api.achievements.check_achievements import update_goal,total_steps,daily_steps,avg_weekly_steps
-
+from api.resources.helper_functions import get_between
 es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 
 
@@ -118,48 +118,44 @@ async def totals(
             {'totalid': 'EducationalQuizAnswers', 'progress': num_quiz},
             {'totalid': 'ExercisesCompleted', 'progress': num_exercises}]
 
-def activity_done(from_point,to_point,userid):
-    activities=es.search(index="activity", query={
-        "bool": {
-            "must": [
-                {
-                    "match": {
-                        "userid": userid
-                    }
-                },
-                {
-                    "range": {
-                        "date": {
-                            "gte": from_point,  
-                            "lte": to_point
-                        }
-                    }
-                }
-            ]
-        }
-    }
-    )["hits"]["hits"]
-    steps_performed=sum(list(map(lambda x: x["_source"]["steps"],activities)))
-    return steps_performed
+# def activity_done(from_point,to_point,userid):
+#     # print(f"From point: {from_point}, To point: {to_point}, Userid: {userid}")
+#     activities=es.search(index="activity", query={
+#         "bool": {
+#             "must": [
+#                 {
+#                     "match": {
+#                         "userid": userid
+#                     }
+#                 },
+#                 {
+#                     "range": {
+#                         "date": {
+#                             "gte": from_point,  
+#                             "lte": to_point
+#                         }
+#                     }
+#                 }
+#             ]
+#         }
+#     }
+#     )["hits"]["hits"]
+#     # print(activities)
+#     steps_performed=sum(list(map(lambda x: x["_source"]["steps"],activities)))
+#     return steps_performed
 
-@router.get("/daily_progress/{from_point}/{to_point}")
-async def daily_progress(
-    current_user: Annotated[User, Depends(get_current_active_user)],
-    from_point:str,
-    to_point:str
-):
-    """
-    Returns the progress of the user from a given date to another date. It returns total progress, progress in activity, progress in education and progress in exercise
-    """
-    from_point_date=datetime.strptime(from_point,"%Y-%m-%d").timestamp()
-    to_point_date=datetime.strptime(to_point,"%Y-%m-%d").timestamp()
+
+def progress_single_day(selected_date,userid):
+    from_point_date = selected_date.replace(hour=0, minute=0, second=0, microsecond=0).timestamp()
+    to_point_date = selected_date.replace(hour=23, minute=59, second=59, microsecond=999999).timestamp()
+
     # res_exercise=es.search(index="exercise",query={'match' : {"userid":current_user.userid}},size=10000)["hits"]["hits"]
     res_exercise=es.search(index="exercise", query={
         "bool": {
             "must": [
                 {
                     "match": {
-                        "userid": current_user.userid
+                        "userid": userid
                     }
                 },
                 {
@@ -179,7 +175,7 @@ async def daily_progress(
             "must": [
                 {
                     "match": {
-                        "userid": current_user.userid
+                        "userid": userid
                     }
                 },
                 {
@@ -199,14 +195,22 @@ async def daily_progress(
             "must": [
                 {
                     "match": {
-                        "userid": current_user.userid
+                        "userid": userid
                     }
                 },
                 {
                     "range": {
-                        "created": {
-                           "gte": from_point_date,  
-                            "lte": to_point_date
+                        "start": {
+                           "lte": from_point_date,  
+                            # "lte": to_point_date
+                        }
+                    }
+                },
+                {
+                    "range": {
+                        "end": {
+                        #    "gte": from_point_date,  
+                            "gte": to_point_date
                         }
                     }
                 }
@@ -223,23 +227,48 @@ async def daily_progress(
         }
     else:
         activity_goal=activity_goal[0]["_source"]["plan"]["activity"]["goal"]
-    
+    # print
     completed_exercises=res_exercise["hits"]["hits"]
     completed_educations=res_education["hits"]["hits"]
-    plan=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=1)["hits"]["hits"][0]["_source"]["plan"]
+    plan=es.search(index="plan", query={'match' : {"userid":userid}},size=1)["hits"]["hits"][0]["_source"]["plan"]
     exercises_in_plan=plan["exercises"]
     education_in_plan=plan["educations"]
-    steps_performed=activity_done(from_point_date,to_point_date,current_user.userid)
+    activities=get_between(es,"activity",from_point_date,to_point_date,userid)
+    steps_performed=list(map(lambda x: x["_source"]["steps"],activities))
+    # print(f"Steps performed: {steps_performed}")
     progress_exercise=round(len(completed_exercises)/len(exercises_in_plan),2)
     progress_education=round(len(completed_educations)/len(education_in_plan),2)
+    # print(steps_performed,activity_goal,selected_date)
     progress_activity=steps_performed/activity_goal
     total_progress=round(1/3*progress_exercise+1/3*progress_education+1/3*progress_activity,2)
+    
     return {
         "progress": total_progress*100,
         "progress_activity":progress_activity*100,
         "progress_education":progress_education*100,
         "progress_exercise":progress_exercise*100,
     }
+
+@router.get("/daily_progress/{from_point}/{to_point}")
+async def daily_progress(
+    current_user: Annotated[User, Depends(get_current_active_user)],
+    from_point:str,
+    to_point:str
+):
+    """
+    Returns the progress of the user from a given date to another date. It returns total progress, progress in activity, progress in education and progress in exercise
+    """
+
+    days_between = (datetime.strptime(to_point, "%Y-%m-%d") - datetime.strptime(from_point, "%Y-%m-%d")).days + 1
+    start_date = datetime.strptime(from_point, "%Y-%m-%d")
+    all_progress = []
+    for i in range(days_between):
+        selected_date = start_date + pd.Timedelta(days=i)
+        single_day_progress= progress_single_day(selected_date,current_user.userid)
+        single_day_progress["date"] = selected_date.strftime("%Y-%m-%d")
+        all_progress.append(single_day_progress)
+    return all_progress
+   
 class Activity(BaseModel):
     start:int
     end:int
@@ -259,6 +288,7 @@ async def activity(
     """
     Adds activity to the user
     """
+    print(activities.activities)
     activity_dicts=list(map(lambda x: x.model_dump(),activities.activities))
     for activity in activity_dicts:
         activity["date"]=datetime.now().timestamp()
@@ -311,9 +341,6 @@ async def appsettings(
     es.index(index='appsettings', id=current_user.userid, 
         document=settings
     )
-    es.index(index='appsettings', id=current_user.userid, 
-            document=settings
-        )
     if settings["sleepReminders"]["enabled"]:
         update_goal(current_user.userid,"SetSleepTool")
     if not pd.isna(settings["goalSetting"]["specific"]):

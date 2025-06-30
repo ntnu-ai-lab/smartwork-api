@@ -81,13 +81,15 @@ async def adduser(
     res = es.index(index='baseline', id=user_data.username, 
             document={
                 'userid': user_data.username,
-                'questionnaire':formatted_questionnaire
+                'questionnaire':formatted_questionnaire,
+                "date":datetime.datetime.now().timestamp(),
                 }
     )
     res = es.index(index='questionnaire', id=user_data.username, 
             document={
                 'userid': user_data.username,
-                'questionnaire':formatted_questionnaire
+                'questionnaire':formatted_questionnaire,
+                "date":datetime.datetime.now().timestamp(),
                 }
     )
     es.indices.refresh(index='baseline')

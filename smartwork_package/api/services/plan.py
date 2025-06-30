@@ -7,7 +7,7 @@ from elasticsearch import helpers
 import json
 from typing import Annotated
 from typing import Optional
-from api.services.patient import activity_done
+# from api.services.patient import activity_done
 import datetime
 import requests
 import functools
@@ -15,7 +15,7 @@ import math
 from functools import cmp_to_key
 import random
 from api.resources.constants import FIRST_WEEK_EDUCATION,FIRST_WEEK_EXERCISES,ES_PASSWORD,ES_URL,MYCBR_URL
-from api.achievements.check_achievements import complete_quiz,complete_educational_read,update_goal
+from api.achievements.check_achievements import complete_quiz,complete_educational_read,update_goal,complete_exercise_day
 from api.resources.custom_router import LoggingRoute
 es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
 import re
@@ -89,14 +89,11 @@ def compare_saliency_priority(a,b):
     else:
          return 1 if a["priority"]>b["priority"] else -1
 
-def grouping(priority_queue):
+def add_grouping(priority_queue):
     #Updates each exercise item so it also contains a group number based on the groups defined in the groups_exertcises dictionary
-    items_w_groups=[]
-    for exercise in priority_queue:
-        updated_item=exercise.copy()
-        updated_item["group"]=GROUPS_EXERCISES[updated_item["educationid"]]
-        items_w_groups.append(updated_item)
-    return items_w_groups
+    for educational_item in priority_queue:
+        educational_item["group"]=GROUPS_EXERCISES[educational_item["educationid"]]
+    return priority_queue
 
 # def group_education_items(priority_queue):
 #     items_w_groups=grouping(priority_queue)
@@ -225,16 +222,11 @@ def rule_filter_education(questionnaire):
             add_educations.extend(add_education)
 
     # groups={'Cause of LBP_1': 0, 'Cause of LBP_2': 0, 'Cause of LBP_3': 0, 'Cause of LBP_4': 0, 'Cause of LBP_5': 0, 'Cause of LBP_6': 0, 'Guideline LBP_1': 1, 'Guideline LBP_2': 1, 'Guideline LBP_3': 1, 'Imaging_1': 2, 'Imaging_2': 2, 'Pain rating_1': 3, 'Reassurance_1': 4, 'Reassurance_2': 4, 'Reassurance_3': 4, 'Reassurance_4': 4, 'Reassurance_5': 4, 'Reassurance_6': 4, 'Reassurance_7': 4, 'Reassurance_8': 4, 'Reassurance_9': 4, 'Reassurance_10': 4, 'Stay active_1': 5, 'Stay active_2': 5, 'Stay active_3': 5, 'Stay active_4': 5, 'Stay active_5': 5, 'Stay active_6': 5, 'Stay active_7': 5, 'Stay active_8': 5, 'Stay active_9': 5, 'Stay active_10': 5, 'Stay active_11': 5, 'Stay active_12': 5, 'Stay active_13': 5, 'Stay active_14': 5, 'Start exercise_1': 6, 'Start exercise_2': 6, 'Start exercise_3': 6, 'Start exercise_4': 6, 'Start exercise_5': 6, 'Start exercise_6': 6, 'Start exercise_7': 6, 'Start exercise_8': 6, 'Start exercise_9': 6, 'Start exercise_10': 6, 'Structure of back_1': 7, 'Structure of back_2': 7, 'Structure of back_3': 7, 'Structure of back_4': 7, 'Mind-body connection_1': 8, 'Mind-body connection_2': 8, 'Mind-body connection_3': 8, 'Mind-body connection_4': 8, 'Mind-body connection_5': 8, 'Mind-body connection_6': 8, 'Mind-body connection_7': 8, 'Mind-body connection_8': 8, 'Mind-body connection_9': 8, 'Mind-body connection_10': 8, 'Encouragement to SM_1': 9, 'Encouragement to SM_2': 9, 'Encouragement to SM_4': 9, 'Encouragement to SM_5': 9, 'Encouragement to SM_6': 9, 'Encouragement to SM_7': 9, 'Encouragement to SM_8': 9, 'Accepting pain_1': 10, 'Accepting pain_2': 10, 'Accepting pain_3': 10, 'Anxious_1': 11, 'Anxious_2': 11, 'Anxious_3': 11, 'Attitude_1': 12, 'Attitude_2': 12, 'Attitude_3': 12, 'Attitude_4': 12, 'Attitude_5': 12, 'Attitude_6': 12, 'Changing negative thoughts_1': 13, 'Changing negative thoughts_2': 13, 'Changing negative thoughts_3': 13, 'Changing negative thoughts_4': 13, 'Changing negative thoughts_5': 13, 'Changing negative thoughts_6': 13, 'Changing negative thoughts_7': 13, 'Changing negative thoughts_9': 13, 'Changing negative thoughts_10': 13, 'Distraction_1': 14, 'Distraction_2': 14, 'Distraction_3': 14, 'Distraction_4': 14, 'Distraction_5': 14, 'Distraction_6': 14, 'Distress_1': 15, 'Fear-avoidance_1': 16, 'Fear-avoidance_2': 16, 'Fear-avoidance_3': 16, 'Fear-avoidance_4': 16, 'Fear-avoidance_5': 16, 'Fear-avoidance_6': 16, 'Stress_1': 17, 'Stress_2': 17, 'Stress_3': 17, 'Thoughts_1': 18, 'Thoughts_2': 18, 'Thoughts_3': 18, 'Thoughts_4': 18, 'Thoughts_5': 18, 'Thoughts_6': 18, 'Thoughts_7': 18, 'Daily activity_1': 19, 'Daily activity_2': 19, 'Daily activity_3': 19, 'Daily activity_4': 19, 'Daily activity_5': 19, 'Me time_1': 20, 'Me time_2': 20, 'FA Reassurance_2': 21, 'FA Reassurance_3': 21, 'FA Reassurance_4': 21, 'FA Reassurance_5': 21, 'FA Stay active_1': 22, 'FA Stay active_2': 22, 'FA Stay active_3': 22, 'FA Stay active_4': 22, 'FA Stay active_5': 22, 'FA Stay active_6': 22, 'FA Stay active_7': 22, 'Depression_1': 23, 'Anxiety_1': 24, 'Sleep disorders_1': 25, 'MSK pain_1': 26, 'Goal setting_1': 27, 'Goal setting_2': 27, 'Goal setting_3': 27, 'Goal setting_4': 27, 'Goal setting_5': 27, 'Action planning_1': 28, 'Action planning_2': 28, 'Action planning_3': 28, 'Pacing_1': 29, 'Pacing_2': 29, 'Pacing_3': 29, 'Pacing_4': 29, 'Pacing_5': 29, 'Pacing_6': 29, 'Problem solving_1': 30, 'Problem solving_2': 30, 'Problem solving_3': 30, 'Problem solving_4': 30, 'Relaxation_1': 31, 'Relaxation_2': 31, 'Relaxation_3': 31, 'Relaxation_4': 31, 'Relaxation_5': 31, 'Sleep_1': 32, 'Sleep_2': 32, 'Sleep_3': 32, 'Sleep_4': 32, 'Work_1': 33, 'Work_2': 33, 'Work_3': 33, 'Work_4': 33, 'Work_5': 33, 'Family and friends_1': 34, 'Family and friends_2': 34, 'Family and friends_3': 34, 'Family and friends_4': 34, 'Family and friends_5': 34, 'Family and friends_6': 34, 'Barrier time_1': 35, 'Barrier time_2': 35, 'Barrier tiredness_1': 36, 'Barrier tiredness_2': 36, 'Barrier support_1': 37, 'Barrier family work_1': 38, 'Barrier family work_2': 38, 'Barrier weather_1': 39, 'Barrier weather_2': 39, 'Barrier facilities_1': 40, 'Barrier facilities_2': 40, 'Barrier facilities_3': 40}
-    items=list(filter(lambda x: x not in remove_educations,add_educations))
-    # items=list(map(lambda x: {"name":x["name"],"group":groups[x["name"]],"saliency":x["saliency"]} ,items))
-    # items=calc_priority(items,questionnaire)
-
-    # items.sort(key=cmp_to_key(compare_saliency_priority),reverse=True)
-    # items=list(map(lambda x: x["name"],items))
-    return items #list(dict.fromkeys(items)) #removes duplicates and maintains order
+    # items=list(filter(lambda x: x not in remove_educations,add_educations))
+    return remove_educations,add_educations
 
 
-def fetch_cbr_educational_items(base_questionnaire):
+def fetch_cbr_educational_items(base_questionnaire,userid):
     # print(base_questionnaire)
     
     mycbr_keys=['Dem_age', 'T_tampa_fear', 'T_sleep', 'BT_PHQ_2item', 'F_GPE', 'Dem_bmi', 'Dem_weight', 'Pain_medication', 'Pain_self_efficacy', 'T_cpg_function', 'Education', 'EQ5D_selfcare', 'Primary_pain_site', 'BT_wai', 'Sleep_day', 'EQ5D_mobility', 'BIPQ_life', 'BIPQ_symptoms', 'Dem_gender', 'BT_PSS', 'BT_PSEQ_2item', 'BIPQ_pain_continuation', 'RMDQ', 'PSS', 'FABQ_lbp_cause', 'Comorbidities', 'BIPQ_concern', 'BIPQ_understanding', 'F_PASS', 'BIPQ_control', 'EQ5D_anxiety', 'SaltinGrimby', 'Activity_StepCount', 'T_barriers', 'PSFS_activity', 'BT_pain_average', 'MSKHQ', 'Pain_sites', 'SelfManagement_Exercise', 'Dem_height', 'NDI', 'Pain_1year', 'Employment', 'PSFS_score', 'Sleep_wakeup', 'EQ5D_activity', 'Sleep_end', 'FABQ', 'BIPQ_selfmanagement', 'EQ5D_pain', 'BIPQ_emotion', 'Sleep_difficulty', 'PSFS_activity_name', 'Pain_worst', 'SelfManagement_Education', 'Work_characteristics', 'Family', 'EQ5D', 'SelfManagement_Activity']
@@ -245,8 +237,12 @@ def fetch_cbr_educational_items(base_questionnaire):
     # raise
     response=requests.post(f"{MYCBR_URL}/concepts/Case/casebases/sbcases/amalgamationFunctions/SMP_Education/retrievalByMultipleAttributes",
                       json=reduced_questionnaire,
-                      params={"k":-1}
+                      params={"k":3}
     )
+    case_ids= list(map(lambda x: x["caseID"],response.json()))
+    if not es.indices.exists(index="case_ids"):
+        es.indices.create(index="case_ids")
+    es.index(index="case_ids", document={"userid":userid, "case_ids": case_ids, "date": datetime.datetime.now().timestamp()})
     cbr_education_items=set("".join(list(map(lambda x: x["SelfManagement_Education"],response.json()))).strip(";").split(";"))
     cbr_education_items=list(filter(lambda x: x!="",cbr_education_items))
     return cbr_education_items
@@ -264,6 +260,48 @@ def isquiz(educationid,userid):
         return True
     except:
         return False
+
+
+def calc_priority_queue(cbr_items,rule_add_items,rule_remove_items,userid):
+    # Ensure the index exists before using it
+    if not es.indices.exists(index="education_queue"):
+        es.indices.create(index="education_queue")
+    # print(es.count(index="education_queue"))
+    if es.count(index="education_queue")["count"]==0:
+        priority_queue={}
+    else:
+        priority_queue = es.search(
+            index="education_queue",
+            body={"query": {'match': {"userid": userid}}},
+            size=1,
+            sort=[{"created": {"order": "desc"}}]
+        )["hits"]["hits"][0]["_source"]["educational_items"]
+    all_items= set(cbr_items + rule_add_items)
+    for item in all_items:
+        if item in priority_queue.keys():
+            priority_queue[item]["priority"]+=1
+        else:
+            priority_queue[item]={"priority":1,"remove":False}
+            if item in rule_add_items:
+                priority_queue[item]["expiry"] = (datetime.datetime.now() + datetime.timedelta(weeks=expiry_education_items(item))).timestamp()
+        if "expiry" in priority_queue[item].keys():
+                if priority_queue[item]["expiry"]> datetime.datetime.now().timestamp():
+                    priority_queue[item]["priority"]=0
+                    priority_queue[item]["remove"]=False  
+        priority_queue[item]["remove"] = item in rule_remove_items
+ 
+    # Save the updated priority queue to Elasticsearch
+    es.index(
+        index="education_queue",
+        document={
+            "userid": userid,
+            "educational_items": priority_queue,
+            "created": datetime.datetime.now().timestamp()
+        }
+    )
+    return priority_queue
+    
+
 
 def generate_plan_education(current_user,base_questionnaire,update_questionnaire):
 
@@ -285,11 +323,11 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     educational_items_w_question=list(map(lambda x: x["educationid"],educational_items_w_question))
 
     # has_quiz_question=list(filter(lambda x: x ,educational_items))
-    #fetch performed exercises and exercises that were part of previous plan
+    #fetch performed educations and educations that were part of previous plan
     performed_items=es.search(index="education", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
     this_weeks_plan=es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=1,sort=[{"created": {"order": "desc"}}])["hits"]["hits"][0]["_source"]["plan"]
 
-    this_weeks_educations=list(map(lambda x: x["educationid"],this_weeks_plan["educations"]))
+    # this_weeks_educations=list(map(lambda x: x["educationid"],this_weeks_plan["educations"]))
 
     if performed_items!=[]:
         educational_items_used=list(map(lambda x: x["_source"]["educationid"],performed_items))
@@ -300,66 +338,70 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
         educational_items_thisweek=[]
 
     #combine cbr and rule educational item into list with just the names of the items
-    cbr_education_items=fetch_cbr_educational_items(base_questionnaire)
+    cbr_education_items=fetch_cbr_educational_items(base_questionnaire,current_user.userid)
     if update_questionnaire:
-        rule_education_items=rule_filter_education(update_questionnaire)
+        remove_items,add_items=rule_filter_education(update_questionnaire)
     else:
-        rule_education_items=[]
-    selected_educational_items=list(cbr_education_items)
-    selected_educational_items.extend(rule_education_items)
+        remove_items,add_items=[],[]
+
+    priority_queue=calc_priority_queue(cbr_education_items,add_items,remove_items,current_user.userid)
     # print(selected_educational_items)
-    #figure out if educational item is used before by checking history of user from es, same for thisweek
-    selected_educational_items=list(map(lambda x: {"educationid":x,
-                                                   "used":x in educational_items_used,
-                                                   "canbequiz": x in educational_items_w_question and x not in educational_items_used,
-                                                   "thisweek": x in educational_items_thisweek,
-                                                   "expiry_weeks":expiry_education_items(x)}
-                                ,selected_educational_items))
-    #calculate prioirity
-    for item in selected_educational_items:
-        item["priority"]=calc_priority(item)
+    
+    for item_key in priority_queue.keys():
 
-    selected_educational_items.sort(key=lambda x: x["priority"])
+        priority_queue[item_key]["used"]=(item_key in educational_items_used)
+        priority_queue[item_key]["thisweek"]=(item_key in educational_items_thisweek)
+        priority_queue[item_key]["canbequiz"]=(item_key in educational_items_w_question)
+    
+    
+    #reformat priority_queue to a list of dictionaries
+    priority_queue= list(priority_queue.items())
+    priority_queue=list(map(lambda x: {"educationid":x[0]} | x[1],priority_queue))
+ 
+    priority_queue=add_grouping(priority_queue)
+
+    included_items=list(filter(lambda x: not x["remove"],priority_queue))
+    
+    included_items.sort(key=lambda x: x["priority"],reverse=True)
 
 
-    result=grouping(selected_educational_items) #decision_grouping.evaluate({"priority_queue":priority_queue})["result"]
-    result.sort(key=lambda x: x["priority"],reverse=True)
-    #if there are not enough items in plan add generic items
-    #TODO: not sure if this is implemented correcty
-    if len(result)<7:
-        groups=set(map(lambda x: x["group"] if "group" in x.keys() else None,result))
+    if len(included_items)<7:
+        groups=set(map(lambda x: x["group"] if "group" in x.keys() else None,included_items))
 
-        generic_items_w_groups=grouping(list(map(lambda x: {"educationid":x},GENERIC_EDUCATION_ITEMS)))#decision_grouping.evaluate({"priority_queue":list(map(lambda x: {"id":x},generic_education_items))})["result"]
+        generic_items_w_groups=add_grouping(list(map(lambda x: {"educationid":x},GENERIC_EDUCATION_ITEMS)))#decision_grouping.evaluate({"priority_queue":list(map(lambda x: {"id":x},generic_education_items))})["result"]
         # print(generic_items_w_groups)
         for generic_item in generic_items_w_groups:
             if generic_item["group"] not in groups:
                 today=datetime.datetime.now() + datetime.timedelta(days=1)
-                result.append({
+                included_items.append({
                     "educationid":generic_item["educationid"],
                     "priority":1,
                     "expiredate":(today+datetime.timedelta(weeks=1)).timestamp(),
                     "thisweek":False,
                     "group":generic_item["group"],
-                    "avoid":False,
+                    "remove":False,
                     "excluded":False,
                     "used":False,
-                    "usednumber":0,
-                    "lastusage":0,
-                    "lastquiz":False,
+                    # "usednumber":0,
+                    # "lastusage":0,
+                    # "lastquiz":False,
                 })
                 groups.add(generic_item["group"])
-            if len(result)>=7:
+            if len(included_items)>=7:
                 break
+
     # result=list(map(lambda x: x|{"educationid":x["educationid"]},result))
             
     # for item in result:
     #     item["is_quiz"]=True
     #     item["is_correct"]=False
-    #TODO: store updated priority queue in elasticsearch   
-    for item in result[:7]:
+    #TODO: store updated priority queue in elasticsearch
+    included_items=included_items[:7]
+    for item in included_items:
         item["is_quiz"]=isquiz(item["educationid"],current_user.userid)
-    # print(result[:7])
-    return result[:7]
+    # print(included_items)
+    # raise
+    return included_items
 
 
 def check_pain_relief(questionnaire):
@@ -416,7 +458,7 @@ def add_same_type(selected_exercises,exercise_set,number_exercises):
             if exercise not in selected_exercises:
                 # print(exercise)
                 # raise
-                exercises.append(exercise["exerciseid"])
+                exercises.append(exercise)
             if len(exercises)==number_exercises:
                 return exercises
     return exercises
@@ -439,7 +481,7 @@ def get_pain_relief_exercises(cbr_exercise_items,es_exercise_items,number_exerci
     # raise
     return exercises[:number_exercises]
 
-def generate_plan_exercise(base_questionnaire,update_questionnaire,duration):
+def generate_plan_exercise(base_questionnaire,update_questionnaire,duration,username):
     #fetch exercises from cbr 
     # print(base_questionnaire)
     rel_attributes=['Activity_StepCount', 'BIPQ_concern', 'BIPQ_control', 'BIPQ_emotion', 'BIPQ_life', 'BIPQ_pain_continuation', 'BIPQ_selfmanagement', 'BIPQ_symptoms', 'BIPQ_understanding', 'BT_PHQ_2item', 'BT_PSEQ_2item', 'BT_PSS', 'BT_pain_average', 'BT_wai', 'Comorbidities', 'Dem_age', 'Dem_bmi', 'Dem_gender', 'Dem_height', 'Dem_weight', 'EQ5D', 'EQ5D_activity', 'EQ5D_anxiety', 'EQ5D_mobility', 'EQ5D_pain', 'EQ5D_selfcare', 'Education', 'Employment', 'FABQ', 'FABQ_lbp_cause', 'F_GPE', 'F_PASS', 'Family', 'MSKHQ', 'NDI', 'PSFS_activity', 'PSFS_activity_name', 'PSFS_score', 'PSS', 'Pain_1year', 'Pain_medication', 'Pain_self_efficacy', 'Pain_sites', 'Pain_worst', 'Primary_pain_site', 'RMDQ', 'SaltinGrimby', 'SelfManagement_Activity', 'SelfManagement_Education', 'SelfManagement_Exercise', 'Sleep_day', 'Sleep_difficulty', 'Sleep_end', 'Sleep_wakeup', 'T_barriers', 'T_cpg_function', 'T_sleep', 'T_tampa_fear', 'Work_characteristics']
@@ -477,12 +519,13 @@ def generate_plan_exercise(base_questionnaire,update_questionnaire,duration):
     es_exercise_items = es.search(index="exercise_description", query={'match' : {"description_type":"exercise"}},size=10000)["hits"]["hits"]
     es_exercise_items=list(map(lambda x: x["_source"],es_exercise_items))
     #filter level of exercises
-    res=es.search(index="exercise", query={'match' : {"userid":"stuart"}})
+    res=es.search(index="exercise", query={'match' : {"userid":username}}) #TODO: fix username
     exercises_performed=res.body["hits"]["hits"]
-    total_reps=list(map(lambda x: x["repsperformed1"]+x["repsperformed2"]+x["repsperformed3"],exercises_performed))
+    exercises_performed=list(map(lambda x: x["_source"],exercises_performed))
     if len(exercises_performed)==0:
         percentage_reps=0
     else:
+        total_reps=list(map(lambda x: x["repsperformed1"]+x["repsperformed2"]+x["repsperformed3"],exercises_performed))
         percentage_reps=sum(total_reps)/(30*len(exercises_performed))#assume 10 per set
     total_exercise_time=len(exercises_performed)*5
     exercise_level=1
@@ -669,6 +712,18 @@ async def next(
             # if "T_cpg_function" not in tailoring_questionnaire.keys():
             #     tailoring_questionnaire["T_cpg_function"]=0
             complete_questionnaire=base_questionnaire | tailoring_questionnaire
+            # print(complete_questionnaire)
+            # raise
+            # # Store the complete questionnaire in the questionnaire index
+            es.index(
+                index="questionnaire",
+                id=current_user.userid,
+                document={
+                    "userid": current_user.userid,
+                    "questionnaire": complete_questionnaire,
+                    "date": datetime.datetime.now().timestamp()
+                }
+            )
         else:
             complete_questionnaire=base_questionnaire
         complete_questionnaire["Activity_StepCount"]=find_previous_stepcounts(previous_plans,current_user.userid)
@@ -678,8 +733,8 @@ async def next(
         tmp_questionnaire["date"]=datetime.datetime.now().timestamp()
         es.index(index='tailoring_questionnaire', document=tmp_questionnaire)
 
-    exercises=generate_plan_exercise(complete_questionnaire,tailoring_questionnaire,plan_info.exercises_duration)
-    print(exercises)
+    exercises=generate_plan_exercise(complete_questionnaire,tailoring_questionnaire,plan_info.exercises_duration,current_user.userid)
+    # print(exercises)
     # raise
     # exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
     # exercises=list(map(lambda x: x["_source"],exercises))
@@ -696,6 +751,7 @@ async def next(
     if es.exists(index="appsettings", id=current_user.userid):
         es.update(index="appsettings",id=current_user.userid,doc={"hideIntroSession":True})
     # print(complete_plan)
+    # print(complete_plan["plan"]["exercises"])
     # raise
     es.index(index='plan', document=complete_plan)
     es.indices.refresh(index='plan')
@@ -719,6 +775,7 @@ async def exercise(
     # exerciseid: list
     request:Request
 ):
+    complete_exercise_day(current_user.userid)
     exercises=await request.json()
     status=exercises[0]["status"]
     exerciseid=exercises[0]["exerciseid"]
@@ -779,6 +836,7 @@ async def exercise(
         exercise_item["date"]=int(datetime.datetime.now().timestamp())
     # doc["plan"]["exercises"]=doc["plan"]["exercises"].extend(exercise_dicts)
     doc["done"]["exercises"].extend(exercise_dicts)
+
     es.update(index="plan",id=id,doc=doc)
     helpers.bulk(es,exercise_dicts,index="exercise")
     return {"status":200}
@@ -823,7 +881,7 @@ async def latest(
     current_user: Annotated[User, Depends(get_current_user)],
 ):
     res=es.search(index="plan", query={'match' : {"userid":current_user.userid}},size=999)["hits"]["hits"]
-    print(res)
+    # print(res)
     if res==[]:
         # one_week_ago = datetime.datetime.now() - datetime.timedelta(days=7)
         return []
@@ -863,26 +921,7 @@ async def activity_goal(
     es.update(index='plan',id=res[0]["_id"],doc=plan)
     return plan
 
-def get_between(index,start,end,userid):
-    return es.search(index=index, query={
-        "bool": {
-            "must": [
-                {
-                    "match": {
-                        "userid": userid
-                    }
-                },
-                {
-                    "range": {
-                        "date": {
-                           "gte": start,  
-                            "lte": end
-                        }
-                    }
-                }
-            ]
-        }
-    })["hits"]["hits"]
+
 
 
 @router.get("/on/{day}")
@@ -896,7 +935,7 @@ async def on(
         return None
     start_time=datetime.datetime.combine(query_date,datetime.time.min).timestamp()
     end_time=datetime.datetime.combine(query_date,datetime.time.max).timestamp()
-    # print(start_time,end_time)
+    print(start_time,end_time)
     res=es.search(index="plan", query={
         "bool": {
             "must": [
@@ -927,10 +966,11 @@ async def on(
         return None
     else:
         plan=res[0]["_source"]#["plan"]
+    # print(datetime.datetime.fromtimestamp(start_time), datetime.datetime.fromtimestamp(end_time))
     exercises=get_between("exercise",start_time,end_time,current_user.userid)
     educations=get_between("education",start_time,end_time,current_user.userid)
     activities=get_between("activity",start_time,end_time,current_user.userid)
-    # print(activities)
+    print(activities)
     steps_done=sum(map(lambda x: x["_source"]["steps"],activities))
     # print(plan)
     # print(steps_done)
@@ -1058,7 +1098,7 @@ async def tailoring(
     # print(tailoring,"ttailoring")
     # update_goal(current_user.userid,"QACompleted")
     tailoring=es.mget(index="tailoring_description", body={"ids": tailoring}).body["docs"]
-    print(tailoring,"tailoring")
+    # print(tailoring,"tailoring")
     tailoring=list(map(lambda x: x["_source"],tailoring))
     # print(tailoring)
     return tailoring

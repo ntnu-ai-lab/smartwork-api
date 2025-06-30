@@ -15,13 +15,34 @@ import logging
 from api.resources.constants import ES_PASSWORD,ES_URL,MYCBR_URL
 from elasticsearch import Elasticsearch,helpers
 from init_scripts.static import populate_db,init_mycbr
+import asyncio
+from api.notifications.notifications import main_loop
+from contextlib import asynccontextmanager
+import threading
 
+@asynccontextmanager
+async def app_startup(app: FastAPI):
+    es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
+    if not es.indices.exists(index='tailoring_description').body:
+        print("Populating DB")
+        init_mycbr(MYCBR_URL)
+        populate_db(ES_URL,ES_PASSWORD)
+
+    task = threading.Thread(target=lambda: asyncio.run(main_loop()), daemon=True)
+    task.start()
+
+    
+    yield
+    # task.stop()
+# populate_db(ES_URL,ES_PASSWORD)
+# print("Populated DB")
+# raise
 
 app = FastAPI(
     title="SmartWork",
-    docs_url="/"
+    docs_url="/",
+    lifespan=app_startup,
 )
-
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
 	exc_str = f'{exc}'.replace('\n', ' ').replace('   ', ' ')
@@ -48,11 +69,8 @@ if __name__ == "__main__":
         config = yaml.safe_load(f)
         logging.config.dictConfig(config)
     
-    es = Elasticsearch(ES_URL,basic_auth=("elastic",ES_PASSWORD),verify_certs=False)
-    if not es.indices.exists(index='tailoring_description').body:
-        print("Populating DB")
-        init_mycbr(MYCBR_URL)
-        populate_db(ES_URL,ES_PASSWORD)
+    
+    
     uvicorn.run(
         "API:app", 
         host="0.0.0.0", 
