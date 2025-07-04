@@ -234,7 +234,7 @@ def progress_single_day(selected_date,userid):
     exercises_in_plan=plan["exercises"]
     education_in_plan=plan["educations"]
     activities=get_between(es,"activity",from_point_date,to_point_date,userid)
-    steps_performed=list(map(lambda x: x["_source"]["steps"],activities))
+    steps_performed=sum(list(map(lambda x: x["_source"]["steps"],activities)))
     # print(f"Steps performed: {steps_performed}")
     progress_exercise=round(len(completed_exercises)/len(exercises_in_plan),2)
     progress_education=round(len(completed_educations)/len(education_in_plan),2)

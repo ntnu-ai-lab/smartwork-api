@@ -2,6 +2,7 @@ from fastapi import APIRouter,Depends,HTTPException,Request
 from pydantic import BaseModel
 from elasticsearch import Elasticsearch
 from api.resources.constants import *
+from api.resources.helper_functions import get_between
 from api.services.oauth import User,get_current_user
 from elasticsearch import helpers
 import json
@@ -267,15 +268,16 @@ def calc_priority_queue(cbr_items,rule_add_items,rule_remove_items,userid):
     if not es.indices.exists(index="education_queue"):
         es.indices.create(index="education_queue")
     # print(es.count(index="education_queue"))
-    if es.count(index="education_queue")["count"]==0:
-        priority_queue={}
-    else:
-        priority_queue = es.search(
+    priority_queue = es.search(
             index="education_queue",
             body={"query": {'match': {"userid": userid}}},
             size=1,
             sort=[{"created": {"order": "desc"}}]
-        )["hits"]["hits"][0]["_source"]["educational_items"]
+        )["hits"]["hits"]
+    if len(priority_queue)==0:
+        priority_queue={}
+    else:
+        priority_queue=priority_queue[0]["_source"]["educational_items"]
     all_items= set(cbr_items + rule_add_items)
     for item in all_items:
         if item in priority_queue.keys():
@@ -664,7 +666,8 @@ def find_previous_stepcounts(previous_plans,userid):
     final_activity=""
     for i,previous_plan in enumerate(previous_plans):
         # print(previous_plan["_source"]["start"])
-        activity=activity_done(previous_plan["_source"]["start"],previous_plan["_source"]["end"],userid)
+        activities=get_between(es,"activity",previous_plan["_source"]["start"],previous_plan["_source"]["end"],userid)
+        activity=sum(map(lambda x: x["_source"]["steps"],activities))
         final_activity+=str(i)+":"+str(activity)+";"
     return final_activity
 
@@ -935,7 +938,7 @@ async def on(
         return None
     start_time=datetime.datetime.combine(query_date,datetime.time.min).timestamp()
     end_time=datetime.datetime.combine(query_date,datetime.time.max).timestamp()
-    print(start_time,end_time)
+    # print(start_time,end_time)
     res=es.search(index="plan", query={
         "bool": {
             "must": [
@@ -967,10 +970,10 @@ async def on(
     else:
         plan=res[0]["_source"]#["plan"]
     # print(datetime.datetime.fromtimestamp(start_time), datetime.datetime.fromtimestamp(end_time))
-    exercises=get_between("exercise",start_time,end_time,current_user.userid)
-    educations=get_between("education",start_time,end_time,current_user.userid)
-    activities=get_between("activity",start_time,end_time,current_user.userid)
-    print(activities)
+    exercises=get_between(es,"exercise",start_time,end_time,current_user.userid)
+    educations=get_between(es,"education",start_time,end_time,current_user.userid)
+    activities=get_between(es,"activity",start_time,end_time,current_user.userid)
+
     steps_done=sum(map(lambda x: x["_source"]["steps"],activities))
     # print(plan)
     # print(steps_done)

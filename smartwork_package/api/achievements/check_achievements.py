@@ -58,11 +58,11 @@ def complete_exercise_day(userid):
     for plan in plans:
       start_plan=datetime.fromtimestamp(plan["_source"]["start"])
       end_plan=datetime.fromtimestamp(plan["_source"]["end"])
-      num_exercises_plan=len(plan["_source"]["plan"]["exercise"])
+      num_exercises_plan=len(plan["_source"]["plan"]["exercises"])
       for day in pd.date_range(start_plan,end_plan):
         start_day=day.replace(hour=0,minute=0,second=0,microsecond=0).timestamp()
         end_day=day.replace(hour=23,minute=59,second=59,microsecond=999999).timestamp()
-        exercises_done=get_between("exercise",start_day,end_day,userid)
+        exercises_done=get_between(es,"exercise",start_day,end_day,userid)
         if len(exercises_done)>=num_exercises_plan:
           days_completed+=1
     update_goal(userid,"ExercisesCompleted",days_completed,float(days_completed>=1))
