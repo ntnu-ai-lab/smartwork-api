@@ -326,7 +326,7 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
 
     # has_quiz_question=list(filter(lambda x: x ,educational_items))
     #fetch performed educations and educations that were part of previous plan
-    performed_items=es.search(index="education", body={"query":{'match' : {"userid":current_user.userid}}},size=1)["hits"]["hits"]
+    performed_items=es.search(index="education", query={'match' : {"userid":current_user.userid}},size=1000)["hits"]["hits"]
     this_weeks_plan=es.search(index="plan", body={"query":{'match' : {"userid":current_user.userid}}},size=1,sort=[{"created": {"order": "desc"}}])["hits"]["hits"][0]["_source"]["plan"]
 
     # this_weeks_educations=list(map(lambda x: x["educationid"],this_weeks_plan["educations"]))
@@ -396,7 +396,7 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     
 
     included_items.sort(key=lambda x: x["priority"],reverse=True)
-
+    # print(list(map(lambda x: x["educationid"],included_items)))
     if len(included_items)<7:
         groups=set(map(lambda x: x["group"] if "group" in x.keys() else None,included_items))
 
@@ -441,6 +441,9 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     educations=[]
     for education,info in zip(included_items,education_info):
         educations.append(education | info)
+    # print(list(map(lambda x: x["educationid"],educations)))
+    # print(educations)
+    # raise
     return educations
 
 
@@ -902,6 +905,7 @@ async def education(
         education_item["date"]=int(datetime.datetime.now().timestamp())
     # raise
     helpers.bulk(es,education_dicts,index="education")
+    es.indices.refresh(index="education")
     plan=es.search(
         index="plan",
         query={'match': {"userid": current_user.userid}},
