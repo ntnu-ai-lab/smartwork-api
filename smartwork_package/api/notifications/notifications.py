@@ -164,7 +164,7 @@ def get_last_notification(es, user_id,notification_type=None):
                     )["hits"]["hits"]
         previous_notification = previous_notification[0]["_source"] if previous_notification else None
     except:
-        previous_notification = None
+        previous_notification = 0
     return previous_notification
 
 
@@ -316,15 +316,21 @@ def education_reminder(app_settings, plan, es, user_id):
         latest_education = education["hits"]["hits"][0]["_source"] if education["hits"]["hits"] else None
         if latest_education is None:
             return
-
+        last_completed = datetime.datetime.fromtimestamp(latest_education["date"])
+        if last_completed < (datetime.datetime.now() - datetime.timedelta(days=3)):
+            return None
         current_time = datetime.datetime.now()
         
         previous_notification_education = get_last_notification(es, user_id, "education_reminder")
-        previous_notification_education_time = datetime.datetime.fromtimestamp(previous_notification_education["date"]) if previous_notification_education else None
+        if previous_notification_education is None:
+            previous_notification_education_time = datetime.datetime.min
+        else:
+            previous_notification_education_time = datetime.datetime.fromtimestamp(previous_notification_education["date"]) if previous_notification_education else None
         previous_notification=get_last_notification(es, user_id)
         previous_notification_time = datetime.datetime.fromtimestamp(previous_notification["date"]) if previous_notification else None
         # print(previous_notification,"slooo")
         # If the last education notification was 3 days ago and no notification has been sent in the last hour
+        # print(current_time, previous_notification_education_time, previous_notification_time)
         if (previous_notification is None or (current_time - previous_notification_education_time).total_seconds() > 3 * 24 * 3600) and (previous_notification is None or (current_time - previous_notification_time).total_seconds() >  3600):
             send_notification("education_reminder", user_id, app_settings["pushToken"], es)
 

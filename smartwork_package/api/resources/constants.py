@@ -244,7 +244,7 @@ LS_MAPPING={
     # BT_pain_average
 	"PainIntensityWors_worst":"Pain_worst",
     "PainDuration":"Pain_current",
-	"PainSites":"Pain_sites",
+	"PainSitesRemove":"Pain_sites",
 	# BT_wai
 	# T_cpg_function
 	"Comorbidities":"Comorbidities",

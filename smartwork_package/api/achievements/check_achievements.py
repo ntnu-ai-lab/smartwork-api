@@ -27,15 +27,16 @@ def complete_quiz(userid):
     correct=es.search(index="education",query={"bool":
                                           {"must":[
                                               {"match":{"is_correct":True}},
-                                                {"match":{"userid":userid}}
+                                                {"match":{"userid":userid}},
+                                                {"match":{"is_quiz":True}}
                                           ]
                                          
                                           }}
     ,size=900).body["hits"]["hits"]
-    print(correct)
+    # print(correct)
     num_correct=len(correct)
     update_goal(userid,"EducationalQuizAnswers",num_correct,float(num_correct>=1))
-    for i in [1,2,7,14,25]:
+    for i in [1,3,7,14,25]:
         completed=-1
         if num_correct>=i:
           completed=1

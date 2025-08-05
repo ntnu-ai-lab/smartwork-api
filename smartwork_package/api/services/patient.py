@@ -111,7 +111,7 @@ async def totals(
     num_quiz=0
     if res!=[]:
         num_education=len(res)
-        num_quiz=len(list(filter(lambda x: "is_correct" in x["_source"].keys(),res)))
+        num_quiz=len(list(filter(lambda x: x["_source"]["is_quiz"],res)))
 
     return [{'totalid': 'TotalDistanceKm', 'progress': round(distance,2)},
             {'totalid': 'EducationalRead', 'progress': num_education },
@@ -230,7 +230,7 @@ def progress_single_day(selected_date,userid):
     # print
     completed_exercises=res_exercise["hits"]["hits"]
     completed_educations=res_education["hits"]["hits"]
-    plan=es.search(index="plan", query={'match' : {"userid":userid}},size=1)["hits"]["hits"][0]["_source"]["plan"]
+    plan=es.search(index="plan", query={'match' : {"userid":userid}},size=10000)["hits"]["hits"][0]["_source"]["plan"]
     exercises_in_plan=plan["exercises"]
     education_in_plan=plan["educations"]
     activities=get_between(es,"activity",from_point_date,to_point_date,userid)

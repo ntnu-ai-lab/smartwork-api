@@ -248,19 +248,19 @@ def fetch_cbr_educational_items(base_questionnaire,userid):
     cbr_education_items=list(filter(lambda x: x!="",cbr_education_items))
     return cbr_education_items
 
-def isquiz(educationid,userid):
-    education_description=es.get(index="education_description", id=educationid).body["_source"]["question"]
-    has_question=education_description is not None 
-    if not has_question: #educational item does not have a question
-        return False
-    try:
-        #means it has been shown and read previously 
-        education_item=es.get(index="education", id=userid+educationid)
-        if education_item.body["_source"]["is_correct"]:#has been answered correctly perviously
-            return False
-        return True
-    except:
-        return False
+# def isquiz(educationid,userid):
+#     education_description=es.get(index="education_description", id=educationid).body["_source"]["question"]
+#     has_question=education_description is not None 
+#     if not has_question: #educational item does not have a question
+#         return False
+#     try:
+#         #means it has been shown and read previously 
+#         education_item=es.get(index="education", id=userid+educationid)
+#         if education_item.body["_source"]["is_correct"]:#has been answered correctly perviously
+#             return False
+#         return True
+#     except:
+#         return False
 
 
 def calc_priority_queue(cbr_items,rule_add_items,rule_remove_items,userid):
@@ -332,11 +332,25 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     # this_weeks_educations=list(map(lambda x: x["educationid"],this_weeks_plan["educations"]))
 
     if performed_items!=[]:
+        quizzed_items=es.search(
+            index="education",
+            query={
+                "bool": {
+                    "must": [
+                        {"match": {"userid": current_user.userid}},
+                        {"match": {"is_quiz": True}}
+                    ]
+                }
+            },
+            size=1000
+        )["hits"]["hits"]
+        quizzed_items=list(map(lambda x: x["_source"]["educationid"],quizzed_items))
         educational_items_used=list(map(lambda x: x["_source"]["educationid"],performed_items))
         educational_items_thisweek=list(filter(lambda x: x["_source"]["educationid"] in this_weeks_plan,performed_items))
         educational_items_thisweek=list(map(lambda x: x["educationid"],educational_items_thisweek))
     else:
         educational_items_used=[]
+        quizzed_items=[]
         educational_items_thisweek=[]
 
     #combine cbr and rule educational item into list with just the names of the items
@@ -361,11 +375,27 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     priority_queue=list(map(lambda x: {"educationid":x[0]} | x[1],priority_queue))
  
     priority_queue=add_grouping(priority_queue)
-
-    included_items=list(filter(lambda x: not x["remove"],priority_queue))
     
-    included_items.sort(key=lambda x: x["priority"],reverse=True)
+    
+    # print(priority_queue)
+    educational_items_used=["Fear-avoidance_6"]
+    #remove items that have been used, except quiz items which can be turned to quiz items
+    included_items=[]
+    for item in priority_queue:
+        if (item["educationid"] not in educational_items_used):
+            included_items.append(item)
+        elif (item["educationid"] in educational_items_used) and (item["canbequiz"]) and  (item["educationid"] not in quizzed_items):
+            item["is_quiz"]=True
+            print("item is quiz",item["educationid"])
+            # print(item)
+            included_items.append(item)
+    #remove items that should be removed based on rules
+    included_items=list(filter(lambda x: not x["remove"],included_items))
+    # print(included_items)
+    # raise
+    
 
+    included_items.sort(key=lambda x: x["priority"],reverse=True)
 
     if len(included_items)<7:
         groups=set(map(lambda x: x["group"] if "group" in x.keys() else None,included_items))
@@ -399,11 +429,19 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     #     item["is_correct"]=False
     #TODO: store updated priority queue in elasticsearch
     included_items=included_items[:7]
-    for item in included_items:
-        item["is_quiz"]=isquiz(item["educationid"],current_user.userid)
+    # for item in included_items:
+    #     item["is_quiz"]=isquiz(item["educationid"],current_user.userid)
+    
+    included_items=[included_items[1] for i in range(7)]
     # print(included_items)
     # raise
-    return included_items
+    
+    education_info=es.mget(index="education_description", body={"ids": list(map(lambda x: x["educationid"],included_items)) })["docs"]
+    education_info=list(map(lambda x: x["_source"],education_info))
+    educations=[]
+    for education,info in zip(included_items,education_info):
+        educations.append(education | info)
+    return educations
 
 
 def check_pain_relief(questionnaire):
@@ -742,8 +780,10 @@ async def next(
     # exercises=es.mget(index="exercise_description", body={"ids": exercises})["docs"]
     # exercises=list(map(lambda x: x["_source"],exercises))
     educations=generate_plan_education(current_user,complete_questionnaire,tailoring_questionnaire)
-    educations=es.mget(index="education_description", body={"ids": list(map(lambda x: x["educationid"],educations)) })["docs"]
-    educations=list(map(lambda x: x["_source"],educations))
+    # print(educations)
+    
+    # print(educations)
+    # raise
     # print(list(map(lambda x: es.search(index="data_description", query={'match' : {"ExerciseID":x}},size=100)["hits"]["hits"][0]["_source"],exercises)))
     complete_plan=generate_plan(current_user,plan_info,educations,exercises)
     # print(complete_plan)
@@ -855,11 +895,8 @@ async def education(
     current_user: Annotated[User, Depends(get_current_user)],
     education_items: list[Education_item]
 ):
-    complete_educational_read(current_user.userid)
     education_dicts=list(map(lambda x: dict(x),education_items))
     for education_item in education_dicts:
-        if education_item["is_quiz"]:
-            complete_quiz(current_user.userid)
         education_item["_id"]=current_user.userid+"_"+education_item["educationid"]
         education_item["userid"]=current_user.userid
         education_item["date"]=int(datetime.datetime.now().timestamp())
@@ -875,7 +912,8 @@ async def education(
     # print(education_dicts)
     doc["done"]["educations"].extend(education_dicts)
     es.update(index="plan",id=plan[0]["_id"],doc=doc)
-    
+    complete_quiz(current_user.userid)
+    complete_educational_read(current_user.userid)
 
 
 
@@ -1099,7 +1137,7 @@ async def tailoring(
     # print(previous_tailorings,"previous_tailorings")
     tailoring=filter_tailoring(previous_tailorings,baseline,current_user.userid)
     # print(tailoring,"ttailoring")
-    # update_goal(current_user.userid,"QACompleted")
+    update_goal(current_user.userid,"QACompleted")
     tailoring=es.mget(index="tailoring_description", body={"ids": tailoring}).body["docs"]
     # print(tailoring,"tailoring")
     tailoring=list(map(lambda x: x["_source"],tailoring))
@@ -1107,18 +1145,24 @@ async def tailoring(
     return tailoring
 
 @router.get("/summary")
-async def tailoring(
+async def summary(
     current_user: Annotated[User, Depends(get_current_user)],
 ):
-    res = es.search(index="achievements", query={"bool":{"must":[{'match' : {"userid":"stuart"}}],
-                                                   "must_not":[{'match' : {"achievedat":-1}}],
-                                                  }
-                                          }
-                      ,size=10000)["hits"]["hits"]
-    achievements=list(map(lambda x: x["_source"],res))
-    # for i in 
+    start_time = (datetime.datetime.now() - datetime.timedelta(days=7)).timestamp()
+    end_time = datetime.datetime.now().timestamp()
+    activities = get_between(es, "activity", start_time, end_time, current_user.userid)
+    steps= sum(map(lambda x: x["_source"]["steps"],activities))
+    
+    return {"steps_average":round(steps/7)}
+    # res = es.search(index="achievements", query={"bool":{"must":[{'match' : {"userid":"stuart"}}],
+    #                                                "must_not":[{'match' : {"achievedat":-1}}],
+    #                                               }
+    #                                       }
+    #                   ,size=10000)["hits"]["hits"]
+    # achievements=list(map(lambda x: x["_source"],res))
+    # # for i in 
 
-    past_week=datetime.datetime.now()-datetime.timedelta(days=7)
-    # list
-    achievements=list(filter(lambda x: datetime.datetime.fromtimestamp(str(x["achievedate"]))>past_week,achievements))
-    return achievements
+    # past_week=datetime.datetime.now()-datetime.timedelta(days=7)
+    # # list
+    # achievements=list(filter(lambda x: datetime.datetime.fromtimestamp(str(x["achievedate"]))>past_week,achievements))
+    # return achievements
