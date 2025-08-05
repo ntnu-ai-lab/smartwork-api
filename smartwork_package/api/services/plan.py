@@ -378,7 +378,7 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     
     
     # print(priority_queue)
-    educational_items_used=["Fear-avoidance_6"]
+    # educational_items_used=["Fear-avoidance_6"]
     #remove items that have been used, except quiz items which can be turned to quiz items
     included_items=[]
     for item in priority_queue:
@@ -432,7 +432,7 @@ def generate_plan_education(current_user,base_questionnaire,update_questionnaire
     # for item in included_items:
     #     item["is_quiz"]=isquiz(item["educationid"],current_user.userid)
     
-    included_items=[included_items[1] for i in range(7)]
+    # included_items=[included_items[1] for i in range(7)]
     # print(included_items)
     # raise
     
