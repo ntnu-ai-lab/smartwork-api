@@ -568,7 +568,14 @@ def generate_plan_exercise(base_questionnaire,update_questionnaire,duration,user
     if len(exercises_performed)==0:
         percentage_reps=0
     else:
-        total_reps=list(map(lambda x: x["repsperformed1"]+x["repsperformed2"]+x["repsperformed3"],exercises_performed))
+        total_reps = list(
+            map(
+            lambda x: 
+                x.get("repsperformed1", 0) + x.get("repsperformed2", 0) + x.get("repsperformed3", 0),
+            exercises_performed
+            )
+        )
+        # raise
         percentage_reps=sum(total_reps)/(30*len(exercises_performed))#assume 10 per set
     total_exercise_time=len(exercises_performed)*5
     exercise_level=1
@@ -793,6 +800,7 @@ async def next(
     # raise
     # raise
     #TODO: need to check if plan is valid first
+    # raise
     update_goal(current_user.userid,"SessionCompleted")
     if es.exists(index="appsettings", id=current_user.userid):
         es.update(index="appsettings",id=current_user.userid,doc={"hideIntroSession":True})

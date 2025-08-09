@@ -191,7 +191,7 @@ def progress_notification(app_settings,plan,es):
                     last_score = previous_notification["score"]
                     last_date=datetime.datetime.fromtimestamp(previous_notification["date"]).date()
                     
-                send_notification("progress_notification", plan["userid"], app_settings["pushToken"],es,score)
+                # send_notification("progress_notification", plan["userid"], app_settings["pushToken"],es,score)
                 if score >= 1:
                     if last_score < 1:
                         # send notification for achieving goal
@@ -282,7 +282,7 @@ def exercise_reminder(app_settings,plan, es,user_id):
         last_exercise_reminder = get_last_notification(es, user_id, "exercise_reminder")
         last_exercise_reminder_time = datetime.datetime.fromtimestamp(last_exercise_reminder["date"]) if last_exercise_reminder else None
         # Check if the last exercise reminder was sent more than 3 days ago
-        if last_exercise_reminder_time is None or (datetime.datetime.now() - last_exercise_reminder_time).total_seconds() > 3*24 * 3600:
+        if (last_exercise_reminder_time is None) or (datetime.datetime.now() - last_exercise_reminder_time).total_seconds() > 3*24 * 3600:
             last_notification= get_last_notification(es, user_id)
             last_notification_time = datetime.datetime.fromtimestamp(last_notification["date"]) if last_notification else None
             # If no previous notification or the last notification was sent more than 1 hour ago
@@ -448,24 +448,28 @@ def low_activity_notification(app_settings, plan, es, user_id):
                 return
         previous_notification = get_last_notification(es, user_id)
         previous_notification_time = datetime.datetime.fromtimestamp(previous_notification["date"]) if previous_notification else None
-        if not previous_notification or (datetime.datetime.now() - previous_notification_time).total_seconds() > 3600:
-            phq1diff= get_level_difference(es, user_id, "BT_phq_1")
-            phq2diff= get_level_difference(es, user_id, "BT_phq_2")
-            barriers=get_barriers(es, user_id)
-            paindiff= get_level_difference(es, user_id, "BT_pain_average")
-            functiondiff= get_level_difference(es, user_id, "T_cpg_function")
-            if (phq1diff >= 1) or (phq2diff >= 1):
-                #emotional wellbeing message
-                send_notification("exercise_reminder_emotional_wellbeing", user_id, app_settings["pushToken"], es, score=0)
-            elif len(barriers) > 0:
-                send_notification("exercise_reminder_barriers", user_id, app_settings["pushToken"], es, score=0)
-            elif (paindiff >= 2) or (functiondiff <= -2):
-                #pain and function message
-                send_notification("exercise_reminder_pain", user_id, app_settings["pushToken"], es, score=0)
-            else:
-                #low activity message
-                send_notification("exercise_reminder", user_id, app_settings["pushToken"], es, score=0)
-                
+        last_exercise_reminder = get_last_notification(es, user_id, "exercise_reminder")
+        last_exercise_reminder_time = datetime.datetime.fromtimestamp(last_exercise_reminder["date"]) if last_exercise_reminder else None
+        # Check if the last exercise reminder was sent more than 3 days ago
+        if (last_exercise_reminder_time is None) or (datetime.datetime.now() - last_exercise_reminder_time).total_seconds() > 3*24 * 3600:
+            if (not previous_notification) or (datetime.datetime.now() - previous_notification_time).total_seconds() > 3600:
+                phq1diff= get_level_difference(es, user_id, "BT_phq_1")
+                phq2diff= get_level_difference(es, user_id, "BT_phq_2")
+                barriers=get_barriers(es, user_id)
+                paindiff= get_level_difference(es, user_id, "BT_pain_average")
+                functiondiff= get_level_difference(es, user_id, "T_cpg_function")
+                if (phq1diff >= 1) or (phq2diff >= 1):
+                    #emotional wellbeing message
+                    send_notification("exercise_reminder_emotional_wellbeing", user_id, app_settings["pushToken"], es, score=0)
+                elif len(barriers) > 0:
+                    send_notification("exercise_reminder_barriers", user_id, app_settings["pushToken"], es, score=0)
+                elif (paindiff >= 2) or (functiondiff <= -2):
+                    #pain and function message
+                    send_notification("exercise_reminder_pain", user_id, app_settings["pushToken"], es, score=0)
+                else:
+                    #low activity message
+                    send_notification("exercise_reminder", user_id, app_settings["pushToken"], es, score=0)
+                    
 
 
 def num_days_exercised(es, user_id, start, end):
